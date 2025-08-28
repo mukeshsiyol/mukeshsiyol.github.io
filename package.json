@@ -1,7 +1,7 @@
 {
-  "name": "mukesh-siyol-portfolio",
+  "name": "mukesh-Kumar-portfolio",
   "version": "1.0.0",
-  "description": "Professional portfolio website for Mukesh Siyol - B.Tech student passionate about DSA, Competitive Programming, and Software Development",
+  "description": "Professional portfolio website for Mukesh Kumar - B.Tech student passionate about DSA, Competitive Programming, and Software Development",
   "main": "index.html",
   "scripts": {
     "start": "python3 -m http.server 8000",
@@ -24,7 +24,7 @@
     "data-structures",
     "algorithms"
   ],
-  "author": "Mukesh Siyol <mukesh@example.com>",
+  "author": "Mukesh Kumar <mukeshsiyol2006@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mukeshsiyol/mukeshsiyol.github.io/issues"
