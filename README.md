@@ -52,5 +52,7 @@ I enjoy solving complex problems, building real-world projects, and continuously
 
 ## 📌 Notes
 - This README acts as a mini portfolio on GitHub.  
-- Your live portfolio website: [https://mukeshsiyol.me](https://mukeshsiyol.me)  
+- **🌟 Live Portfolio Website:** [https://mukeshsiyol.me](https://mukeshsiyol.me)  
+- The repository now includes a full HTML/CSS/JavaScript portfolio website
+- Portfolio features: responsive design, interactive navigation, project showcase, and resume
 - Keep this updated as you complete more projects or learn new skills.

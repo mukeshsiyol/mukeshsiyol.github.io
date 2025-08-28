@@ -1,0 +1,33 @@
+{
+  "name": "mukesh-siyol-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Mukesh Siyol - B.Tech student passionate about DSA, Competitive Programming, and Software Development",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mukeshsiyol/mukeshsiyol.github.io.git"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "github-pages",
+    "html",
+    "css",
+    "javascript",
+    "responsive",
+    "competitive-programming",
+    "data-structures",
+    "algorithms"
+  ],
+  "author": "Mukesh Siyol <mukesh@example.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mukeshsiyol/mukeshsiyol.github.io/issues"
+  },
+  "homepage": "https://mukeshsiyol.me"
+}
