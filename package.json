@@ -1,7 +1,7 @@
 {
   "name": "mukesh-Kumar-portfolio",
   "version": "1.0.0",
-  "description": "Professional portfolio website for Mukesh Kumar - B.Tech student passionate about DSA, Competitive Programming, and Software Development",
+  "description": "Professional portfolio website for Mukesh Kumar - B.Tech student at IIT Delhi passionate about DSA, Competitive Programming, and Software Development",
   "main": "index.html",
   "scripts": {
     "start": "python3 -m http.server 8000",
