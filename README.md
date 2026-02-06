@@ -1,7 +1,7 @@
 # Mukesh Siyol
 
 [![Website](https://img.shields.io/badge/Portfolio-mukeshsiyol.me-blue)](https://mukeshsiyol.me)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-MukeshSiyol-blue)](https://linkedin.com/in/mukeshikumar06)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-MukeshSiyol-blue)](https://linkedin.com/in/mukesh-kumar06)
 [![GitHub](https://img.shields.io/badge/GitHub-MukeshSiyol-black)](https://github.com/mukeshsiyol)
 [![Email](https://img.shields.io/badge/Email-mukeshsiyol2006@gmail.com-red)](mailto:mukeshsiyol2006@gmail.com)
 
@@ -44,7 +44,7 @@ I enjoy solving complex problems, building real-world projects, and continuously
 ---
 
 ## Contact Me
-- 📧 Email: [mukeshsiyol2006@gmail.com](mailto:mukeshsiyol2006@gmail.com.com)  
+- 📧 Email: [mukeshsiyol2006@gmail.com](mailto:mukeshsiyol2006@gmail.com)  
 - 🔗 LinkedIn: [linkedin.com/in/mukesh-kumar06](https://linkedin.com/in/mukeshsiyol)  
 - 🐙 GitHub: [github.com/mukeshsiyol](https://github.com/mukesh-kumar06)
 
