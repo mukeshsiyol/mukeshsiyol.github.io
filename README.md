@@ -44,8 +44,8 @@ I enjoy solving complex problems, building real-world projects, and continuously
 ---
 
 ## Contact Me
-- 📧 Email: [mukesh@example.com](mailto:mukeshsiyol2006@gmail.com.com)  
-- 🔗 LinkedIn: [linkedin.com/in/mukeshsiyol](https://linkedin.com/in/mukeshsiyol)  
+- 📧 Email: [mukeshsiyol2006@gmail.com](mailto:mukeshsiyol2006@gmail.com.com)  
+- 🔗 LinkedIn: [linkedin.com/in/mukesh-kumar06](https://linkedin.com/in/mukeshsiyol)  
 - 🐙 GitHub: [github.com/mukeshsiyol](https://github.com/mukesh-kumar06)
 
 ---
