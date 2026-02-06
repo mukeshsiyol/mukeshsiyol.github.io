@@ -22,19 +22,23 @@ I enjoy solving complex problems, building real-world projects, and continuously
 
 | Project | Description | Link |
 |---------|-------------|------|
-| **DSA Solver** | A tool to practice DSA problems in C++ and Python with solutions and explanations. | [Repo](https://github.com/mukeshsiyol/dsa-solver) |
-| **Portfolio Website** | Personal portfolio showcasing projects, resume, and contact info. | [Live](https://mukeshsiyol.me) |
-| **Competitive Coding Tracker** | Tracks solved problems on various platforms and visualizes progress. | [Repo](https://github.com/mukeshsiyol/cp-tracker) |
+| **COREP Assistant** | LLM-Assisted PRA COREP Reporting system with RAG implementation, schema validation, and audit trail generation for regulatory compliance. | [Repo](https://github.com/mukeshsiyol/corep-assistant) |
+| **Hostel Management System** | Web-based hostel management system for managing student accommodations, room allocations, and hostel operations. | [Repo](https://github.com/mukeshsiyol/hostel-management) |
+| **Meme Aggregator** | Real-time meme-coin data aggregator built with Node.js and TypeScript. Aggregates data from multiple DEX APIs with Redis caching and Socket.io updates. | [Repo](https://github.com/mukeshsiyol/Meme-Aggregator) |
+| **DSA C++ Important Problems** | Collection of important DSA problems and solutions in C++ including binary search, sorting algorithms, string manipulation, and optimization problems. | [Repo](https://github.com/mukeshsiyol/DSA_C-important-problems) |
+| **Portfolio Website** | Personal portfolio showcasing projects, resume, and contact info with responsive design and smooth animations. | [Live](https://mukeshsiyol.me) |
 
-> Add more projects as you build them.
+> Keep this updated as you complete more projects.
 
 ---
 
 ## Skills
-- **Data Structures & Algorithms:** Arrays, Linked List, Trees, Graphs, Dynamic Programming
-- **Languages:** C++, Python, Java
-- **Tools & Technologies:** Git, GitHub, VS Code, JetBrains IDEs, GitHub Pages
-- **Web Development:** HTML, CSS, JavaScript, GitHub Pages for hosting
+- **Data Structures & Algorithms:** Arrays, Linked List, Trees, Graphs, Dynamic Programming, Binary Search, Sorting Algorithms
+- **Languages:** C++, Python, Java, TypeScript, JavaScript
+- **AI & Machine Learning:** LLM Integration, RAG (Retrieval-Augmented Generation), Prompt Engineering
+- **Backend Technologies:** Node.js, Redis, Socket.io, REST APIs
+- **Web Development:** HTML, CSS, JavaScript, Responsive Design, GitHub Pages
+- **Tools & Technologies:** Git, GitHub, VS Code, JetBrains IDEs, Docker, Docker Compose
 
 ---
 
