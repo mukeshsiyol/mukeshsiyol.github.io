@@ -1,302 +1,610 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mukesh Kumar - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mukesh Siyol — Software Engineer & IIT Delhi</title>
+  <meta name="description" content="Mukesh Siyol — B.Tech student at IIT Delhi. Building backend systems, REST APIs, and AI-powered tools. DSA & Competitive Programming enthusiast." />
+  <meta property="og:title" content="Mukesh Siyol | Portfolio" />
+  <meta property="og:description" content="B.Tech Student at IIT Delhi · FastAPI · Python · DSA · Competitive Programming" />
+  <meta property="og:url" content="https://mukeshsiyol.me" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="scroll-progress" aria-hidden="true">
-        <span class="scroll-progress-bar"></span>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" aria-hidden="true">
+    <span class="scroll-progress-bar"></span>
+  </div>
+
+  <!-- Particle Background -->
+  <canvas id="particles-canvas" aria-hidden="true"></canvas>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar" aria-label="Primary navigation" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo" aria-label="Go to top">
+        <span class="logo-bracket">&lt;</span>MS<span class="logo-bracket">/&gt;</span>
+      </a>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#stats">Live Stats</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="nav-cta" href="resume.html" target="_blank" rel="noopener">
+          Resume <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>
+      </div>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </nav>
 
-    <nav class="navbar" aria-label="Primary">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>Mukesh Kumar</h2>
+  <!-- ── HERO ── -->
+  <header class="hero" id="hero">
+    <div class="hero-content reveal">
+      <div class="hero-tag">
+        <span class="availability-dot"></span> Open to internships &amp; opportunities
+      </div>
+      <h1>Hi, I'm <span class="gradient-text">Mukesh Siyol</span></h1>
+      <p class="hero-typed">
+        <span id="typed-text"></span><span class="cursor" aria-hidden="true">|</span>
+      </p>
+      <p class="hero-desc">
+        B.Tech student at <strong>IIT Delhi</strong> passionate about building scalable backend systems,
+        AI-powered tools, and crushing algorithmic problems. I turn complex ideas into real, working software.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">
+          <i class="fas fa-folder-open"></i> View My Work
+        </a>
+        <a href="#stats" class="btn btn-ghost">Live Stats</a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/mukeshsiyol" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://linkedin.com/in/mukesh-kumar06" target="_blank" rel="noopener" aria-label="LinkedIn" class="social-link">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="mailto:mukeshsiyol2006@gmail.com" aria-label="Email" class="social-link">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://mukeshsiyol.me" target="_blank" rel="noopener" aria-label="Portfolio Website" class="social-link">
+          <i class="fas fa-globe"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>scroll</span>
+    </div>
+  </header>
+
+  <!-- ── ABOUT ── -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">About Me</span>
+        <h2 class="section-title">Who I Am</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            I'm a <strong>B.Tech student at IIT Delhi</strong> with a strong focus on backend engineering,
+            distributed systems, and applied AI. I love building things that actually work — from REST APIs
+            with role-based access control to LLM-powered automation tools.
+          </p>
+          <p>
+            When I'm not building projects, I'm sharpening my problem-solving skills in
+            <strong>Data Structures &amp; Algorithms</strong> and Competitive Programming —
+            constantly pushing myself to think more efficiently.
+          </p>
+          <div class="about-highlights">
+            <div class="highlight-item" data-tilt data-tilt-max="5" data-tilt-speed="400">
+              <i class="fas fa-bullseye"></i>
+              <div>
+                <h4>Goal</h4>
+                <p>Become a proficient Software Engineer and excel in coding interviews</p>
+              </div>
             </div>
-            <div class="nav-links">
-                <a class="nav-link" href="#about">About</a>
-                <a class="nav-link" href="#projects">Projects</a>
-                <a class="nav-link" href="#skills">Skills</a>
-                <a class="nav-link" href="#contact">Contact</a>
-                <div class="nav-dropdown">
-                    <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true" aria-label="Open quick links menu">More <i class="fas fa-chevron-down"></i></button>
-                    <div class="dropdown-menu">
-                        <a href="resume.html" target="_blank" rel="noopener">Resume</a>
-                        <a href="https://mukeshsiyol.me" target="_blank" rel="noopener">Portfolio URL</a>
-                    </div>
-                </div>
+            <div class="highlight-item" data-tilt data-tilt-max="5" data-tilt-speed="400">
+              <i class="fas fa-laptop-code"></i>
+              <div>
+                <h4>Languages</h4>
+                <p>C++, Python, TypeScript, JavaScript, Java</p>
+              </div>
             </div>
-            <button class="theme-toggle" type="button" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
-            </button>
-            <button class="hamburger" type="button" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+          </div>
         </div>
-    </nav>
-
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Hi, I'm <span class="highlight">Mukesh Siyol</span></h1>
-            <p class="hero-subtitle">B.Tech Student at IIT Delhi | DSA & Competitive Programming | Aspiring Software Engineer</p>
-            <div class="hero-badges">
-                <a href="https://mukeshsiyol.me" class="badge" target="_blank" rel="noopener">
-                    <i class="fas fa-globe"></i> Portfolio
-                </a>
-                <a href="https://linkedin.com/in/mukeshsiyol" class="badge" target="_blank" rel="noopener">
-                    <i class="fab fa-linkedin"></i> LinkedIn
-                </a>
-                <a href="https://github.com/mukeshsiyol" class="badge" target="_blank" rel="noopener">
-                    <i class="fab fa-github"></i> GitHub
-                </a>
-                <a href="mailto:mukeshsiyol2006@gmail.com" class="badge">
-                    <i class="fas fa-envelope"></i> Email
-                </a>
-            </div>
-            <div class="hero-cta">
-                <a href="#about" class="btn-primary">Learn More</a>
-                <a href="resume.html" class="btn-secondary" target="_blank" rel="noopener">View Resume</a>
-            </div>
+        <div class="about-terminal glass-card reveal" data-tilt data-tilt-max="3" data-tilt-speed="400">
+          <div class="terminal-header">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="terminal-title">mukesh@iitd:~</span>
+          </div>
+          <div class="terminal-body">
+            <p><span class="t-prompt">$ </span><span class="t-cmd">whoami</span></p>
+            <p class="t-out">Mukesh Siyol — Backend &amp; Systems Dev</p>
+            <p><span class="t-prompt">$ </span><span class="t-cmd">cat interests.txt</span></p>
+            <p class="t-out">FastAPI · Python · C++ · DSA · LLMs · RAG</p>
+            <p><span class="t-prompt">$ </span><span class="t-cmd">cat college.txt</span></p>
+            <p class="t-out">IIT Delhi — B.Tech Computer Science</p>
+            <p><span class="t-prompt">$ </span><span class="t-cmd">echo $STATUS</span></p>
+            <p class="t-out t-green">✓ Open to internships &amp; projects</p>
+            <p><span class="t-prompt">$ <span class="t-blink">_</span></span></p>
+          </div>
         </div>
-    </header>
+      </div>
+    </div>
+  </section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>I am a B.Tech student passionate about <strong>Data Structures & Algorithms</strong>, <strong>Competitive Programming</strong>, and <strong>Software Development</strong>.</p>
-                    <p>I enjoy solving complex problems, building real-world projects, and continuously improving my coding skills.</p>
-                    
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-target"></i>
-                            <div>
-                                <h4>Goal</h4>
-                                <p>Become a proficient Software Developer and excel in coding interviews</p>
-                            </div>
-                        </div>
-                        
-                        <div class="highlight-item">
-                            <i class="fas fa-laptop-code"></i>
-                            <div>
-                                <h4>Languages</h4>
-                                <p>C++, Python, Java</p>
-                            </div>
-                        </div>
-                        
-                        <div class="highlight-item">
-                            <i class="fas fa-trophy"></i>
-                            <div>
-                                <h4>Achievements</h4>
-                                <p>Competitive programming contests, hackathons</p>
-                            </div>
-                        </div>
-                        
-                        <div class="highlight-item">
-                            <i class="fas fa-seedling"></i>
-                            <div>
-                                <h4>Currently Learning</h4>
-                                <p>Advanced DSA, System Design</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ── LIVE STATS ── -->
+  <section id="stats" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Proof of Work</span>
+        <h2 class="section-title">Live Developer Stats</h2>
+        <p class="section-desc">Real-time data fetched from my coding profiles showing consistency and problem-solving skills.</p>
+      </div>
+
+      <div class="stats-grid">
+        <!-- LeetCode Stats -->
+        <div class="stat-card glass-card reveal" data-tilt data-tilt-max="4" data-tilt-glare="true" data-tilt-max-glare="0.2">
+          <div class="stat-header">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" class="stat-logo" style="filter: invert(1); opacity: 0.8;">
+            <h3>LeetCode Progress</h3>
+          </div>
+          <div class="leetcode-stats" id="leetcode-stats-container">
+            <div class="lc-loading"><i class="fas fa-spinner fa-spin"></i> Fetching live stats...</div>
+            <!-- Populated by JS -->
+          </div>
+          <a href="https://leetcode.com/u/mukeshsiyol/" target="_blank" rel="noopener" class="stat-link">View Profile <i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
 
-    <section id="projects" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image" aria-hidden="true"><i class="fas fa-brain"></i></div>
-                    <div class="project-header">
-                        <h3>COREP Assistant</h3>
-                        <a href="https://github.com/mukeshsiyol/corep-assistant" class="project-link" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <p>LLM-Assisted PRA COREP Reporting system with RAG implementation, schema validation, and audit trail generation for regulatory compliance.</p>
-                    <div class="project-tags">
-                        <span class="tag">Python</span>
-                        <span class="tag">LLM</span>
-                        <span class="tag">RAG</span>
-                        <span class="tag">AI</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image" aria-hidden="true"><i class="fas fa-building"></i></div>
-                    <div class="project-header">
-                        <h3>Hostel Management System</h3>
-                        <a href="https://github.com/mukeshsiyol/hostel-management" class="project-link" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <p>Web-based hostel management system for managing student accommodations, room allocations, and hostel operations.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">JavaScript</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image" aria-hidden="true"><i class="fas fa-chart-line"></i></div>
-                    <div class="project-header">
-                        <h3>Meme Aggregator</h3>
-                        <a href="https://github.com/mukeshsiyol/Meme-Aggregator" class="project-link" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <p>Real-time meme-coin data aggregator built with Node.js and TypeScript. Aggregates data from multiple DEX APIs with Redis caching and Socket.io updates.</p>
-                    <div class="project-tags">
-                        <span class="tag">TypeScript</span>
-                        <span class="tag">Node.js</span>
-                        <span class="tag">Redis</span>
-                        <span class="tag">Socket.io</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image" aria-hidden="true"><i class="fas fa-code-branch"></i></div>
-                    <div class="project-header">
-                        <h3>DSA C++ Important Problems</h3>
-                        <a href="https://github.com/mukeshsiyol/DSA_C-important-problems" class="project-link" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    <p>Collection of important DSA problems and solutions in C++ including binary search, sorting algorithms, string manipulation, and optimization problems.</p>
-                    <div class="project-tags">
-                        <span class="tag">C++</span>
-                        <span class="tag">DSA</span>
-                        <span class="tag">Algorithms</span>
-                    </div>
-                </div>
-                
-                <div class="project-card">
-                    <div class="project-image" aria-hidden="true"><i class="fas fa-laptop"></i></div>
-                    <div class="project-header">
-                        <h3>Portfolio Website</h3>
-                        <a href="https://mukeshsiyol.me" class="project-link" target="_blank" rel="noopener">
-                            <i class="fas fa-external-link-alt"></i>
-                        </a>
-                    </div>
-                    <p>Personal portfolio showcasing projects, resume, and contact info with responsive design and smooth animations.</p>
-                    <div class="project-tags">
-                        <span class="tag">HTML</span>
-                        <span class="tag">CSS</span>
-                        <span class="tag">JavaScript</span>
-                    </div>
-                </div>
-            </div>
+        <!-- GitHub Contributions -->
+        <div class="stat-card glass-card reveal" data-tilt data-tilt-max="4" data-tilt-glare="true" data-tilt-max-glare="0.2">
+          <div class="stat-header">
+            <i class="fab fa-github" style="font-size: 1.5rem; color: var(--txt);"></i>
+            <h3>GitHub Activity</h3>
+          </div>
+          <div class="github-stats">
+            <p class="github-subtitle">Last 365 Days of Contributions</p>
+            <!-- Using an open source API to generate the github activity graph as an SVG -->
+            <img class="github-chart" src="https://ghchart.rshah.org/6366f1/mukeshsiyol" alt="Mukesh Siyol's Github chart" />
+          </div>
+          <a href="https://github.com/mukeshsiyol" target="_blank" rel="noopener" class="stat-link">View GitHub <i class="fas fa-arrow-right"></i></a>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Data Structures & Algorithms</h3>
-                    <p>Arrays, Linked List, Trees, Graphs, Dynamic Programming, Binary Search, Sorting Algorithms</p>
-                    <div class="skill-meter" role="progressbar" aria-label="Data Structures & Algorithms proficiency" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
-                        <span style="width: 92%"></span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
-                    <p>C++, Python, Java, TypeScript, JavaScript</p>
-                    <div class="skill-meter" role="progressbar" aria-label="Programming languages proficiency" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                        <span style="width: 90%"></span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-robot"></i> AI & Machine Learning</h3>
-                    <p>LLM Integration, RAG (Retrieval-Augmented Generation), Prompt Engineering</p>
-                    <div class="skill-meter" role="progressbar" aria-label="AI and Machine Learning proficiency" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">
-                        <span style="width: 83%"></span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-server"></i> Backend Technologies</h3>
-                    <p>Node.js, Redis, Socket.io, REST APIs</p>
-                    <div class="skill-meter" role="progressbar" aria-label="Backend technologies proficiency" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
-                        <span style="width: 85%"></span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-globe"></i> Web Development</h3>
-                    <p>HTML, CSS, JavaScript, Responsive Design, GitHub Pages</p>
-                    <div class="skill-meter" role="progressbar" aria-label="Web development proficiency" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
-                        <span style="width: 88%"></span>
-                    </div>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
-                    <p>Git, GitHub, VS Code, JetBrains IDEs, Docker, Docker Compose</p>
-                    <div class="skill-meter" role="progressbar" aria-label="Tools and technologies proficiency" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100">
-                        <span style="width: 84%"></span>
-                    </div>
-                </div>
+  <!-- ── PROJECTS ── -->
+  <section id="projects" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Work</span>
+        <h2 class="section-title">Projects &amp; Case Studies</h2>
+        <p class="section-desc">Click any project to see its architecture, tech stack, and what I learned building it.</p>
+      </div>
+
+      <div class="projects-grid">
+
+        <!-- Finance Tracker API — Featured -->
+        <article class="project-card featured-card glass-card reveal" aria-label="Finance Tracker API" onclick="openModal('modal-finance')" data-tilt data-tilt-max="2" data-tilt-scale="1.02" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <div class="featured-left">
+            <div class="project-card-top">
+              <div class="project-icon">💰</div>
+              <div class="project-links">
+                <span class="icon-link" aria-label="View Case Study">
+                  <i class="fas fa-arrow-right"></i>
+                </span>
+              </div>
             </div>
+            <span class="project-badge">⭐ Featured</span>
+            <h3 class="project-title">Finance Tracker API</h3>
+            <p class="project-desc">
+              Production-ready REST API built with <strong>FastAPI</strong> featuring JWT authentication,
+              role-based access control, analytics endpoints, and full test coverage.
+            </p>
+            <div class="project-tags">
+              <span class="tag">FastAPI</span>
+              <span class="tag">Python</span>
+              <span class="tag">JWT</span>
+              <span class="tag">SQLite</span>
+            </div>
+          </div>
+          <div class="featured-right">
+            <ul class="project-features">
+              <li><i class="fas fa-check-circle"></i> View Architecture</li>
+              <li><i class="fas fa-check-circle"></i> Role-based access control (3 roles)</li>
+              <li><i class="fas fa-check-circle"></i> 5 comprehensive test suites</li>
+              <li><i class="fas fa-check-circle"></i> Swagger / ReDoc auto-docs</li>
+            </ul>
+            <div class="click-hint">Click to read case study</div>
+          </div>
+        </article>
+
+        <!-- Internship Application Assistant -->
+        <article class="project-card glass-card reveal" aria-label="Internship Application Assistant" onclick="openModal('modal-intern')" data-tilt data-tilt-max="4" data-tilt-scale="1.03" data-tilt-glare="true" data-tilt-max-glare="0.15">
+          <div class="project-card-top">
+            <div class="project-icon">🤖</div>
+            <div class="project-links">
+              <span class="icon-link"><i class="fas fa-expand-alt"></i></span>
+            </div>
+          </div>
+          <h3 class="project-title">Internship App Assistant</h3>
+          <p class="project-desc">
+            AI-powered Python tool that parses job descriptions and generates tailored internship
+            application materials using NLP.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">LLM</span>
+            <span class="tag">NLP</span>
+          </div>
+        </article>
+
+        <!-- COREP Assistant -->
+        <article class="project-card glass-card reveal" aria-label="COREP Assistant" onclick="openModal('modal-corep')" data-tilt data-tilt-max="4" data-tilt-scale="1.03" data-tilt-glare="true" data-tilt-max-glare="0.15">
+          <div class="project-card-top">
+            <div class="project-icon">📊</div>
+            <div class="project-links">
+              <span class="icon-link"><i class="fas fa-expand-alt"></i></span>
+            </div>
+          </div>
+          <h3 class="project-title">COREP Assistant</h3>
+          <p class="project-desc">
+            LLM-assisted PRA COREP regulatory reporting tool with RAG implementation for financial compliance.
+          </p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">RAG</span>
+            <span class="tag">FinTech</span>
+          </div>
+        </article>
+
+        <!-- Meme Aggregator -->
+        <article class="project-card glass-card reveal" aria-label="Meme Aggregator" onclick="openModal('modal-meme')" data-tilt data-tilt-max="4" data-tilt-scale="1.03" data-tilt-glare="true" data-tilt-max-glare="0.15">
+          <div class="project-card-top">
+            <div class="project-icon">😂</div>
+            <div class="project-links">
+              <span class="icon-link"><i class="fas fa-expand-alt"></i></span>
+            </div>
+          </div>
+          <h3 class="project-title">Meme Aggregator</h3>
+          <p class="project-desc">
+            Real-time meme-coin data aggregator built with Node.js, pulling from multiple DEX APIs with Redis caching.
+          </p>
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Redis</span>
+            <span class="tag">Socket.io</span>
+          </div>
+        </article>
+
+        <!-- Hostel Management System -->
+        <article class="project-card glass-card reveal" aria-label="Hostel Management System" onclick="openModal('modal-hostel')" data-tilt data-tilt-max="4" data-tilt-scale="1.03" data-tilt-glare="true" data-tilt-max-glare="0.15">
+          <div class="project-card-top">
+            <div class="project-icon">🏠</div>
+            <div class="project-links">
+              <span class="icon-link"><i class="fas fa-expand-alt"></i></span>
+            </div>
+          </div>
+          <h3 class="project-title">Hostel Management</h3>
+          <p class="project-desc">
+            Full-stack management system handling student accommodations, room allocations, and fee records.
+          </p>
+          <div class="project-tags">
+            <span class="tag">HTML/CSS</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Web</span>
+          </div>
+        </article>
+
+        <!-- LeetCode Submissions -->
+        <article class="project-card glass-card reveal" aria-label="LeetCode Submissions" onclick="openModal('modal-leetcode')" data-tilt data-tilt-max="4" data-tilt-scale="1.03" data-tilt-glare="true" data-tilt-max-glare="0.15">
+          <div class="project-card-top">
+            <div class="project-icon">🧩</div>
+            <div class="project-links">
+              <span class="icon-link"><i class="fas fa-expand-alt"></i></span>
+            </div>
+          </div>
+          <h3 class="project-title">LeetCode Solutions</h3>
+          <p class="project-desc">
+            Curated collection of optimal DSA problem solutions covering arrays, trees, graphs, and DP.
+          </p>
+          <div class="project-tags">
+            <span class="tag">C++</span>
+            <span class="tag">DSA</span>
+            <span class="tag">Algorithms</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECT MODALS (Case Studies) ── -->
+  <!-- Finance Tracker Modal -->
+  <div class="modal-overlay" id="modal-finance" onclick="closeModal(event, 'modal-finance')">
+    <div class="modal-content glass-card">
+      <button class="modal-close" onclick="closeModalClick('modal-finance')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="project-icon">💰</div>
+        <h2>Finance Tracker API</h2>
+        <div class="project-tags">
+          <span class="tag">FastAPI</span><span class="tag">Python</span><span class="tag">JWT</span><span class="tag">SQLite</span>
         </div>
-    </section>
+      </div>
+      <div class="modal-body">
+        <h4>The Problem</h4>
+        <p>Managing personal finances across multiple streams requires a robust backend that can securely handle transactions, enforce role-based access, and provide actionable analytics without compromising data integrity.</p>
+        
+        <h4>Architecture &amp; Features</h4>
+        <ul class="modal-list">
+          <li><strong>Authentication:</strong> Implemented secure JWT-based access and refresh tokens.</li>
+          <li><strong>RBAC:</strong> Built a 3-tier Role-Based Access Control system (Admin, Analyst, Viewer).</li>
+          <li><strong>Database:</strong> Used SQLAlchemy ORM with SQLite for efficient data modeling.</li>
+          <li><strong>Reliability:</strong> Wrote 5 comprehensive Pytest suites ensuring high test coverage.</li>
+          <li><strong>Export:</strong> Designed endpoints to export financial data to CSV and JSON.</li>
+        </ul>
+        
+        <h4>What I Learned</h4>
+        <p>This project solidified my understanding of RESTful API design, dependency injection in FastAPI, and the intricacies of implementing secure token-based authentication from scratch.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/mukeshsiyol/finance-tracker" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+      </div>
+    </div>
+  </div>
 
-    <section id="contact" class="section bg-light">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-            <div class="contact-content">
-                <p>Let's connect and discuss opportunities!</p>
-                <div class="contact-links">
-                    <a href="mailto:mukeshsiyol2006@gmail.com" class="contact-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>mukeshsiyol2006@gmail.com</span>
-                    </a>
-                    <a href="https://linkedin.com/in/mukesh-kumar06" class="contact-link" target="_blank" rel="noopener">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="https://github.com/mukeshsiyol" class="contact-link" target="_blank" rel="noopener">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                </div>
-                <a href="mailto:mukeshsiyol2006@gmail.com" class="btn-primary contact-cta">Start a Conversation</a>
-            </div>
+  <!-- Internship App Assistant Modal -->
+  <div class="modal-overlay" id="modal-intern" onclick="closeModal(event, 'modal-intern')">
+    <div class="modal-content glass-card">
+      <button class="modal-close" onclick="closeModalClick('modal-intern')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="project-icon">🤖</div>
+        <h2>Internship Application Assistant</h2>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">NLP</span></div>
+      </div>
+      <div class="modal-body">
+        <h4>The Problem</h4>
+        <p>Applying to hundreds of internships is incredibly time-consuming, especially when tailoring resumes and cover letters to specific job descriptions.</p>
+        
+        <h4>The Solution</h4>
+        <p>I built an AI-powered tool that automatically parses job descriptions, extracts key skills using NLP, and generates highly tailored internship application materials (like cover letters) matching my profile against the job requirements.</p>
+        
+        <h4>What I Learned</h4>
+        <p>Gained hands-on experience integrating Large Language Models (LLMs) via APIs, structuring dynamic prompts, and building practical automation scripts that solve real-world productivity bottlenecks.</p>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/mukeshsiyol/internship-application-assistant" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COREP Assistant Modal -->
+  <div class="modal-overlay" id="modal-corep" onclick="closeModal(event, 'modal-corep')">
+    <div class="modal-content glass-card">
+      <button class="modal-close" onclick="closeModalClick('modal-corep')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="project-icon">📊</div>
+        <h2>COREP Assistant</h2>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">LLM</span><span class="tag">RAG</span></div>
+      </div>
+      <div class="modal-body">
+        <h4>Overview</h4>
+        <p>Built during an internship, this tool assists in PRA COREP regulatory reporting, which is notoriously complex and strict in the financial sector.</p>
+        
+        <h4>Technical Implementation</h4>
+        <ul class="modal-list">
+          <li><strong>RAG Pipeline:</strong> Implemented Retrieval-Augmented Generation to allow the LLM to query complex regulatory documents securely.</li>
+          <li><strong>Validation:</strong> Engineered schema validation logic to ensure generated reports met strict formatting guidelines.</li>
+          <li><strong>Audit Trails:</strong> Created a system to generate clear audit trails for all AI-assisted decisions to maintain compliance.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/mukeshsiyol/corep-assistant" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Meme Aggregator Modal -->
+  <div class="modal-overlay" id="modal-meme" onclick="closeModal(event, 'modal-meme')">
+    <div class="modal-content glass-card">
+      <button class="modal-close" onclick="closeModalClick('modal-meme')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="project-icon">😂</div>
+        <h2>Meme Aggregator</h2>
+        <div class="project-tags"><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Redis</span><span class="tag">Socket.io</span></div>
+      </div>
+      <div class="modal-body">
+        <h4>Architecture &amp; Features</h4>
+        <p>A real-time data aggregator designed to pull meme-coin metrics from multiple Decentralised Exchange (DEX) APIs concurrently.</p>
+        <ul class="modal-list">
+          <li><strong>Caching Layer:</strong> Implemented Redis caching to dramatically reduce external API calls and latency.</li>
+          <li><strong>Real-time Updates:</strong> Integrated Socket.io to push live price updates to connected clients instantaneously.</li>
+          <li><strong>Type Safety:</strong> Written entirely in TypeScript for robust error handling and clear data schemas.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/mukeshsiyol/Meme-Aggregator" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hostel Management Modal -->
+  <div class="modal-overlay" id="modal-hostel" onclick="closeModal(event, 'modal-hostel')">
+    <div class="modal-content glass-card">
+      <button class="modal-close" onclick="closeModalClick('modal-hostel')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="project-icon">🏠</div>
+        <h2>Hostel Management System</h2>
+        <div class="project-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Web</span></div>
+      </div>
+      <div class="modal-body">
+        <h4>Overview</h4>
+        <p>A full-stack web application designed to digitise and streamline the daily operations of a university hostel.</p>
+        
+        <h4>Features</h4>
+        <ul class="modal-list">
+          <li><strong>Room Allocation:</strong> Interface for admins to manage room occupancy and assign new students.</li>
+          <li><strong>Financial Tracking:</strong> Module to track student fee payments and generate pending dues lists.</li>
+          <li><strong>Responsive UI:</strong> Built with semantic HTML, modern CSS, and vanilla JavaScript for a fast, responsive user experience.</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/mukeshsiyol/hostel-management" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LeetCode Modal -->
+  <div class="modal-overlay" id="modal-leetcode" onclick="closeModal(event, 'modal-leetcode')">
+    <div class="modal-content glass-card">
+      <button class="modal-close" onclick="closeModalClick('modal-leetcode')"><i class="fas fa-times"></i></button>
+      <div class="modal-header">
+        <div class="project-icon">🧩</div>
+        <h2>LeetCode Solutions</h2>
+        <div class="project-tags"><span class="tag">C++</span><span class="tag">DSA</span><span class="tag">Algorithms</span></div>
+      </div>
+      <div class="modal-body">
+        <h4>Overview</h4>
+        <p>A highly organized repository containing my optimal solutions to essential Data Structures and Algorithms problems, primarily using C++.</p>
+        
+        <h4>Topics Covered</h4>
+        <ul class="modal-list">
+          <li><strong>Graph Theory:</strong> BFS, DFS, Dijkstra's, Topological Sort</li>
+          <li><strong>Dynamic Programming:</strong> 1D/2D DP, Memoization, Tabulation</li>
+          <li><strong>Trees:</strong> Binary Trees, BSTs, Tries</li>
+          <li><strong>Optimization:</strong> Sliding Window, Two Pointers, Binary Search</li>
+        </ul>
+        <p><em>This repository serves as my personal knowledge base and proves my strong grasp of CS fundamentals and competitive programming concepts.</em></p>
+      </div>
+      <div class="modal-footer">
+        <a href="https://github.com/mukeshsiyol/leetcode-submissions" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> View Source Code</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SKILLS ── -->
+  <section id="skills" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Expertise</span>
+        <h2 class="section-title">Skills &amp; Stack</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-category glass-card reveal" data-tilt data-tilt-max="3" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <h3><i class="fas fa-code"></i> Data Structures &amp; Algorithms</h3>
+          <p>Arrays, Linked Lists, Trees, Graphs, Dynamic Programming, Binary Search, Sorting</p>
+          <div class="skill-meter" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
+            <span style="width: 92%"></span>
+          </div>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-social" aria-label="Social media links">
-                <a href="https://github.com/mukeshsiyol" target="_blank" rel="noopener" aria-label="GitHub profile"><i class="fab fa-github"></i></a>
-                <a href="https://linkedin.com/in/mukesh-kumar06" target="_blank" rel="noopener" aria-label="LinkedIn profile"><i class="fab fa-linkedin"></i></a>
-                <a href="mailto:mukeshsiyol2006@gmail.com" aria-label="Send email"><i class="fas fa-envelope"></i></a>
-            </div>
-            <div class="footer-legal">
-                <a href="privacy.html">Privacy Policy</a>
-                <span aria-hidden="true">•</span>
-                <a href="terms.html">Terms of Service</a>
-            </div>
-            <p>&copy; <span id="copyright-year">2025</span> Mukesh Kumar. All rights reserved.</p>
+        <div class="skill-category glass-card reveal" data-tilt data-tilt-max="3" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <h3><i class="fas fa-laptop-code"></i> Programming Languages</h3>
+          <p>C++, Python, TypeScript, JavaScript, Java</p>
+          <div class="skill-meter" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+            <span style="width: 90%"></span>
+          </div>
         </div>
-    </footer>
+        <div class="skill-category glass-card reveal" data-tilt data-tilt-max="3" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <h3><i class="fas fa-robot"></i> AI &amp; Machine Learning</h3>
+          <p>LLM Integration, RAG Pipeline, Prompt Engineering</p>
+          <div class="skill-meter" role="progressbar" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100">
+            <span style="width: 83%"></span>
+          </div>
+        </div>
+        <div class="skill-category glass-card reveal" data-tilt data-tilt-max="3" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <h3><i class="fas fa-server"></i> Backend Technologies</h3>
+          <p>FastAPI, SQLAlchemy, Pydantic, Node.js, Redis, REST APIs, JWT</p>
+          <div class="skill-meter" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
+            <span style="width: 85%"></span>
+          </div>
+        </div>
+        <div class="skill-category glass-card reveal" data-tilt data-tilt-max="3" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <h3><i class="fas fa-globe"></i> Web Development</h3>
+          <p>HTML, CSS, JavaScript, Responsive Design, GitHub Pages</p>
+          <div class="skill-meter" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
+            <span style="width: 88%"></span>
+          </div>
+        </div>
+        <div class="skill-category glass-card reveal" data-tilt data-tilt-max="3" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <h3><i class="fas fa-tools"></i> Tools &amp; DevOps</h3>
+          <p>Git, GitHub, VS Code, JetBrains, Docker, pytest</p>
+          <div class="skill-meter" role="progressbar" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100">
+            <span style="width: 84%"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script src="script.js"></script>
+  <!-- ── CONTACT ── -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Let's Talk</span>
+        <h2 class="section-title">Get In Touch</h2>
+        <p class="section-desc">
+          I'm actively looking for internship opportunities and interesting projects.<br />
+          Whether it's a question or just a hello — my inbox is always open!
+        </p>
+      </div>
+      <div class="contact-content reveal">
+        <div class="contact-links">
+          <a href="mailto:mukeshsiyol2006@gmail.com" class="contact-link glass-card" aria-label="Send email" data-tilt data-tilt-scale="1.05">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>Email</h4>
+              <span>mukeshsiyol2006@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://linkedin.com/in/mukesh-kumar06" target="_blank" rel="noopener" class="contact-link glass-card" aria-label="LinkedIn profile" data-tilt data-tilt-scale="1.05">
+            <div class="contact-icon"><i class="fab fa-linkedin-in"></i></div>
+            <div>
+              <h4>LinkedIn</h4>
+              <span>linkedin.com/in/mukesh-kumar06</span>
+            </div>
+          </a>
+          <a href="https://github.com/mukeshsiyol" target="_blank" rel="noopener" class="contact-link glass-card" aria-label="GitHub profile" data-tilt data-tilt-scale="1.05">
+            <div class="contact-icon"><i class="fab fa-github"></i></div>
+            <div>
+              <h4>GitHub</h4>
+              <span>github.com/mukeshsiyol</span>
+            </div>
+          </a>
+        </div>
+        <a href="mailto:mukeshsiyol2006@gmail.com" class="btn btn-primary btn-large contact-cta">
+          <i class="fas fa-paper-plane"></i> Start a Conversation
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-social">
+        <a href="https://github.com/mukeshsiyol" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/mukesh-kumar06" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:mukeshsiyol2006@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+      <p>Designed &amp; Built by <span class="gradient-text">Mukesh Siyol</span> &nbsp;·&nbsp; &copy; <span id="copyright-year">2025</span></p>
+    </div>
+  </footer>
+
+  <!-- External Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
