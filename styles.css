@@ -179,7 +179,6 @@ body {
 
 .dropdown-menu a:hover {
     background: rgba(79, 70, 229, 0.12);
-    background: color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
 .theme-toggle {
@@ -328,7 +327,6 @@ body {
 
 .bg-light {
     background: #eef2ff;
-    background: color-mix(in srgb, var(--surface-solid) 65%, var(--bg));
 }
 
 .section-title {
@@ -450,7 +448,6 @@ body {
 
 .tag {
     background: rgba(79, 70, 229, 0.16);
-    background: color-mix(in srgb, var(--primary) 16%, transparent);
     color: var(--text);
     border-radius: 999px;
     padding: 4px 12px;
@@ -639,5 +636,19 @@ body {
         animation: none !important;
         transition: none !important;
         scroll-behavior: auto !important;
+    }
+}
+
+@supports (background: color-mix(in srgb, white 50%, black)) {
+    .dropdown-menu a:hover {
+        background: color-mix(in srgb, var(--primary) 12%, transparent);
+    }
+
+    .bg-light {
+        background: color-mix(in srgb, var(--surface-solid) 65%, var(--bg));
+    }
+
+    .tag {
+        background: color-mix(in srgb, var(--primary) 16%, transparent);
     }
 }
