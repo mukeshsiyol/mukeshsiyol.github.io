@@ -191,3 +191,140 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
+
+// ── WakaTime Fetch Logic ──
+document.addEventListener('DOMContentLoaded', () => {
+  const wtContainer = document.getElementById('wakatime-stats-container');
+  const wtLink = document.getElementById('wakatime-link');
+  // WakaTime share ID placeholder (user will replace this later)
+  const wtShareId = 'PLACEHOLDER_WAKATIME_ID'; 
+
+  if (wtContainer && wtShareId !== 'PLACEHOLDER_WAKATIME_ID') {
+    fetch(`https://wakatime.com/share/@monu_siyol/${wtShareId}.json`)
+      .then(r => r.json())
+      .then(data => {
+        if(data && data.data) {
+          const totalSeconds = data.data.grand_total.total_seconds;
+          const hours = Math.floor(totalSeconds / 3600);
+          const minutes = Math.floor((totalSeconds % 3600) / 60);
+          wtContainer.innerHTML = `<div style="font-size:2rem;font-weight:700;color:var(--accent);">${hours}h ${minutes}m</div><div style="color:var(--txt-2);font-size:0.9rem;">coded this week</div>`;
+          wtLink.style.display = 'inline-flex';
+          wtLink.href = `https://wakatime.com/@monu_siyol`;
+        }
+      })
+      .catch(() => {
+        wtContainer.innerHTML = `<div style="color:var(--txt-2);font-size:0.9rem;">Setup WakaTime ID in script.js</div>`;
+      });
+  } else if (wtContainer) {
+    wtContainer.innerHTML = `<div style="color:var(--txt-2);font-size:0.9rem;">Awaiting WakaTime configuration...</div>`;
+  }
+});
+
+// ── AI Chatbot Logic (Simulated Rule-Based Engine) ──
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('chat-toggle');
+  const chatWin = document.getElementById('chat-window');
+  const closeChat = document.getElementById('close-chat');
+  const chatInput = document.getElementById('chat-input');
+  const sendChat = document.getElementById('send-chat');
+  const chatBody = document.getElementById('chat-body');
+
+  if(toggleBtn && chatWin) {
+    toggleBtn.addEventListener('click', () => chatWin.classList.remove('hidden'));
+    closeChat.addEventListener('click', () => chatWin.classList.add('hidden'));
+
+    const addMessage = (text, sender) => {
+      const div = document.createElement('div');
+      div.className = `chat-message ${sender}`;
+      div.innerHTML = `<p>${text}</p>`;
+      chatBody.appendChild(div);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    };
+
+    const getBotResponse = (input) => {
+      const lower = input.toLowerCase();
+      if(lower.includes('hi') || lower.includes('hello')) return "Hi there! I can answer questions about Mukesh's skills, projects, and education. What would you like to know?";
+      if(lower.includes('c++') || lower.includes('dsa') || lower.includes('competitive')) return "Mukesh is highly proficient in C++! He uses it primarily for Competitive Programming and Data Structures & Algorithms. Check out his LeetCode stats above!";
+      if(lower.includes('python') || lower.includes('fastapi')) return "Mukesh loves Python! He has built scalable REST APIs using FastAPI and complex NLP pipelines using NLTK and Pandas.";
+      if(lower.includes('ai') || lower.includes('agent') || lower.includes('llm')) return "Mukesh is deeply interested in AI infrastructure. He built 'Hive', an evolutionary LLM agent framework, and the 'COREP Assistant' which uses RAG for regulatory reporting.";
+      if(lower.includes('physics') || lower.includes('research') || lower.includes('deepak')) return "Under Prof. Deepak at IIT Delhi, Mukesh conducts research on Motility-Induced Phase Separation in active matter using OpenCV and computer vision.";
+      if(lower.includes('contact') || lower.includes('email') || lower.includes('hire')) return "You can reach Mukesh directly at mukeshsiyol2006@gmail.com, or fill out the contact form at the bottom of the page!";
+      return "That's an interesting question! While I don't know the exact answer, you can email Mukesh directly at mukeshsiyol2006@gmail.com to ask him personally.";
+    };
+
+    const handleSend = () => {
+      const val = chatInput.value.trim();
+      if(!val) return;
+      addMessage(val, 'user');
+      chatInput.value = '';
+      
+      // Simulate thinking delay
+      setTimeout(() => {
+        const response = getBotResponse(val);
+        addMessage(response, 'bot');
+      }, 600 + Math.random() * 500);
+    };
+
+    sendChat.addEventListener('click', handleSend);
+    chatInput.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') handleSend();
+    });
+  }
+});
+
+// ── Global Hacker Terminal Mode (Ctrl+K) ──
+document.addEventListener('DOMContentLoaded', () => {
+  const terminal = document.getElementById('global-terminal');
+  const termInput = document.getElementById('term-input');
+  const termOutput = document.getElementById('term-output');
+  const closeTerm = document.getElementById('close-terminal');
+
+  if(terminal && termInput) {
+    document.addEventListener('keydown', (e) => {
+      if(e.ctrlKey && e.key === 'k') {
+        e.preventDefault();
+        terminal.classList.remove('hidden');
+        setTimeout(() => termInput.focus(), 100);
+      }
+    });
+    
+    closeTerm.addEventListener('click', () => terminal.classList.add('hidden'));
+
+    const addLine = (text, colorClass = '') => {
+      const p = document.createElement('p');
+      if(colorClass) p.className = colorClass;
+      p.innerHTML = text;
+      termOutput.appendChild(p);
+      termOutput.scrollTop = termOutput.scrollHeight;
+    };
+
+    termInput.addEventListener('keypress', (e) => {
+      if(e.key === 'Enter') {
+        const cmd = termInput.value.trim();
+        termInput.value = '';
+        addLine(`<span class="t-prompt">guest@mukesh-server:~$</span> ${cmd}`);
+        
+        if(!cmd) return;
+        const lower = cmd.toLowerCase();
+
+        if(lower === 'help') {
+          addLine('Available commands: help, whoami, ls, cat skills, cat contact, clear, exit');
+        } else if(lower === 'whoami') {
+          addLine('Mukesh Kumar - Backend & AI Engineer studying at IIT Delhi.', 't-green');
+        } else if(lower === 'ls') {
+          addLine('projects/  resume.pdf  skills.txt  contact.txt', 't-green');
+        } else if(lower === 'cat skills' || lower === 'cat skills.txt') {
+          addLine('[*] C++, Python, TypeScript<br>[*] FastAPI, LLM Agents, OpenCV, DSA', 't-yellow');
+        } else if(lower === 'cat contact' || lower === 'cat contact.txt') {
+          addLine('Email: mukeshsiyol2006@gmail.com<br>LinkedIn: linkedin.com/in/mukesh-kumar06', 't-green');
+        } else if(lower === 'clear') {
+          termOutput.innerHTML = '';
+        } else if(lower === 'exit') {
+          terminal.classList.add('hidden');
+        } else {
+          addLine(`bash: ${cmd}: command not found`, 't-red');
+        }
+      }
+    });
+  }
+});

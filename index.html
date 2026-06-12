@@ -190,6 +190,17 @@
           </div>
           <a href="https://github.com/mukeshsiyol" target="_blank" rel="noopener" class="stat-link">View GitHub <i class="fas fa-arrow-right"></i></a>
         </div>
+        <!-- WakaTime Coding Stats -->
+        <div class="stat-card glass-card reveal" data-tilt data-tilt-max="4" data-tilt-glare="true" data-tilt-max-glare="0.2">
+          <div class="stat-header">
+            <i class="fas fa-code" style="font-size: 1.5rem; color: var(--accent-light);"></i>
+            <h3>Weekly Coding Time</h3>
+          </div>
+          <div class="wakatime-stats" id="wakatime-stats-container">
+            <div class="lc-loading"><i class="fas fa-spinner fa-spin"></i> Fetching live stats...</div>
+          </div>
+          <a href="#" class="stat-link" id="wakatime-link" target="_blank" rel="noopener" style="display: none;">View WakaTime <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
     </div>
   </section>
@@ -684,6 +695,47 @@
       <p>Designed &amp; Built by <span class="gradient-text">Mukesh Kumar</span> &nbsp;·&nbsp; &copy; <span id="copyright-year">2025</span></p>
     </div>
   </footer>
+
+  <!-- ── AI CHATBOT WIDGET ── -->
+  <div id="ai-chat-widget">
+    <div id="chat-window" class="glass-card hidden">
+      <div class="chat-header">
+        <div class="chat-avatar"><i class="fas fa-robot"></i></div>
+        <div>
+          <h4>Mukesh AI</h4>
+          <span class="online-status">Online</span>
+        </div>
+        <button id="close-chat"><i class="fas fa-times"></i></button>
+      </div>
+      <div class="chat-body" id="chat-body">
+        <div class="chat-message bot">
+          <p>Hi! I'm Mukesh's AI assistant. You can ask me about his skills, experience, or projects!</p>
+        </div>
+      </div>
+      <div class="chat-footer">
+        <input type="text" id="chat-input" placeholder="Ask something..." autocomplete="off">
+        <button id="send-chat"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <button id="chat-toggle" class="glass-card" aria-label="Open AI Chat">
+      <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <!-- ── GLOBAL HACKER TERMINAL ── -->
+  <div id="global-terminal" class="hidden">
+    <div class="term-window">
+      <div class="term-output" id="term-output">
+        <p class="t-green">MukeshOS v2.0</p>
+        <p>Type 'help' for a list of commands.</p>
+      </div>
+      <div class="term-input-line">
+        <span class="t-prompt">guest@mukesh-server:~$ </span>
+        <input type="text" id="term-input" autocomplete="off" spellcheck="false" autofocus>
+      </div>
+    </div>
+    <button id="close-terminal"><i class="fas fa-times"></i></button>
+  </div>
 
   <!-- External Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
