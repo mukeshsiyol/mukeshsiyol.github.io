@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const NAVBAR_OFFSET = 80;
+    const ACTIVE_SECTION_OFFSET = 120;
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     const navLinksContainer = document.querySelector('.nav-links');
@@ -22,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            const activeTheme = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            const activeTheme = document.body.getAttribute('data-theme') || 'light';
             applyTheme(activeTheme === 'dark' ? 'light' : 'dark');
         });
     }
@@ -47,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(link.getAttribute('href'));
             if (!target) return;
 
-            const offsetTop = target.offsetTop - 80;
+            const offsetTop = target.offsetTop - NAVBAR_OFFSET;
             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
 
             if (navLinksContainer) {
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let current = '';
         sections.forEach(section => {
-            if (window.scrollY >= section.offsetTop - 120) {
+            if (window.scrollY >= section.offsetTop - ACTIVE_SECTION_OFFSET) {
                 current = section.id;
             }
         });
