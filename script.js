@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const NAVBAR_OFFSET = 80;
-    const ACTIVE_SECTION_OFFSET = 120;
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
     const navLinksContainer = document.querySelector('.nav-links');
@@ -9,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.querySelector('.nav-dropdown');
     const dropdownToggle = document.querySelector('.dropdown-toggle');
     const progressBar = document.querySelector('.scroll-progress-bar');
+    const getNavbarOffset = () => (navbar ? navbar.offsetHeight + 10 : 80);
 
     const applyTheme = theme => {
         document.body.setAttribute('data-theme', theme);
@@ -49,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const target = document.querySelector(link.getAttribute('href'));
             if (!target) return;
 
-            const offsetTop = target.offsetTop - NAVBAR_OFFSET;
+            const offsetTop = target.offsetTop - getNavbarOffset();
             window.scrollTo({ top: offsetTop, behavior: 'smooth' });
 
             if (navLinksContainer) {
@@ -83,8 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let current = '';
+        const activeOffset = getNavbarOffset() + 40;
         sections.forEach(section => {
-            if (window.scrollY >= section.offsetTop - ACTIVE_SECTION_OFFSET) {
+            if (window.scrollY >= section.offsetTop - activeOffset) {
                 current = section.id;
             }
         });
