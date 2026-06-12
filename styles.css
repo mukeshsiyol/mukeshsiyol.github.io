@@ -178,6 +178,7 @@ body {
 }
 
 .dropdown-menu a:hover {
+    background: rgba(79, 70, 229, 0.12);
     background: color-mix(in srgb, var(--primary) 12%, transparent);
 }
 
@@ -326,6 +327,7 @@ body {
 }
 
 .bg-light {
+    background: #eef2ff;
     background: color-mix(in srgb, var(--surface-solid) 65%, var(--bg));
 }
 
@@ -447,11 +449,27 @@ body {
 }
 
 .tag {
+    background: rgba(79, 70, 229, 0.16);
     background: color-mix(in srgb, var(--primary) 16%, transparent);
     color: var(--text);
     border-radius: 999px;
     padding: 4px 12px;
     font-size: 0.8rem;
+}
+
+.legal-page {
+    max-width: 760px;
+    text-align: left;
+}
+
+.legal-page p {
+    margin-bottom: 12px;
+    color: var(--muted);
+}
+
+.legal-back {
+    margin-top: 16px;
+    display: inline-block;
 }
 
 .skill-category {

@@ -22,8 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (themeToggle) {
         themeToggle.addEventListener('click', () => {
-            const currentTheme = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-            applyTheme(currentTheme === 'dark' ? 'light' : 'dark');
+            const activeTheme = document.body.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+            applyTheme(activeTheme === 'dark' ? 'light' : 'dark');
         });
     }
 
