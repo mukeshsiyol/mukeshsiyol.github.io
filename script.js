@@ -192,34 +192,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// ── WakaTime Fetch Logic ──
-document.addEventListener('DOMContentLoaded', () => {
-  const wtContainer = document.getElementById('wakatime-stats-container');
-  const wtLink = document.getElementById('wakatime-link');
-  // WakaTime share ID placeholder (user will replace this later)
-  const wtShareId = 'PLACEHOLDER_WAKATIME_ID'; 
-
-  if (wtContainer && wtShareId !== 'PLACEHOLDER_WAKATIME_ID') {
-    fetch(`https://wakatime.com/share/@monu_siyol/${wtShareId}.json`)
-      .then(r => r.json())
-      .then(data => {
-        if(data && data.data) {
-          const totalSeconds = data.data.grand_total.total_seconds;
-          const hours = Math.floor(totalSeconds / 3600);
-          const minutes = Math.floor((totalSeconds % 3600) / 60);
-          wtContainer.innerHTML = `<div style="font-size:2rem;font-weight:700;color:var(--accent);">${hours}h ${minutes}m</div><div style="color:var(--txt-2);font-size:0.9rem;">coded this week</div>`;
-          wtLink.style.display = 'inline-flex';
-          wtLink.href = `https://wakatime.com/@monu_siyol`;
-        }
-      })
-      .catch(() => {
-        wtContainer.innerHTML = `<div style="color:var(--txt-2);font-size:0.9rem;">Setup WakaTime ID in script.js</div>`;
-      });
-  } else if (wtContainer) {
-    wtContainer.innerHTML = `<div style="color:var(--txt-2);font-size:0.9rem;">Awaiting WakaTime configuration...</div>`;
-  }
-});
-
 // ── AI Chatbot Logic (Simulated Rule-Based Engine) ──
 document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('chat-toggle');
@@ -278,8 +250,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const termInput = document.getElementById('term-input');
   const termOutput = document.getElementById('term-output');
   const closeTerm = document.getElementById('close-terminal');
+  const openTermBtn = document.getElementById('open-terminal-btn');
 
   if(terminal && termInput) {
+    // Open via button
+    if(openTermBtn) {
+      openTermBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        terminal.classList.remove('hidden');
+        setTimeout(() => termInput.focus(), 100);
+      });
+    }
+
+    // Open via Ctrl+K
     document.addEventListener('keydown', (e) => {
       if(e.ctrlKey && e.key === 'k') {
         e.preventDefault();
