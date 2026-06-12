@@ -92,37 +92,64 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yr) yr.textContent = new Date().getFullYear();
 
   // ── LeetCode Live Stats ──
+  // Uses alfa-leetcode-api (actively maintained, replaces dead Heroku API)
   const lcContainer = document.getElementById('leetcode-stats-container');
   if (lcContainer) {
-    fetch('https://leetcode-stats-api.herokuapp.com/mukeshsiyol')
-      .then(response => response.json())
+    const renderStats = (easy, totalEasy, medium, totalMedium, hard, totalHard, total) => {
+      lcContainer.innerHTML = `
+        <div class="lc-stat lc-easy">
+          <span class="lc-label">Easy</span>
+          <span class="lc-val">${easy} <span style="font-size:0.7em;color:var(--txt-3)">/ ${totalEasy}</span></span>
+        </div>
+        <div class="lc-stat lc-med">
+          <span class="lc-label">Medium</span>
+          <span class="lc-val">${medium} <span style="font-size:0.7em;color:var(--txt-3)">/ ${totalMedium}</span></span>
+        </div>
+        <div class="lc-stat lc-hard">
+          <span class="lc-label">Hard</span>
+          <span class="lc-val">${hard} <span style="font-size:0.7em;color:var(--txt-3)">/ ${totalHard}</span></span>
+        </div>
+        <div class="lc-stat lc-total">
+          <span class="lc-label">Total Solved</span>
+          <span class="lc-val">${total}</span>
+        </div>
+      `;
+    };
+
+    const showError = () => {
+      lcContainer.innerHTML = `<div style="font-size:0.9rem;color:var(--txt-2);font-family:var(--mono);">Stats unavailable right now.<br>Visit <a href="https://leetcode.com/u/monu_siyol/" target="_blank" style="color:var(--accent-light)">my LeetCode profile</a>.</div>`;
+    };
+
+    // Primary API: alfa-leetcode-api (no Heroku, actively maintained)
+    fetch('https://alfa-leetcode-api.onrender.com/monu_siyol/solved')
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
       .then(data => {
-        if (data.status === 'success') {
-          lcContainer.innerHTML = `
-            <div class="lc-stat lc-easy">
-              <span class="lc-label">Easy</span>
-              <span class="lc-val">${data.easySolved} <span style="font-size:0.7em;color:var(--txt-3)">/ ${data.totalEasy}</span></span>
-            </div>
-            <div class="lc-stat lc-med">
-              <span class="lc-label">Medium</span>
-              <span class="lc-val">${data.mediumSolved} <span style="font-size:0.7em;color:var(--txt-3)">/ ${data.totalMedium}</span></span>
-            </div>
-            <div class="lc-stat lc-hard">
-              <span class="lc-label">Hard</span>
-              <span class="lc-val">${data.hardSolved} <span style="font-size:0.7em;color:var(--txt-3)">/ ${data.totalHard}</span></span>
-            </div>
-            <div class="lc-stat lc-total">
-              <span class="lc-label">Total Solved</span>
-              <span class="lc-val">${data.totalSolved}</span>
-            </div>
-          `;
+        if (data && data.easySolved !== undefined) {
+          renderStats(
+            data.easySolved, data.totalEasy,
+            data.mediumSolved, data.totalMedium,
+            data.hardSolved, data.totalHard,
+            data.solvedProblem ?? (data.easySolved + data.mediumSolved + data.hardSolved)
+          );
         } else {
-          lcContainer.innerHTML = `<div style="font-size:0.9rem;color:var(--txt-2);">Stats currently unavailable. Check out my LeetCode profile!</div>`;
+          throw new Error('Unexpected response format');
         }
       })
-      .catch(error => {
-        console.error('Error fetching LeetCode stats:', error);
-        lcContainer.innerHTML = `<div style="font-size:0.9rem;color:var(--txt-2);">Stats currently unavailable. Check out my LeetCode profile!</div>`;
+      .catch(() => {
+        // Fallback: leetcode-query (second backup API)
+        fetch('https://leetcode-api-faisalshohag.vercel.app/monu_siyol')
+          .then(r => r.json())
+          .then(data => {
+            if (data && data.totalSolved !== undefined) {
+              renderStats(
+                data.easySolved, data.totalEasy,
+                data.mediumSolved, data.totalMedium,
+                data.hardSolved, data.totalHard,
+                data.totalSolved
+              );
+            } else throw new Error();
+          })
+          .catch(showError);
       });
   }
 });
