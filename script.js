@@ -26,10 +26,34 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
   revealEls.forEach(el => revealObs.observe(el));
 
-  // ── Navbar Scroll ──
+  // ── Navbar Scroll + Scroll Progress + Active Nav ──
   const navbar = document.getElementById('navbar');
+  const scrollBar = document.getElementById('scroll-progress');
+  const navLinksAll = document.querySelectorAll('.nav-link');
+  const sections = document.querySelectorAll('section[id]');
+
   if (navbar) {
-    window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+    window.addEventListener('scroll', () => {
+      // Navbar shrink
+      navbar.classList.toggle('scrolled', window.scrollY > 60);
+      
+      // Scroll progress bar
+      if (scrollBar) {
+        const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        scrollBar.style.width = pct + '%';
+      }
+
+      // Active nav link highlighting
+      let currentSection = '';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 120;
+        if (window.scrollY >= top) currentSection = sec.getAttribute('id');
+      });
+      navLinksAll.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + currentSection) link.classList.add('active');
+      });
+    }, { passive: true });
   }
 
   // ── Hamburger ──
@@ -47,13 +71,62 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.setAttribute('aria-expanded', false);
     }));
   }
+  // ── Preloader ──
+  const preloader = document.getElementById('preloader');
+  if (preloader) {
+    window.addEventListener('load', () => {
+      setTimeout(() => preloader.classList.add('loaded'), 400);
+    });
+  }
 
-  // ── Scroll Progress ──
-  const bar = document.querySelector('.scroll-progress-bar');
-  if (bar) {
-    window.addEventListener('scroll', () => {
-      bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100) + '%';
-    }, { passive: true });
+  // ── Theme Toggle (Dark/Light) ──
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    // Check for saved preference
+    const saved = localStorage.getItem('theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+    updateToggleIcon();
+    
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      const next = current === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+      updateToggleIcon();
+    });
+  }
+  function updateToggleIcon() {
+    if (!themeToggle) return;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  }
+
+  // ── Animated Counters ──
+  const counters = document.querySelectorAll('[data-count]');
+  if (counters.length) {
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count'), 10);
+          const duration = 1500;
+          const start = performance.now();
+          
+          function animate(now) {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            // Ease out quad
+            const eased = 1 - (1 - progress) * (1 - progress);
+            el.textContent = Math.floor(eased * target);
+            if (progress < 1) requestAnimationFrame(animate);
+            else el.textContent = target;
+          }
+          requestAnimationFrame(animate);
+          counterObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    counters.forEach(c => counterObs.observe(c));
   }
 
   // ── Particle Canvas ──
