@@ -313,15 +313,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ── ARCHITECTURE TABS ──
-window.switchArch = function(archId) {
-  // Update Tabs
-  document.querySelectorAll('.arch-tab').forEach(tab => tab.classList.remove('active'));
-  event.target.classList.add('active');
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.arch-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const archId = tab.dataset.arch;
+      
+      // Update tabs
+      document.querySelectorAll('.arch-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
 
-  // Update Content
-  document.querySelectorAll('.arch-diagram').forEach(diag => diag.classList.remove('active'));
-  document.getElementById(`arch-${archId}`).classList.add('active');
-};
+      // Update panels
+      document.querySelectorAll('.arch-panel').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(`arch-${archId}`);
+      if (target) target.classList.add('active');
+    });
+  });
+});
 
 // ── BLOG MODAL LOGIC ──
 const blogsData = {
@@ -389,11 +396,6 @@ window.openBlogModal = function(blogId) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Mermaid.js
-  if (typeof mermaid !== 'undefined') {
-    mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose' });
-  }
-
   // Close Blog Modal logic
   const closeBlogBtn = document.getElementById('close-blog');
   const blogModal = document.getElementById('blog-modal');

@@ -608,78 +608,235 @@
   <section id="architecture" class="section">
     <div class="container">
       <div class="section-header reveal">
-        <span class="section-tag">Systems Design</span>
+        <span class="section-tag">Under The Hood</span>
         <h2 class="section-title">System Architecture</h2>
-        <p class="section-desc">Interactive diagrams of the backend systems I've built. Powered by Mermaid.js.</p>
+        <p class="section-desc">A deep dive into how my backend systems are designed — real engineering, real scale.</p>
       </div>
       
       <div class="arch-tabs reveal">
-        <button class="arch-tab active" onclick="switchArch('hive')">Hive Agent Framework</button>
-        <button class="arch-tab" onclick="switchArch('corep')">COREP Assistant</button>
+        <button class="arch-tab active" data-arch="hive">
+          <i class="fas fa-brain"></i> Hive Agent Framework
+        </button>
+        <button class="arch-tab" data-arch="corep">
+          <i class="fas fa-file-invoice"></i> COREP Assistant
+        </button>
       </div>
 
-      <div class="arch-content glass-card reveal">
-        <div id="arch-hive" class="arch-diagram active">
-          <div class="mermaid">
-          graph TD
-              Client([Client / API]) --> Gateway[FastAPI Gateway]
-              Gateway --> AgentOrch[Agent Orchestrator]
+      <!-- HIVE ARCHITECTURE -->
+      <div id="arch-hive" class="arch-panel active reveal">
+        <div class="arch-hero-grid">
+          <!-- Left: Visual Diagram -->
+          <div class="arch-visual glass-card">
+            <div class="arch-flow">
+              <!-- Layer 1: Client -->
+              <div class="arch-layer">
+                <div class="arch-node node-client">
+                  <i class="fas fa-user"></i>
+                  <span>Client / API</span>
+                </div>
+              </div>
+              <div class="arch-connector"><div class="connector-line pulse-down"></div></div>
               
-              subgraph "Hive Agent Swarm"
-              AgentOrch --> Agent1[Research Agent]
-              AgentOrch --> Agent2[Code Agent]
-              AgentOrch --> Agent3[Review Agent]
-              end
+              <!-- Layer 2: Gateway -->
+              <div class="arch-layer">
+                <div class="arch-node node-gateway">
+                  <i class="fas fa-shield-alt"></i>
+                  <span>FastAPI Gateway</span>
+                </div>
+              </div>
+              <div class="arch-connector"><div class="connector-line pulse-down"></div></div>
               
-              Agent1 --> LLM((LLM Model))
-              Agent2 --> LLM
-              Agent3 --> LLM
+              <!-- Layer 3: Orchestrator -->
+              <div class="arch-layer">
+                <div class="arch-node node-orchestrator glow-accent">
+                  <i class="fas fa-sitemap"></i>
+                  <span>Agent Orchestrator</span>
+                </div>
+              </div>
+              <div class="arch-connector triple">
+                <div class="connector-line pulse-down"></div>
+                <div class="connector-line pulse-down delay-1"></div>
+                <div class="connector-line pulse-down delay-2"></div>
+              </div>
               
-              Agent1 -.-> VectorDB[(ChromaDB Vector Store)]
-              AgentOrch --> Cache[(Redis Cache)]
+              <!-- Layer 4: Agent Swarm -->
+              <div class="arch-layer agents-row">
+                <div class="arch-node node-agent">
+                  <i class="fas fa-search"></i>
+                  <span>Research</span>
+                </div>
+                <div class="arch-node node-agent">
+                  <i class="fas fa-code"></i>
+                  <span>Coding</span>
+                </div>
+                <div class="arch-node node-agent">
+                  <i class="fas fa-check-double"></i>
+                  <span>Reviewer</span>
+                </div>
+              </div>
+              <div class="arch-connector"><div class="connector-line pulse-down"></div></div>
               
-              classDef default fill:#1a1a2e,stroke:#3b82f6,stroke-width:2px,color:#e2e8f0;
-              classDef database fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#e2e8f0;
-              classDef gateway fill:#312e81,stroke:#8b5cf6,stroke-width:2px,color:#e2e8f0;
-              classDef llm fill:#4c1d95,stroke:#c084fc,stroke-width:2px,color:#e2e8f0;
-              
-              class VectorDB,Cache database;
-              class Gateway,AgentOrch gateway;
-              class LLM llm;
+              <!-- Layer 5: LLM + Storage -->
+              <div class="arch-layer storage-row">
+                <div class="arch-node node-llm glow-purple">
+                  <i class="fas fa-microchip"></i>
+                  <span>LLM Model</span>
+                </div>
+                <div class="arch-node node-db">
+                  <i class="fas fa-database"></i>
+                  <span>ChromaDB</span>
+                </div>
+                <div class="arch-node node-db">
+                  <i class="fas fa-bolt"></i>
+                  <span>Redis Cache</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div id="arch-corep" class="arch-diagram hidden">
-          <div class="mermaid">
-          graph LR
-              User([Bank Analyst]) --> UI[Web Interface]
-              UI --> Auth[Auth Middleware]
-              Auth --> API[Python API]
-              
-              API --> RAG[RAG Pipeline]
-              
-              subgraph "Knowledge Base"
-              RAG --> Docs[PRA Rulebooks PDFs]
-              Docs --> Embed[Embedding Model]
-              Embed --> Pinecone[(Pinecone DB)]
-              end
-              
-              RAG --> Prompt[Prompt Builder]
-              Prompt --> GPT4((GPT-4))
-              GPT4 --> Valid[Schema Validator]
-              Valid --> Report[COREP JSON Report]
-              
-              Report --> UI
-              
-              classDef default fill:#1a1a2e,stroke:#3b82f6,stroke-width:2px,color:#e2e8f0;
-              classDef auth fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#e2e8f0;
-              classDef db fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#e2e8f0;
-              
-              class Auth auth;
-              class Pinecone db;
+          <!-- Right: Description Panel -->
+          <div class="arch-details">
+            <h3 class="arch-project-title"><i class="fas fa-brain"></i> Hive — Multi-Agent LLM Framework</h3>
+            <p class="arch-desc">An evolutionary framework where a swarm of specialized AI agents collaborate to solve complex tasks no single LLM call can handle.</p>
+            
+            <div class="arch-features">
+              <div class="arch-feature">
+                <div class="feature-icon"><i class="fas fa-layer-group"></i></div>
+                <div>
+                  <h4>Agent Orchestration</h4>
+                  <p>A central controller distributes tasks across Research, Code, and Review agents based on complexity scoring.</p>
+                </div>
+              </div>
+              <div class="arch-feature">
+                <div class="feature-icon"><i class="fas fa-vector-square"></i></div>
+                <div>
+                  <h4>RAG Pipeline</h4>
+                  <p>ChromaDB vector store enables semantic search across documentation for context-aware code generation.</p>
+                </div>
+              </div>
+              <div class="arch-feature">
+                <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                <div>
+                  <h4>Self-Healing Loop</h4>
+                  <p>The Reviewer agent executes code in a sandbox, catches errors, and feeds corrections back to the Coding agent.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-tech-stack">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">FastAPI</span>
+              <span class="tech-pill">LangChain</span>
+              <span class="tech-pill">ChromaDB</span>
+              <span class="tech-pill">Redis</span>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- COREP ARCHITECTURE -->
+      <div id="arch-corep" class="arch-panel reveal">
+        <div class="arch-hero-grid">
+          <!-- Left: Visual Diagram -->
+          <div class="arch-visual glass-card">
+            <div class="arch-flow">
+              <!-- Layer 1: User -->
+              <div class="arch-layer">
+                <div class="arch-node node-client">
+                  <i class="fas fa-building"></i>
+                  <span>Bank Analyst</span>
+                </div>
+              </div>
+              <div class="arch-connector"><div class="connector-line pulse-down"></div></div>
+              
+              <!-- Layer 2: Auth + API -->
+              <div class="arch-layer agents-row">
+                <div class="arch-node node-gateway">
+                  <i class="fas fa-lock"></i>
+                  <span>Auth Layer</span>
+                </div>
+                <div class="arch-node node-gateway">
+                  <i class="fas fa-server"></i>
+                  <span>Python API</span>
+                </div>
+              </div>
+              <div class="arch-connector"><div class="connector-line pulse-down"></div></div>
+              
+              <!-- Layer 3: RAG -->
+              <div class="arch-layer">
+                <div class="arch-node node-orchestrator glow-accent">
+                  <i class="fas fa-project-diagram"></i>
+                  <span>RAG Pipeline</span>
+                </div>
+              </div>
+              <div class="arch-connector triple">
+                <div class="connector-line pulse-down"></div>
+                <div class="connector-line pulse-down delay-1"></div>
+              </div>
+              
+              <!-- Layer 4: Knowledge + LLM -->
+              <div class="arch-layer agents-row">
+                <div class="arch-node node-db">
+                  <i class="fas fa-book"></i>
+                  <span>PRA Docs</span>
+                </div>
+                <div class="arch-node node-llm glow-purple">
+                  <i class="fas fa-microchip"></i>
+                  <span>GPT-4</span>
+                </div>
+              </div>
+              <div class="arch-connector"><div class="connector-line pulse-down"></div></div>
+              
+              <!-- Layer 5: Output -->
+              <div class="arch-layer">
+                <div class="arch-node node-agent">
+                  <i class="fas fa-file-code"></i>
+                  <span>COREP JSON Report</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Description Panel -->
+          <div class="arch-details">
+            <h3 class="arch-project-title"><i class="fas fa-file-invoice"></i> COREP — Regulatory AI Assistant</h3>
+            <p class="arch-desc">An AI-powered tool built during an internship to automate complex PRA regulatory reporting for the banking sector.</p>
+            
+            <div class="arch-features">
+              <div class="arch-feature">
+                <div class="feature-icon"><i class="fas fa-brain"></i></div>
+                <div>
+                  <h4>RAG-Powered Retrieval</h4>
+                  <p>Embeds 500+ pages of PRA regulatory PDFs into a vector DB for precise, context-aware LLM queries.</p>
+                </div>
+              </div>
+              <div class="arch-feature">
+                <div class="feature-icon"><i class="fas fa-clipboard-check"></i></div>
+                <div>
+                  <h4>Schema Validation</h4>
+                  <p>Every generated report passes through strict JSON schema checks before reaching the analyst.</p>
+                </div>
+              </div>
+              <div class="arch-feature">
+                <div class="feature-icon"><i class="fas fa-history"></i></div>
+                <div>
+                  <h4>Audit Trails</h4>
+                  <p>Full traceability of every AI-assisted decision for regulatory compliance and accountability.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="arch-tech-stack">
+              <span class="tech-pill">Python</span>
+              <span class="tech-pill">GPT-4</span>
+              <span class="tech-pill">Pinecone</span>
+              <span class="tech-pill">Pydantic</span>
+              <span class="tech-pill">FastAPI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -875,7 +1032,6 @@
 
   <!-- External Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
