@@ -79,28 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ── Theme Toggle (Dark/Light) ──
-  const themeToggle = document.getElementById('theme-toggle');
-  if (themeToggle) {
-    // Check for saved preference
-    const saved = localStorage.getItem('theme');
-    if (saved) document.documentElement.setAttribute('data-theme', saved);
-    updateToggleIcon();
-    
-    themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      const next = current === 'light' ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-      updateToggleIcon();
-    });
-  }
-  function updateToggleIcon() {
-    if (!themeToggle) return;
-    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-    themeToggle.innerHTML = isLight ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-  }
-
   // ── Animated Counters ──
   const counters = document.querySelectorAll('[data-count]');
   if (counters.length) {
