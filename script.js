@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       hamburger.classList.toggle('active', open);
       hamburger.setAttribute('aria-expanded', open);
     });
-    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.querySelectorAll('a:not(.nav-cta)').forEach(a => a.addEventListener('click', () => {
       navLinks.classList.remove('open');
       hamburger.classList.remove('active');
       hamburger.setAttribute('aria-expanded', false);
