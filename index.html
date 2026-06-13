@@ -604,6 +604,150 @@
     </div>
   </section>
 
+  <!-- ── ARCHITECTURE SHOWCASE ── -->
+  <section id="architecture" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Systems Design</span>
+        <h2 class="section-title">System Architecture</h2>
+        <p class="section-desc">Interactive diagrams of the backend systems I've built. Powered by Mermaid.js.</p>
+      </div>
+      
+      <div class="arch-tabs reveal">
+        <button class="arch-tab active" onclick="switchArch('hive')">Hive Agent Framework</button>
+        <button class="arch-tab" onclick="switchArch('corep')">COREP Assistant</button>
+      </div>
+
+      <div class="arch-content glass-card reveal">
+        <div id="arch-hive" class="arch-diagram active">
+          <div class="mermaid">
+          graph TD
+              Client([Client / API]) --> Gateway[FastAPI Gateway]
+              Gateway --> AgentOrch[Agent Orchestrator]
+              
+              subgraph "Hive Agent Swarm"
+              AgentOrch --> Agent1[Research Agent]
+              AgentOrch --> Agent2[Code Agent]
+              AgentOrch --> Agent3[Review Agent]
+              end
+              
+              Agent1 --> LLM((LLM Model))
+              Agent2 --> LLM
+              Agent3 --> LLM
+              
+              Agent1 -.-> VectorDB[(ChromaDB Vector Store)]
+              AgentOrch --> Cache[(Redis Cache)]
+              
+              classDef default fill:#1a1a2e,stroke:#3b82f6,stroke-width:2px,color:#e2e8f0;
+              classDef database fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#e2e8f0;
+              classDef gateway fill:#312e81,stroke:#8b5cf6,stroke-width:2px,color:#e2e8f0;
+              classDef llm fill:#4c1d95,stroke:#c084fc,stroke-width:2px,color:#e2e8f0;
+              
+              class VectorDB,Cache database;
+              class Gateway,AgentOrch gateway;
+              class LLM llm;
+          </div>
+        </div>
+
+        <div id="arch-corep" class="arch-diagram hidden">
+          <div class="mermaid">
+          graph LR
+              User([Bank Analyst]) --> UI[Web Interface]
+              UI --> Auth[Auth Middleware]
+              Auth --> API[Python API]
+              
+              API --> RAG[RAG Pipeline]
+              
+              subgraph "Knowledge Base"
+              RAG --> Docs[PRA Rulebooks PDFs]
+              Docs --> Embed[Embedding Model]
+              Embed --> Pinecone[(Pinecone DB)]
+              end
+              
+              RAG --> Prompt[Prompt Builder]
+              Prompt --> GPT4((GPT-4))
+              GPT4 --> Valid[Schema Validator]
+              Valid --> Report[COREP JSON Report]
+              
+              Report --> UI
+              
+              classDef default fill:#1a1a2e,stroke:#3b82f6,stroke-width:2px,color:#e2e8f0;
+              classDef auth fill:#7f1d1d,stroke:#ef4444,stroke-width:2px,color:#e2e8f0;
+              classDef db fill:#0f172a,stroke:#10b981,stroke-width:2px,color:#e2e8f0;
+              
+              class Auth auth;
+              class Pinecone db;
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INSIGHTS & BLOGS ── -->
+  <section id="insights" class="section section-alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Writings</span>
+        <h2 class="section-title">Technical Insights</h2>
+        <p class="section-desc">My thoughts on AI, Backend Engineering, and Competitive Programming.</p>
+      </div>
+
+      <div class="blog-grid">
+        <!-- Blog 1 -->
+        <div class="blog-card glass-card reveal" onclick="openBlogModal('blog-1')" data-tilt data-tilt-max="2" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=600&auto=format&fit=crop" alt="AI Neural Network" loading="lazy">
+            <div class="blog-date">Oct 12, 2025</div>
+          </div>
+          <div class="blog-content">
+            <span class="blog-tag">AI Engineering</span>
+            <h3>Evolution of LLM Agents: From RAG to Hive</h3>
+            <p>Why simple Retrieval-Augmented Generation isn't enough anymore, and how multi-agent frameworks are taking over.</p>
+            <span class="read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Blog 2 -->
+        <div class="blog-card glass-card reveal" onclick="openBlogModal('blog-2')" data-tilt data-tilt-max="2" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=600&auto=format&fit=crop" alt="C++ Code" loading="lazy">
+            <div class="blog-date">Sep 05, 2025</div>
+          </div>
+          <div class="blog-content">
+            <span class="blog-tag">Algorithms</span>
+            <h3>Why C++ is Still King for Competitive Programming</h3>
+            <p>Exploring memory management, STL speed, and why Python can't compete in 1-second time limit constraints.</p>
+            <span class="read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- Blog 3 -->
+        <div class="blog-card glass-card reveal" onclick="openBlogModal('blog-3')" data-tilt data-tilt-max="2" data-tilt-glare="true" data-tilt-max-glare="0.1">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?q=80&w=600&auto=format&fit=crop" alt="Physics Simulation" loading="lazy">
+            <div class="blog-date">Aug 20, 2025</div>
+          </div>
+          <div class="blog-content">
+            <span class="blog-tag">Research</span>
+            <h3>Tracking Active Matter with OpenCV</h3>
+            <p>How I used computer vision to analyze Motility-Induced Phase Separation during my research at IIT Delhi.</p>
+            <span class="read-more">Read Article <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Reading Modal -->
+  <div id="blog-modal" class="blog-modal-overlay">
+    <div class="blog-modal-content glass-card">
+      <button id="close-blog" class="modal-close"><i class="fas fa-times"></i></button>
+      <div id="blog-modal-body">
+        <!-- Content injected by JS -->
+      </div>
+    </div>
+  </div>
+
   <!-- ── CONTACT ── -->
   <section id="contact" class="section">
     <div class="container">
@@ -731,6 +875,7 @@
 
   <!-- External Libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

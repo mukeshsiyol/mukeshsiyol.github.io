@@ -311,3 +311,105 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// ── ARCHITECTURE TABS ──
+window.switchArch = function(archId) {
+  // Update Tabs
+  document.querySelectorAll('.arch-tab').forEach(tab => tab.classList.remove('active'));
+  event.target.classList.add('active');
+
+  // Update Content
+  document.querySelectorAll('.arch-diagram').forEach(diag => diag.classList.remove('active'));
+  document.getElementById(`arch-${archId}`).classList.add('active');
+};
+
+// ── BLOG MODAL LOGIC ──
+const blogsData = {
+  'blog-1': {
+    title: 'Evolution of LLM Agents: From RAG to Hive',
+    meta: 'AI Engineering • Oct 12, 2025',
+    content: `
+      <p>When I first started building AI applications, standard Retrieval-Augmented Generation (RAG) was the cutting edge. You embed a document, stick it in a vector database, and perform a cosine similarity search before passing the context to an LLM. Simple, effective, but ultimately limited.</p>
+      <p>The problem with basic RAG is reasoning depth. A single LLM call cannot reliably research, formulate a complex plan, execute code, and self-correct all at once.</p>
+      <h3>Enter the Hive Framework</h3>
+      <p>This limitation inspired me to build the <strong>Hive Agent Framework</strong>. Instead of one monolithic LLM call, Hive orchestrates a <em>swarm</em> of specialized agents:</p>
+      <ul>
+        <li><strong>Research Agent:</strong> Dedicated solely to querying vector stores and summarizing context.</li>
+        <li><strong>Coding Agent:</strong> Given the context, this agent generates Python code.</li>
+        <li><strong>Reviewer Agent:</strong> Executes the code in a sandbox, catches exceptions, and passes feedback back to the Coding Agent.</li>
+      </ul>
+      <p>By splitting the cognitive load, the overall system achieves significantly higher accuracy on complex tasks. The multi-agent paradigm isn't just a trend; it's the required architecture for building robust AI software.</p>
+    `
+  },
+  'blog-2': {
+    title: 'Why C++ is Still King for Competitive Programming',
+    meta: 'Algorithms • Sep 05, 2025',
+    content: `
+      <p>As a backend engineer who uses Python and Node.js daily for building REST APIs, people often ask me why I stick to C++ for Competitive Programming and LeetCode.</p>
+      <p>The answer comes down to three things: <strong>Speed, STL, and Granular Control.</strong></p>
+      <h3>The 1-Second Constraint</h3>
+      <p>In platforms like Codeforces or LeetCode, algorithms are often tested against a strict 1-second execution time limit. Python's dynamic typing and interpreter overhead often result in Time Limit Exceeded (TLE) verdicts, even when the underlying algorithmic complexity is optimal.</p>
+      <h3>The Standard Template Library (STL)</h3>
+      <p>C++'s STL is a masterpiece for competitive programming. Need a priority queue? <code>std::priority_queue</code>. Need a balanced BST? <code>std::set</code> or <code>std::map</code>. The implementations are heavily optimized and drastically reduce the lines of code needed during a high-pressure contest.</p>
+      <p>While Python will always be my choice for AI and web servers, C++ remains the undisputed king of the algorithmic arena.</p>
+    `
+  },
+  'blog-3': {
+    title: 'Tracking Active Matter with OpenCV',
+    meta: 'Research • Aug 20, 2025',
+    content: `
+      <p>During my research at IIT Delhi under Prof. Deepak, I encountered a fascinating problem in Physics: <strong>Motility-Induced Phase Separation (MIPS)</strong> in active matter.</p>
+      <p>Active matter consists of particles that consume energy to move (like bacteria or artificial micro-swimmers). At high densities, they spontaneously cluster together without any attractive forces. But how do you quantify this clustering from raw microscopic video footage?</p>
+      <h3>Computer Vision to the Rescue</h3>
+      <p>I utilized <strong>OpenCV</strong> and Python to build an automated tracking pipeline.</p>
+      <ul>
+        <li>First, I applied Gaussian blurring and thresholding to isolate the particles from the noisy background.</li>
+        <li>Then, I used contour detection (<code>cv2.findContours</code>) to identify individual particles.</li>
+        <li>Finally, I implemented a custom tracking algorithm to calculate their velocity vectors and cluster sizes over time.</li>
+      </ul>
+      <p>This intersection of Physics and Computer Science allowed us to extract meaningful quantitative data from raw visual experiments, proving the incredible versatility of software engineering in scientific research.</p>
+    `
+  }
+};
+
+window.openBlogModal = function(blogId) {
+  const modal = document.getElementById('blog-modal');
+  const body = document.getElementById('blog-modal-body');
+  const data = blogsData[blogId];
+  
+  if(data) {
+    body.innerHTML = `
+      <h1>${data.title}</h1>
+      <div class="blog-meta">${data.meta}</div>
+      ${data.content}
+    `;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Mermaid.js
+  if (typeof mermaid !== 'undefined') {
+    mermaid.initialize({ startOnLoad: true, theme: 'dark', securityLevel: 'loose' });
+  }
+
+  // Close Blog Modal logic
+  const closeBlogBtn = document.getElementById('close-blog');
+  const blogModal = document.getElementById('blog-modal');
+  
+  if (closeBlogBtn && blogModal) {
+    closeBlogBtn.addEventListener('click', () => {
+      blogModal.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+    
+    // Close on click outside
+    blogModal.addEventListener('click', (e) => {
+      if (e.target === blogModal) {
+        blogModal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  }
+});
