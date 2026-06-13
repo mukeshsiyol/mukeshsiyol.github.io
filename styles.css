@@ -90,7 +90,7 @@
   background: var(--bg-card); border: 1px solid var(--border); color: var(--txt-2);
   width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
   display: flex; align-items: center; justify-content: center; font-size: 1rem;
-  transition: all 0.3s ease; margin-left: 8px;
+  transition: all 0.3s ease; margin-left: 8px; z-index: 1000; pointer-events: auto;
 }
 .theme-toggle:hover { color: var(--accent); border-color: var(--accent); transform: rotate(20deg); }
 
