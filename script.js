@@ -265,15 +265,56 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const getBotResponse = (input) => {
-      const lower = input.toLowerCase();
-      if(lower.includes('hi') || lower.includes('hello')) return "Hi there! I can answer questions about Mukesh's skills, projects, and education. What would you like to know?";
-      if(lower.includes('c++') || lower.includes('dsa') || lower.includes('competitive')) return "Mukesh is highly proficient in C++! He uses it primarily for Competitive Programming and Data Structures & Algorithms. Check out his LeetCode stats above!";
-      if(lower.includes('python') || lower.includes('fastapi')) return "Mukesh loves Python! He has built scalable REST APIs using FastAPI and complex NLP pipelines using NLTK and Pandas.";
-      if(lower.includes('ai') || lower.includes('agent') || lower.includes('llm')) return "Mukesh is deeply interested in AI infrastructure. He built 'Hive', an evolutionary LLM agent framework, and the 'COREP Assistant' which uses RAG for regulatory reporting.";
-      if(lower.includes('physics') || lower.includes('research') || lower.includes('deepak')) return "Under Prof. Deepak at IIT Delhi, Mukesh conducts research on Motility-Induced Phase Separation in active matter using OpenCV and computer vision.";
-      if(lower.includes('contact') || lower.includes('email') || lower.includes('hire')) return "You can reach Mukesh directly at mukeshsiyol2006@gmail.com, or fill out the contact form at the bottom of the page!";
-      return "That's an interesting question! While I don't know the exact answer, you can email Mukesh directly at mukeshsiyol2006@gmail.com to ask him personally.";
+    const lower = input.toLowerCase();
+    
+    if (lower.includes('hi') || lower.includes('hello') || lower.includes('hey'))
+    return "Hello! I'm Mukesh's AI portfolio assistant. Feel free to ask about his education, skills, projects, research, AI experience, competitive programming journey, or career goals.";
+    
+    if (lower.includes('about') || lower.includes('who are you') || lower.includes('mukesh'))
+    return "Mukesh Kumar is an Engineering Physics student at IIT Delhi passionate about Software Engineering, Artificial Intelligence, Data Science, and Competitive Programming. He enjoys building impactful software products and intelligent systems.";
+    
+    if (lower.includes('education') || lower.includes('college') || lower.includes('iit'))
+    return "Mukesh is pursuing Engineering Physics at IIT Delhi, where he has developed strong analytical, mathematical, and computational skills while actively working on software and AI projects.";
+    
+    if (lower.includes('c++') || lower.includes('dsa') || lower.includes('leetcode') || lower.includes('competitive'))
+    return "Mukesh has a strong foundation in Data Structures and Algorithms and regularly solves challenging problems involving Dynamic Programming, Graphs, Trees, Binary Search, Greedy Algorithms, and more using C++.";
+    
+    if (lower.includes('python') || lower.includes('fastapi') || lower.includes('backend'))
+    return "Mukesh extensively uses Python for backend development, automation, machine learning, NLP, and AI applications. He has experience with FastAPI, Pandas, NumPy, and various AI frameworks.";
+    
+    if (lower.includes('ai') || lower.includes('ml') || lower.includes('machine learning') || lower.includes('llm') || lower.includes('agent') || lower.includes('rag'))
+    return "Mukesh is deeply interested in AI and intelligent systems. He has built LLM-powered applications, Retrieval-Augmented Generation (RAG) systems, AI assistants, and multi-agent frameworks focused on solving real-world problems.";
+    
+    if (lower.includes('project') || lower.includes('projects'))
+    return "Some of Mukesh's notable projects include Hive, an evolutionary multi-agent LLM framework; COREP Assistant, a RAG-based regulatory reporting assistant; CampusConnect, a hostel management platform; and several AI-powered productivity and automation tools.";
+    
+    if (lower.includes('hive'))
+    return "Hive is an experimental multi-agent AI framework where autonomous agents collaborate, evolve, and solve complex tasks using Large Language Models.";
+    
+    if (lower.includes('corep'))
+    return "COREP Assistant is a Retrieval-Augmented Generation (RAG) system that helps users navigate complex regulatory reporting requirements through intelligent document retrieval and AI-powered reasoning.";
+    
+    if (lower.includes('physics') || lower.includes('research') || lower.includes('deepak') || lower.includes('mips'))
+    return "Under Prof. Deepak at IIT Delhi, Mukesh conducts research in Active Matter Physics, focusing on Motility-Induced Phase Separation (MIPS) using computational simulations, OpenCV, and computer vision techniques.";
+    
+    if (lower.includes('skills') || lower.includes('tech stack'))
+    return "Mukesh's technical stack includes C++, Python, JavaScript, React, FastAPI, SQL, Firebase, Git, Machine Learning, NLP, RAG systems, LLMs, and full-stack application development.";
+    
+    if (lower.includes('experience') || lower.includes('work'))
+    return "Mukesh has experience developing full-stack applications, backend APIs, AI-powered systems, research software, and automation tools that combine practical engineering with analytical problem solving.";
+    
+    if (lower.includes('hire') || lower.includes('internship') || lower.includes('job'))
+    return "Mukesh is interested in Software Engineering, AI Engineering, Machine Learning, and Data Science opportunities. He brings strong problem-solving skills, research experience, and a passion for building innovative products.";
+    
+    if (lower.includes('contact') || lower.includes('email'))
+    return "You can reach Mukesh directly at [mukeshsiyol2006@gmail.com](mailto:mukeshsiyol2006@gmail.com) or use the contact form available on this website.";
+    
+    if (lower.includes('resume') || lower.includes('cv'))
+    return "You can download Mukesh's latest resume from the Resume section to learn more about his education, projects, technical skills, and achievements.";
+    
+    return "I can answer questions about Mukesh's education, technical skills, AI and machine learning work, projects, research at IIT Delhi, competitive programming experience, internships, career goals, and contact information. Try asking: 'Tell me about Mukesh', 'What projects has he built?', 'What AI technologies does he use?', or 'Why should we hire him?'";
     };
+
 
     const handleSend = () => {
       const val = chatInput.value.trim();
