@@ -159,7 +159,7 @@
       const info = await infoResponse.json();
       if (info.status !== "OK" || !info.result?.length) throw new Error("Profile unavailable");
       const user = info.result[0];
-      cf.rating = user.rating ?? 0;
+      cf.rating = user.rating ?? null;
       document.getElementById("cf-rating").textContent = user.rating ? user.rating.toLocaleString() : "Unrated";
       document.getElementById("cf-caption").textContent = (user.rank ? user.rank + " · " : "") + "current rating";
       await new Promise(resolve => setTimeout(resolve, 2200));
