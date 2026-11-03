@@ -243,7 +243,7 @@
     .snapshot-facts small{color:var(--lime);margin-bottom:9px}
     .snapshot-facts strong{display:block;font-size:14px;font-weight:500;line-height:1.3;margin-bottom:6px}
     .snapshot-facts span{letter-spacing:.02em}
-    .snapshot-contact{grid-column:2;justify-self:start;color:var(--ink);font:9px var(--mono);letter-spacing:.04em;border-bottom:1px solid #d6f66a65;padding-bottom:5px}
+    .snapshot-contact{grid-column:2;justify-self:start;color:var(--ink);font:9px var(--mono);letter-spacing:.04em;border:0;border-bottom:1px solid #d6f66a65;padding:0 0 5px;background:transparent;cursor:pointer}
     .snapshot-contact b{color:var(--lime);margin-left:7px}
     .case-next{margin-top:20px;padding:14px 15px;border-left:2px solid var(--orange);background:#ffffff06}
     .case-next span{font:8px var(--mono);letter-spacing:.12em;color:var(--orange)}
@@ -267,7 +267,7 @@
       <a href="#work"><small>APPLIED AI</small><strong>Useful, reviewable workflows</strong><span>Retrieval · evidence · validation ↗</span></a>
       <a href="#work"><small>FEATURED WORK</small><strong>Remittance + Finance</strong><span>Open the case studies ↗</span></a>
     </div>
-    <a class="snapshot-contact" href="#visitor-chat">Talk about an opportunity or project <b>↓</b></a>
+    <button class="snapshot-contact" type="button" data-open-chat>Talk about an opportunity or project <b>↓</b></button>
   </div></section>
   <section id="terminal" class="terminal-section"><div class="wrap">
     <div class="section-head"><div><div class="section-kicker">02 / Ask the terminal</div><h2>Curious about me?</h2></div><p>A small, profile-grounded chat terminal. Ask about my studies, project experience, skills, or coding practice.</p></div>
@@ -662,6 +662,11 @@ text = text.lower()</code></pre></div>
     if (opening) chatPanel.querySelector("input").focus();
   });
   document.querySelector(".chat-close").addEventListener("click", closeChat);
+  document.querySelector("[data-open-chat]").addEventListener("click", () => {
+    chatPanel.hidden = false;
+    chatLauncher.setAttribute("aria-expanded", "true");
+    chatPanel.querySelector("input").focus();
+  });
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape" && !chatPanel.hidden) closeChat();
   });
