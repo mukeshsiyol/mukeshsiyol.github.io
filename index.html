@@ -269,6 +269,24 @@
     .evidence-disclaimer{font:8px/1.7 var(--mono);color:#88867d;margin:13px 0 0}
     @media(max-width:560px){.remit-demo{padding:16px}.evidence-controls{grid-template-columns:1fr}.remit-demo-head{align-items:flex-start}}
 
+  
+    /* Final visual polish: ambient hero light and restrained scroll reveals */
+    .hero{isolation:isolate}
+    .hero:before{content:"";position:absolute;z-index:0;pointer-events:none;right:2%;top:9%;width:min(47vw,520px);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,#d6f66a18 0, #a5b84a0d 34%, transparent 70%);filter:blur(9px);animation:hero-aura 9s ease-in-out infinite alternate}
+    .orbit-scene{z-index:1}
+    .orbit-scene .orbit{animation:orbit-drift 22s ease-in-out infinite alternate}
+    .orbit-scene .planet{animation:planet-float 7s ease-in-out infinite}
+    @keyframes hero-aura{to{opacity:.62;transform:scale(1.08) translate(-8px,9px)}}
+    @keyframes orbit-drift{to{transform:rotate(-24deg) translateY(7px)}}
+    @keyframes planet-float{50%{transform:translateY(-5px)}}
+    .reveal-ready{opacity:0;transform:translateY(16px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.7,.2,1)}
+    .reveal-ready.is-visible{opacity:1;transform:translateY(0)}
+    .project-story.reveal-ready .story-visual{transition:transform .45s cubic-bezier(.2,.75,.2,1),border-color .3s,opacity .65s}
+    @media(prefers-reduced-motion:reduce){
+      .hero:before,.orbit-scene .orbit,.orbit-scene .planet{animation:none}
+      .reveal-ready{opacity:1;transform:none;transition:none}
+    }
+
   </style>
 </head>
 <body>
@@ -728,6 +746,22 @@ text = text.lower()</code></pre></div>
     }
   });
 
+
+
+  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -24px 0px" });
+    document.querySelectorAll(".project-story, .snapshot-facts a, .tool").forEach((element) => {
+      element.classList.add("reveal-ready");
+      revealObserver.observe(element);
+    });
+  }
 
   const evidenceSelects = document.querySelectorAll("[data-evidence]");
   const evidenceResult = document.getElementById("evidence-demo-result");
