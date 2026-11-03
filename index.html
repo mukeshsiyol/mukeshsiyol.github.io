@@ -250,6 +250,25 @@
     .case-next p{font-size:11px;line-height:1.7;color:#d1cdc2;margin:7px 0 0}
     @media(max-width:760px){.snapshot-wrap{grid-template-columns:1fr;gap:23px}.snapshot-facts{border-left:0}.snapshot-facts a{padding:13px 10px}.snapshot-contact{grid-column:1}}
 
+  
+    .remit-demo{margin:0 0 30px;padding:21px;border:1px solid #d6f66a42;background:linear-gradient(135deg,#171910,#101012)}
+    .remit-demo-head{display:flex;justify-content:space-between;align-items:center;gap:14px}
+    .remit-demo-head .case-label{margin:0}
+    .remit-demo h3{font:27px/.98 var(--display);letter-spacing:-.025em;margin:9px 0 0}
+    .demo-badge{border:1px solid #d6f66a55;padding:6px 8px;color:var(--lime);font:7px var(--mono);letter-spacing:.12em;white-space:nowrap}
+    .remit-demo-copy{font-size:11px;line-height:1.7;color:var(--muted);margin:13px 0 18px}
+    .evidence-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+    .evidence-controls label{font:8px var(--mono);letter-spacing:.08em;color:#bdb9af}
+    .evidence-controls select{display:block;width:100%;margin-top:7px;padding:10px 8px;border:1px solid #ffffff24;border-radius:0;background:#0a0a0b;color:var(--ink);font:10px var(--mono)}
+    .evidence-controls select:focus{outline:1px solid var(--lime);border-color:var(--lime)}
+    .evidence-result{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+    .evidence-result span{padding:7px 9px;background:#ffffff08;border:1px solid #ffffff18;color:#d8d4c8;font:8px var(--mono)}
+    .evidence-result span[data-status="supplied"]{border-color:#d6f66a66;color:var(--lime)}
+    .evidence-result span[data-status="missing"]{border-color:#f58b6277;color:#ff9a78}
+    .evidence-result span[data-status="unknown"]{border-color:#ffffff2e;color:#aaa79f}
+    .evidence-disclaimer{font:8px/1.7 var(--mono);color:#88867d;margin:13px 0 0}
+    @media(max-width:560px){.remit-demo{padding:16px}.evidence-controls{grid-template-columns:1fr}.remit-demo-head{align-items:flex-start}}
+
   </style>
 </head>
 <body>
@@ -329,7 +348,18 @@
     <div class="case-top"><span>01 / FLAGSHIP · APPLIED AI</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
     <h2 id="case-title-remittance">Remittance Evidence &amp; Routing Assistant</h2>
     <p class="case-summary">An exploratory assistant for organizing remittance cases, checking supporting evidence, and preparing a traceable review. The prototype uses synthetic examples; it does not make legal determinations or validate real-world payment rules.</p>
-    <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Case intake</b></div><div><small>02</small><b>Evidence inventory</b></div><div><small>03</small><b>Source checks</b></div><div><small>04</small><b>Review packet</b></div></div>
+    <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Case intake</b></div><div><small>02</small><b>Evidence inventory</b></div> 
+    <div class="remit-demo" aria-labelledby="remit-demo-title">
+      <div class="remit-demo-head"><div><p class="case-label">INTERACTIVE WALKTHROUGH · SYNTHETIC CASE</p><h3 id="remit-demo-title">What evidence is on file?</h3></div><span class="demo-badge">LOCAL DEMO</span></div>
+      <p class="remit-demo-copy">Change a document status to see how the prototype distinguishes missing information from an unknown status.</p>
+      <div class="evidence-controls">
+        <label>Invoice<select data-evidence="invoice"><option value="supplied">Supplied</option><option value="missing">Missing</option><option value="unknown">Unknown</option></select></label>
+        <label>Payment record<select data-evidence="payment"><option value="supplied">Supplied</option><option value="missing">Missing</option><option value="unknown">Unknown</option></select></label>
+        <label>Contract<select data-evidence="contract"><option value="supplied">Supplied</option><option value="missing">Missing</option><option value="unknown" selected>Unknown</option></select></label>
+      </div>
+      <div class="evidence-result" id="evidence-demo-result" role="status" aria-live="polite"></div>
+      <p class="evidence-disclaimer">Demonstration only. This inventory does not assess payment eligibility, legal requirements, or a real case.</p>
+    </div><div><small>03</small><b>Source checks</b></div><div><small>04</small><b>Review packet</b></div></div>
     <div class="case-detail-grid"><div><p class="case-label">ENGINEERING DECISION</p><p class="case-decision">Evidence is represented as supplied, missing, or unknown so the workflow does not silently turn absent information into a negative claim. Retrieval is limited to approved sources, and a human reviewer remains responsible for the final decision.</p><div class="case-next"><span>WHAT I’D IMPROVE NEXT</span><p>Next: evaluate against labeled cases, track source freshness, and make uncertainty checks explicit.</p></div><p class="case-label">IMPLEMENTATION NOTE</p><pre><code>def evidence_status(value: Optional[bool]) -&gt; str:
     return "supplied" if value is True else (
         "missing" if value is False else "unknown"
@@ -696,6 +726,22 @@ text = text.lower()</code></pre></div>
       sendButton.querySelector("span").textContent = "Send message";
     }
   });
+
+
+  const evidenceSelects = document.querySelectorAll("[data-evidence]");
+  const evidenceResult = document.getElementById("evidence-demo-result");
+  const renderEvidenceInventory = () => {
+    const labels = { invoice: "Invoice", payment: "Payment record", contract: "Contract" };
+    evidenceResult.replaceChildren();
+    evidenceSelects.forEach((select) => {
+      const chip = document.createElement("span");
+      chip.dataset.status = select.value;
+      chip.textContent = labels[select.dataset.evidence] + " · " + select.value;
+      evidenceResult.appendChild(chip);
+    });
+  };
+  evidenceSelects.forEach((select) => select.addEventListener("change", renderEvidenceInventory));
+  renderEvidenceInventory();
 
   document.querySelectorAll("[data-case]").forEach((button) => {
     const dialog = document.getElementById("case-" + button.dataset.case);
