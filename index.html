@@ -135,6 +135,15 @@
       .signal-bars i,.signal-pulse,.live-dot{animation:none!important}
       .ledger-visual path{stroke-dashoffset:0}
     }
+
+    .stack-strip{display:flex;align-items:flex-start;gap:30px;padding-top:22px;padding-bottom:28px;border-top:1px solid #ffffff1a;border-bottom:1px solid #ffffff1a}
+    .stack-strip p{flex:0 0 auto;margin:5px 0;color:var(--orange);font:8px var(--mono);letter-spacing:.15em}
+    .stack-strip ul{display:flex;flex-wrap:wrap;gap:8px 20px;list-style:none;margin:0;padding:0}
+    .stack-strip li{font:10px var(--mono);color:#d5d0c6;padding-bottom:3px;border-bottom:1px solid #ffffff2b;transition:color .2s,border-color .2s}
+    .stack-strip li:hover{color:var(--lime);border-color:var(--lime)}
+    .term-top{letter-spacing:.04em}.term-form input{caret-color:var(--lime)}
+    .platform[hidden]{display:none!important}
+    @media(max-width:760px){.stack-strip{display:block;padding-top:18px}.stack-strip ul{gap:9px 15px}.stack-strip p{margin-bottom:13px}}
 </style>
 </head>
 <body>
@@ -154,12 +163,15 @@
       </div>
       <aside class="progress-box" aria-label="Coding platform progress"><div class="progress-head"><span>Practice dashboard</span><span class="live-dot" aria-label="Live data"></span></div>
         <div class="platform"><div class="platform-title"><strong>LeetCode</strong><a href="https://leetcode.com/u/mukeshsiyol/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="lc-total">Loading…</div><div class="platform-caption" id="lc-caption">Problems solved · public profile</div><div class="difficulty" id="lc-breakdown"></div><p class="platform-note" id="lc-note">Fetching latest public totals…</p></div>
-        <div class="platform"><div class="platform-title"><strong>Codeforces</strong><a id="cf-profile-link" href="https://codeforces.com/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="cf-rating">—</div><div class="platform-caption" id="cf-caption">Rating · handle not linked yet</div><div class="difficulty" id="cf-breakdown"></div><p class="platform-note" id="cf-note">Add your Codeforces handle to show rating and solved problems.</p></div>
+        <div class="platform" id="cf-platform"><div class="platform-title"><strong>Codeforces</strong><a id="cf-profile-link" href="https://codeforces.com/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="cf-rating">—</div><div class="platform-caption" id="cf-caption">Fetching public rating…</div><div class="difficulty" id="cf-breakdown"></div><p class="platform-note" id="cf-note">Loading public profile data…</p></div>
         <a class="mini-link" href="https://github.com/mukeshsiyol/leetcode-submissions" target="_blank" rel="noreferrer">Browse my LeetCode solutions on GitHub ↗</a>
       </aside>
     </div>
   </div></section>
-  <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Python <b>✳</b></span><span>Backend systems <b>✳</b></span><span>Applied AI <b>✳</b></span><span>FastAPI <b>✳</b></span><span>Engineering Physics <b>✳</b></span><span>TypeScript <b>✳</b></span><span>Python <b>✳</b></span><span>Backend systems <b>✳</b></span><span>Applied AI <b>✳</b></span><span>FastAPI <b>✳</b></span><span>Engineering Physics <b>✳</b></span><span>TypeScript <b>✳</b></span></div></div>
+  <div class="stack-strip wrap" aria-label="Technology and interests">
+    <p>TOOLS IN THE WORKSHOP</p>
+    <ul><li>Python</li><li>C++</li><li>TypeScript</li><li>Backend systems</li><li>Applied AI</li><li>FastAPI</li><li>Engineering Physics</li></ul>
+  </div>
   <section id="work" class="work-section"><div class="wrap">
   <div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2>Made by following<br>the question.</h2></div><p>Six projects, each starting with a real question. Open a story to see the code, decisions, and limits.</p></div>
   <div class="project-narrative">
@@ -206,44 +218,95 @@
   const log = document.getElementById("chat-log");
   const form = document.getElementById("chat-form");
   const input = document.getElementById("chat-input");
-  const addLine = (text, kind) => {
+  const lc = { total: null, easy: null, medium: null, hard: null };
+  const cf = { handle: CODEFORCES_HANDLE, rating: null, solved: null };
+  const history = [];
+  let historyCursor = 0;
+  let savedDraft = "";
+
+  const addLine = (text, kind = "bot") => {
     const line = document.createElement("p");
     line.className = "term-line " + kind;
     line.textContent = text;
     log.appendChild(line);
     log.scrollTop = log.scrollHeight;
   };
-  const lc = { total: null, easy: null, medium: null, hard: null };
-  const cf = { handle: CODEFORCES_HANDLE, rating: null, solved: null };
-  const answers = (question) => {
-    const q = question.toLowerCase();
-    if (/^(help|commands|\?)$/.test(q) || q.includes("what can you")) return "Try: about, education, experience, projects, skills, LeetCode, Codeforces, progress, or contact. I answer from the public portfolio and repository information.";
-    if (/education|degree|college|university|iit|study|studying|major/.test(q)) return "Mukesh studies Engineering Physics at IIT Delhi. His public profile does not list dates or additional education details.";
-    if (/experience|intern|work|employment|company|job/.test(q)) return "The public profile does not list a formal employer or completed internship. It does show project experience, including a COREP reporting assistant internship assignment prototype and several software projects.";
-    if (/leetcode|codeforces|competitive|solved|questions|problems|progress|rating/.test(q)) {
-      const lct = lc.total === null ? "LeetCode totals are currently unavailable" : "LeetCode: " + lc.total + " solved (Easy " + lc.easy + ", Medium " + lc.medium + ", Hard " + lc.hard + ")";
-      const cft = !cf.handle ? "Codeforces handle has not been provided yet" : cf.solved === null ? "Codeforces stats are loading or unavailable" : "Codeforces: " + cf.solved + " distinct accepted problems; rating " + (cf.rating ?? "unrated");
-      return lct + ". " + cft + ". Open the linked profiles to see the latest account pages.";
-    }
-    if (/project|built|build|made|portfolio/.test(q)) return "Selected projects: Remittance Evidence & Routing Assistant (synthetic-data decision-support prototype), Finance Tracker API, Internship Application Assistant, COREP Reporting Assistant (assignment prototype), Meme Aggregator, and Hostel Management. Each project card links to its public repository.";
-    if (/skill|stack|language|technology|tech/.test(q)) return "The portfolio lists Python, C++, TypeScript, FastAPI, SQLAlchemy, Redis, RAG/LLM workflows, OpenCV, and web development.";
-    if (/contact|email|reach|linkedin/.test(q)) return "Email Mukesh at mukeshsiyol2006@gmail.com or connect on LinkedIn: linkedin.com/in/mukesh-kumar06.";
-    if (/about|who|yourself|mukesh/.test(q)) return "Mukesh Kumar is an Engineering Physics student at IIT Delhi who builds software across backend systems and applied AI. Explore the project cards below for examples.";
-    return "I don’t have a verified answer for that in the public profile. Try education, experience, projects, skills, coding progress, or contact.";
+  const clearTerminal = () => {
+    log.replaceChildren();
+    addLine("Screen cleared. Type help to see available commands.", "system");
   };
+  const answers = (question) => {
+    const q = question.trim().toLowerCase();
+    const files = {
+      "about.txt": "Mukesh Kumar is an Engineering Physics student at IIT Delhi who builds software across backend systems and applied AI.",
+      "education.txt": "Engineering Physics, IIT Delhi. The public profile does not list study dates or additional education details.",
+      "experience.txt": "The public profile does not list a formal employer or completed internship. It documents project work, including a COREP reporting assistant assignment prototype.",
+      "projects.txt": "Projects: Remittance Evidence & Routing Assistant, Finance Tracker API, Internship Application Assistant, COREP Reporting Assistant, Meme Aggregator, and Hostel Management. Open each project story for its repository.",
+      "skills.txt": "Python, C++, TypeScript, FastAPI, SQLAlchemy, Redis, RAG/LLM workflows, OpenCV, and web development.",
+      "contact.txt": "Email: mukeshsiyol2006@gmail.com · LinkedIn: linkedin.com/in/mukesh-kumar06"
+    };
+    if (["help", "?", "commands"].includes(q)) return "Commands: help, whoami, pwd, ls, cat <about|education|experience|projects|skills|contact>.txt, progress, history, clear. You can also ask a question in plain English. Use ↑ / ↓ to revisit commands.";
+    if (q === "whoami") return "Mukesh Kumar — Engineering Physics student at IIT Delhi; interested in backend systems and applied AI.";
+    if (q === "pwd") return "/home/mukesh/portfolio";
+    if (q === "ls") return "about.txt  education.txt  experience.txt  projects.txt  skills.txt  contact.txt";
+    if (q === "history") return history.length ? history.map((x, i) => (i + 1) + "  " + x).join(" · ") : "No commands in this session yet.";
+    if (q.startsWith("cat ")) {
+      const filename = q.slice(4).trim().replace(/^\.\//, "");
+      return files[filename] || "File not found. Run ls to see available profile files.";
+    }
+    if (/education|degree|college|university|iit|study|studying|major/.test(q)) return files["education.txt"];
+    if (/experience|intern|work|employment|company|job/.test(q)) return files["experience.txt"];
+    if (/leetcode|codeforces|competitive|solved|questions|problems|progress|rating/.test(q)) {
+      const lct = lc.total === null ? "LeetCode totals are unavailable right now" : "LeetCode: " + lc.total.toLocaleString() + " solved (Easy " + lc.easy + ", Medium " + lc.medium + ", Hard " + lc.hard + ")";
+      const cft = !cf.handle ? "Codeforces is not configured" : cf.solved === null ? "Codeforces solved count is unavailable" : "Codeforces: " + cf.solved.toLocaleString() + " distinct accepted problems; rating " + (cf.rating ?? "unrated");
+      return lct + ". " + cft + ". See the live profile links in the dashboard.";
+    }
+    if (/project|built|build|made|portfolio/.test(q)) return files["projects.txt"];
+    if (/skill|stack|language|technology|tech/.test(q)) return files["skills.txt"];
+    if (/contact|email|reach|linkedin/.test(q)) return files["contact.txt"];
+    if (/about|who|yourself|mukesh/.test(q)) return files["about.txt"];
+    return "I don’t have a verified answer for that in the public profile. Try help or ask about education, experience, projects, skills, progress, or contact.";
+  };
+
   form.addEventListener("submit", (event) => {
     event.preventDefault();
     const text = input.value.trim();
     if (!text) return;
-    addLine("> " + text, "user");
     if (text.toLowerCase() === "clear") {
-      log.replaceChildren();
-      addLine("Terminal cleared. Ask about education, projects, experience, skills, or coding progress.", "system");
+      history.push(text);
+      historyCursor = history.length;
+      addLine("$ clear", "user");
+      clearTerminal();
     } else {
+      history.push(text);
+      historyCursor = history.length;
+      addLine("$ " + text, "user");
       addLine(answers(text), "bot");
     }
     input.value = "";
+    savedDraft = "";
     input.focus();
+  });
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      if (historyCursor === history.length) savedDraft = input.value;
+      if (historyCursor > 0) input.value = history[--historyCursor];
+    } else if (event.key === "ArrowDown") {
+      event.preventDefault();
+      if (historyCursor < history.length - 1) input.value = history[++historyCursor];
+      else if (historyCursor === history.length - 1) { historyCursor = history.length; input.value = savedDraft; }
+    } else if (event.key.toLowerCase() === "l" && event.ctrlKey) {
+      event.preventDefault();
+      clearTerminal();
+    } else if (event.key === "Tab") {
+      const commands = ["help", "whoami", "pwd", "ls", "cat about.txt", "cat education.txt", "cat experience.txt", "cat projects.txt", "cat skills.txt", "cat contact.txt", "progress", "history", "clear"];
+      const candidates = commands.filter(command => command.startsWith(input.value.toLowerCase()));
+      if (candidates.length) {
+        event.preventDefault();
+        input.value = candidates[0];
+      }
+    }
   });
   document.querySelectorAll("[data-ask]").forEach((button) => button.addEventListener("click", () => {
     input.value = button.dataset.ask;
@@ -253,12 +316,9 @@
   const loadLeetCode = async () => {
     const username = "mukeshsiyol";
     const cacheKey = "leetcode-public-stats:" + username;
-    const cacheAge = 30 * 60 * 1000;
-    const saved = (() => {
-      try { return JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch (_) { return null; }
-    })();
+    const saved = (() => { try { return JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch (_) { return null; } })();
     const setStat = (id, text) => { document.getElementById(id).textContent = text; };
-    const renderStats = (stats, note) => {
+    const render = (stats, note) => {
       lc.total = stats.total; lc.easy = stats.easy; lc.medium = stats.medium; lc.hard = stats.hard;
       setStat("lc-total", stats.total.toLocaleString());
       setStat("lc-caption", "problems solved" + (stats.all ? " · " + stats.all.toLocaleString() + " in catalogue" : ""));
@@ -266,98 +326,122 @@
         "<span>Easy <b>" + stats.easy.toLocaleString() + "</b></span>" +
         "<span>Medium <b>" + stats.medium.toLocaleString() + "</b></span>" +
         "<span>Hard <b>" + stats.hard.toLocaleString() + "</b></span>";
-      setStat("lc-note", note + (stats.streak !== null && stats.streak !== undefined ? " · " + stats.streak + "-day streak" : ""));
+      setStat("lc-note", note);
     };
-    const saveAndRender = (stats, note) => {
-      try { localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats })); } catch (_) {}
-      renderStats(stats, note);
-    };
-    if (saved?.stats && Date.now() - saved.savedAt < cacheAge) {
-      const mins = Math.max(1, Math.round((Date.now() - saved.savedAt) / 60000));
-      renderStats(saved.stats, "Cached " + mins + " min ago · refreshes every 30 min");
-    } else if (saved?.stats) {
-      renderStats(saved.stats, "Showing saved count while refreshing…");
+    if (saved?.stats) {
+      render(saved.stats, "Saved public stats · refreshed when available");
     }
 
+    const controller = new AbortController();
+    const deadline = window.setTimeout(() => controller.abort(), 2500);
     try {
-      const query = `query profile($username: String!) {
-        matchedUser(username: $username) {
-          profile { ranking }
-          submitStats { acSubmissionNum { difficulty count } }
-          userCalendar { streak totalActiveDays }
-        }
-        userContestRanking(username: $username) { rating globalRanking attendedContestsCount }
-        allQuestionsCount { difficulty count }
-      }`;
-      const params = new URLSearchParams({ query, variables: JSON.stringify({ username }) });
-      const response = await fetch("https://proxy.cors.dev/https://leetcode.com/graphql?" + params.toString(), {
-        signal: AbortSignal.timeout(15000)
-      });
-      if (!response.ok) throw new Error("LeetCode profile request failed");
-      const result = await response.json();
-      const user = result.data?.matchedUser;
-      if (!user) throw new Error(result.errors?.[0]?.message || "LeetCode user not found");
-      const accepted = Object.fromEntries(user.submitStats.acSubmissionNum.map(x => [x.difficulty, x.count]));
-      const totals = Object.fromEntries((result.data.allQuestionsCount || []).map(x => [x.difficulty, x.count]));
-      const stats = {
-        easy: accepted.Easy || 0, medium: accepted.Medium || 0, hard: accepted.Hard || 0,
-        total: accepted.All || accepted.Total || ((accepted.Easy || 0) + (accepted.Medium || 0) + (accepted.Hard || 0)),
-        all: totals.All || totals.Total || null,
-        streak: user.userCalendar?.streak ?? null,
-        ranking: user.profile?.ranking ?? null,
-        contestRating: result.data.userContestRanking?.rating ?? null
-      };
-      saveAndRender(stats, "Live public profile · cached for 30 min");
-      if (stats.contestRating !== null) {
-        setStat("lc-note", "Live public profile · contest rating " + Math.round(stats.contestRating).toLocaleString() +
-          (stats.streak !== null ? " · " + stats.streak + "-day streak" : "") + " · cached for 30 min");
-      }
-    } catch (_) {
+      let stats;
       try {
-        const response = await fetch("https://alfa-leetcode-api.onrender.com/" + encodeURIComponent(username) + "/solved", {
-          signal: AbortSignal.timeout(20000)
-        });
+        const query = `query profile($username: String!) {
+          matchedUser(username: $username) {
+            profile { ranking }
+            submitStats { acSubmissionNum { difficulty count } }
+            userCalendar { streak totalActiveDays }
+          }
+          userContestRanking(username: $username) { rating globalRanking attendedContestsCount }
+          allQuestionsCount { difficulty count }
+        }`;
+        const params = new URLSearchParams({ query, variables: JSON.stringify({ username }) });
+        const response = await fetch("https://proxy.cors.dev/https://leetcode.com/graphql?" + params.toString(), { signal: controller.signal });
+        if (!response.ok) throw new Error("Profile request failed");
+        const result = await response.json();
+        const user = result.data?.matchedUser;
+        if (!user) throw new Error(result.errors?.[0]?.message || "Profile not found");
+        const accepted = Object.fromEntries(user.submitStats.acSubmissionNum.map(item => [item.difficulty, item.count]));
+        const totals = Object.fromEntries((result.data.allQuestionsCount || []).map(item => [item.difficulty, item.count]));
+        stats = {
+          easy: accepted.Easy || 0, medium: accepted.Medium || 0, hard: accepted.Hard || 0,
+          total: accepted.All || accepted.Total || ((accepted.Easy || 0) + (accepted.Medium || 0) + (accepted.Hard || 0)),
+          all: totals.All || totals.Total || null,
+          streak: user.userCalendar?.streak ?? null,
+          ranking: user.profile?.ranking ?? null,
+          contestRating: result.data.userContestRanking?.rating ?? null
+        };
+      } catch (primaryError) {
+        if (controller.signal.aborted) throw primaryError;
+        const response = await fetch("https://alfa-leetcode-api.onrender.com/" + encodeURIComponent(username) + "/solved", { signal: controller.signal });
         if (!response.ok) throw new Error("Backup stats request failed");
         const data = await response.json();
         const easy = Number(data.easySolved), medium = Number(data.mediumSolved), hard = Number(data.hardSolved);
         const total = Number(data.solvedProblem ?? data.totalSolved);
         if (![easy, medium, hard, total].every(Number.isFinite)) throw new Error("Unexpected stats response");
-        saveAndRender({ easy, medium, hard, total, all: Number(data.totalQuestions) || null, streak: null }, "Live public profile · cached for 30 min");
-      } catch (_) {
-        if (!saved?.stats) {
-          setStat("lc-total", "—");
-          setStat("lc-note", "Live stats are temporarily unavailable. The profile link above is still available.");
-        } else {
-          setStat("lc-note", "Refresh failed · showing saved public stats");
-        }
+        stats = { easy, medium, hard, total, all: Number(data.totalQuestions) || null, streak: null };
       }
+      try { localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats })); } catch (_) {}
+      render(stats, "Live public profile · cached locally");
+      if (stats.contestRating !== null && stats.contestRating !== undefined) {
+        setStat("lc-note", "Live profile · contest rating " + Math.round(stats.contestRating).toLocaleString() + (stats.streak !== null ? " · " + stats.streak + "-day streak" : ""));
+      }
+    } catch (_) {
+      if (!saved?.stats) {
+        setStat("lc-total", "—");
+        setStat("lc-caption", "Live count unavailable");
+        setStat("lc-note", "LeetCode did not respond within 2.5 seconds. Your profile link is still available.");
+      } else {
+        render(saved.stats, "Showing saved public stats · live refresh timed out");
+      }
+    } finally {
+      window.clearTimeout(deadline);
     }
   };
 
   const loadCodeforces = async () => {
-    if (!CODEFORCES_HANDLE) return;
+    const container = document.getElementById("cf-platform");
+    if (!CODEFORCES_HANDLE) {
+      container.hidden = true;
+      return;
+    }
     const handle = encodeURIComponent(CODEFORCES_HANDLE);
-    document.getElementById("cf-profile-link").href = "https://codeforces.com/profile/" + handle;
-    document.getElementById("cf-caption").textContent = "Loading profile…";
+    const profileLink = document.getElementById("cf-profile-link");
+    profileLink.href = "https://codeforces.com/profile/" + handle;
+    const cacheKey = "codeforces-public-stats:" + CODEFORCES_HANDLE;
+    const saved = (() => { try { return JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch (_) { return null; } })();
+    const set = (id, text) => { document.getElementById(id).textContent = text; };
+    const render = (stats, note) => {
+      cf.rating = stats.rating;
+      cf.solved = stats.solved;
+      set("cf-rating", stats.rating ? stats.rating.toLocaleString() : "Unrated");
+      set("cf-caption", (stats.rank ? stats.rank + " · " : "") + "current rating");
+      if (stats.solved !== null) document.getElementById("cf-breakdown").innerHTML = "<span>Unique problems solved <b>" + stats.solved.toLocaleString() + "</b></span>";
+      set("cf-note", note);
+    };
+    if (saved?.stats) render(saved.stats, "Saved public stats · refreshing when available");
+    else set("cf-caption", "Fetching public profile…");
+
+    const boundedFetch = async (url) => {
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 2500);
+      try { return await fetch(url, { signal: controller.signal }); }
+      finally { window.clearTimeout(timeout); }
+    };
     try {
-      const infoResponse = await fetch("https://codeforces.com/api/user.info?handles=" + handle);
+      const infoResponse = await boundedFetch("https://codeforces.com/api/user.info?handles=" + handle);
       const info = await infoResponse.json();
-      if (info.status !== "OK" || !info.result?.length) throw new Error("Profile unavailable");
+      if (!infoResponse.ok || info.status !== "OK" || !info.result?.length) throw new Error("Profile unavailable");
       const user = info.result[0];
-      cf.rating = user.rating ?? null;
-      document.getElementById("cf-rating").textContent = user.rating ? user.rating.toLocaleString() : "Unrated";
-      document.getElementById("cf-caption").textContent = (user.rank ? user.rank + " · " : "") + "current rating";
-      await new Promise(resolve => setTimeout(resolve, 2200));
-      const statusResponse = await fetch("https://codeforces.com/api/user.status?handle=" + handle + "&from=1&count=10000");
+      const stats = { rating: user.rating ?? null, rank: user.rank ?? "", solved: saved?.stats?.solved ?? null };
+      render(stats, "Live rating · waiting for submission count");
+      try { localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats })); } catch (_) {}
+
+      // Codeforces asks clients to keep API calls at least two seconds apart.
+      await new Promise(resolve => window.setTimeout(resolve, 2200));
+      const statusResponse = await boundedFetch("https://codeforces.com/api/user.status?handle=" + handle + "&from=1&count=10000");
       const status = await statusResponse.json();
-      if (status.status !== "OK") throw new Error("Submissions unavailable");
-      const solved = new Set(status.result.filter(item => item.verdict === "OK").map(item => item.problem.contestId + "-" + item.problem.index));
-      cf.solved = solved.size;
-      document.getElementById("cf-breakdown").innerHTML = "<span>Unique problems solved <b>" + solved.size.toLocaleString() + "</b></span>";
-      document.getElementById("cf-note").textContent = "Counted distinct accepted problems in the latest 10,000 public submissions.";
+      if (!statusResponse.ok || status.status !== "OK") throw new Error("Submissions unavailable");
+      stats.solved = new Set(status.result.filter(item => item.verdict === "OK").map(item => item.problem.contestId + "-" + item.problem.index)).size;
+      render(stats, "Live public profile · distinct accepted problems in latest 10,000 submissions");
+      try { localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats })); } catch (_) {}
     } catch (_) {
-      document.getElementById("cf-caption").textContent = "Could not load profile stats";
-      document.getElementById("cf-note").textContent = "The profile link is available; API data could not be fetched.";
+      if (saved?.stats) render(saved.stats, "Showing saved public stats · live refresh unavailable");
+      else {
+        set("cf-caption", "Live profile count unavailable");
+        set("cf-note", "The public API did not respond in time. Open the profile for current details.");
+      }
     }
   };
   loadLeetCode();
