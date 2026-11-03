@@ -634,12 +634,7 @@ text = text.lower()</code></pre></div>
   });
   chatForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const FORMSPREE_FORM_ID = "YOUR_FORMSPREE_FORM_ID";
-    if (FORMSPREE_FORM_ID === "YOUR_FORMSPREE_FORM_ID") {
-      chatStatus.dataset.state = "error";
-      chatStatus.textContent = "Chat is designed and ready. Add your Formspree form ID to enable delivery.";
-      return;
-    }
+    const FORMSPREE_FORM_ID = "mqppwzgz";
     const sendButton = chatForm.querySelector(".chat-send");
     sendButton.disabled = true;
     sendButton.querySelector("span").textContent = "Sending…";
