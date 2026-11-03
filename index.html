@@ -7,7 +7,7 @@
   <meta property="og:type" content="website"><meta property="og:title" content="Mukesh Kumar — Builder & Engineer"><meta property="og:description" content="Software, systems, and applied AI from IIT Delhi."><meta property="og:url" content="https://mukeshsiyol.github.io/">
   <title>Mukesh Kumar — Builder & Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <style>
     :root{color-scheme:dark;--bg:#0a0a0b;--surface:#111113;--surface2:#171719;--line:#29292c;--ink:#f3f0e9;--muted:#aaa7a0;--lime:#d7fb5b;--orange:#ff764a;--mono:"DM Mono",monospace;--sans:"Space Grotesk",system-ui,sans-serif}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:5;opacity:.15;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.14'/%3E%3C/svg%3E")}a{color:inherit;text-decoration:none}a:focus-visible{outline:2px solid var(--lime);outline-offset:4px}.wrap{width:min(1120px,calc(100% - 48px));margin:auto}
@@ -34,7 +34,108 @@
     @media(max-width:760px){.terminal-grid{grid-template-columns:1fr}.term-body{height:245px}.terminal-section{padding:65px 0}}
     @media(max-width:760px){.wrap{width:calc(100% - 34px)}header{height:66px}.links{gap:17px}.links>a:not(.pill){display:none}.hero{display:block;padding:82px 0 55px;min-height:auto}.hero h1{font-size:clamp(62px,16vw,96px)}.orbit-scene{height:300px;margin-top:22px;transform:scale(.83)}.section-head{display:block}.section-head p{margin-top:15px}.projects{display:block}.card,.card.wide,.card.narrow{min-height:340px;margin-bottom:13px}.about{grid-template-columns:1fr;gap:32px}.contact{display:block}.contact .btn{margin-top:15px}.ticker-track{animation-duration:24s}section{padding:68px 0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track{animation:none}.bars i{animation:none}*,*:before,*:after{transition:none!important}}
-  </style>
+  
+    :root{--sans:"DM Sans",system-ui,sans-serif;--display:"Instrument Serif",Georgia,serif;--ink:#f2eee4;--muted:#b0aaa0;--lime:#d6f66a;--orange:#f58b62}
+    h1,.section-head h2,.contact h2{font-family:var(--display);font-weight:400;letter-spacing:-.045em}
+    h1{font-size:clamp(76px,10vw,130px);line-height:.79;max-width:760px;margin:31px 0}
+    h1 span{font-style:italic;font-weight:400}
+    .hero{min-height:710px;grid-template-columns:1fr .8fr}
+    .hero:after{content:"";position:absolute;left:-160px;bottom:12px;width:220px;height:1px;background:linear-gradient(90deg,transparent,var(--lime),transparent);opacity:.6}
+    .availability{letter-spacing:.17em}.hero-text{font-size:16px;max-width:440px}
+    .orbit-scene{transform:scale(1.08)}.planet{box-shadow:0 0 95px #b4d34a32,inset -24px -20px 40px #080909}
+    .section-head h2{font-size:clamp(50px,7vw,82px);line-height:.9;letter-spacing:-.035em}
+    .section-head p{font-size:14px;line-height:1.8}
+    .work-section{padding-top:112px}.work-section .section-head{margin-bottom:65px}
+    .project-narrative{position:relative}
+    .project-story{display:flex;align-items:center;gap:clamp(25px,5vw,72px);position:relative;padding:54px 0;border-top:1px solid #ffffff1a;min-height:420px}
+    .project-story.feature-story{padding-top:24px}.project-story.reverse-story{flex-direction:row-reverse}
+    .story-marker{flex:0 0 88px;align-self:stretch;display:flex;flex-direction:column;align-items:flex-start;position:relative;color:#89867e}
+    .story-marker span{font:11px var(--mono);color:var(--lime);letter-spacing:.12em}
+    .story-marker i{display:block;width:1px;flex:1;background:linear-gradient(var(--lime),#ffffff0b);margin:15px 0}
+    .story-marker small{font:8px var(--mono);writing-mode:vertical-rl;transform:rotate(180deg);letter-spacing:.14em;color:#89867e}
+    .story-visual{flex:1 1 52%;height:330px;position:relative;overflow:hidden;background:#141512;border:1px solid #ffffff1c;transition:transform .45s cubic-bezier(.2,.75,.2,1),border-color .3s}
+    .project-story:hover .story-visual{transform:translateY(-5px) rotate(-.5deg);border-color:#d6f66a7a}
+    .project-story.reverse-story:hover .story-visual{transform:translateY(-5px) rotate(.5deg)}
+    .story-copy{flex:1 1 48%;padding:16px 0;max-width:490px}
+    .story-type{font:9px var(--mono)!important;text-transform:uppercase;letter-spacing:.16em;color:var(--orange)!important;margin:0 0 15px!important}
+    .story-copy h3{font:clamp(34px,4.1vw,55px)/.98 var(--display);letter-spacing:-.025em;margin:0 0 23px}
+    .story-copy p{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 13px}
+    .story-question{color:var(--ink)!important}.story-question span{display:block;font:8px var(--mono);letter-spacing:.13em;color:var(--lime);margin-bottom:5px}
+    .story-tags{display:flex;flex-wrap:wrap;gap:7px;margin:19px 0 22px}.story-tags span{font:8px var(--mono);letter-spacing:.04em;border-bottom:1px solid #ffffff35;padding:0 1px 5px;color:#d4d0c7}
+    .story-link{display:inline-flex;align-items:center;gap:13px;font:9px var(--mono);letter-spacing:.13em;color:var(--lime);border-bottom:1px solid #d6f66a55;padding:0 0 7px}
+    .story-link b{font-size:14px;transition:transform .2s}.story-link:hover b{transform:translate(4px,-3px)}
+    .visual-caption,.visual-foot{position:absolute;left:18px;right:18px;font:8px var(--mono);letter-spacing:.13em;color:#d6d0bc}.visual-caption{top:16px}.visual-foot{bottom:15px;color:#89877d}
+    .evidence-visual{background:radial-gradient(ellipse at 56% 55%,#525c32 0,#222719 28%,#11130f 70%)}
+    .evidence-paper{position:absolute;width:130px;height:176px;background:#e6dfca;color:#25271d;padding:16px 12px;box-shadow:0 18px 35px #0008;top:73px}
+    .evidence-paper b,.match-doc span{font:8px var(--mono);letter-spacing:.08em}
+    .evidence-paper i,.match-doc i{display:block;height:1px;background:#57564755;margin:13px 0}
+    .evidence-paper em{display:inline-block;margin-top:5px;border:1px solid #d05b3b;color:#9c432d;padding:3px 5px;font:8px var(--mono);font-style:normal}
+    .paper-one{left:23%;transform:rotate(-8deg)}.paper-two{left:43%;top:85px;transform:rotate(6deg);background:#d8d4c5}
+    .trace-line{position:absolute;left:55%;top:50%;height:1px;width:20%;background:var(--lime);transform:rotate(27deg);box-shadow:0 0 15px var(--lime)}
+    .evidence-stamp{position:absolute;right:14%;top:43%;border:1px solid var(--orange);padding:12px 10px;color:var(--orange);font:9px/1.5 var(--mono);letter-spacing:.1em;transform:rotate(-9deg);background:#15120fbb}
+    .ledger-visual{background:linear-gradient(135deg,#171913,#171411)}
+    .ledger-top{position:absolute;left:25px;right:25px;top:55px;display:flex;justify-content:space-between;border-bottom:1px solid #ffffff28;padding-bottom:10px;font:8px var(--mono);color:#aaa79c}.ledger-top b{color:var(--lime);font-weight:400}
+    .ledger-line{position:relative;z-index:1;display:flex;align-items:center;gap:9px;margin:12px 25px;font:8px var(--mono);color:#a8a59b}.ledger-line:first-of-type{margin-top:91px}.ledger-line i{height:1px;flex:1;background:#ffffff24}.ledger-line b{font-weight:400;color:#eee8d9}.ledger-line.total b{color:var(--lime)}
+    .ledger-visual svg{position:absolute;left:25px;right:25px;bottom:39px;width:calc(100% - 50px);height:73px;overflow:visible}.ledger-visual path{fill:none;stroke:#d6f66a;stroke-width:1.5;stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1s}.project-story:hover .ledger-visual path{stroke-dashoffset:0}
+    .match-visual{background:linear-gradient(150deg,#1a1521,#0f1014)}
+    .match-doc{position:absolute;background:#e1dccb;color:#28271f;width:135px;height:140px;padding:13px;box-shadow:0 16px 34px #0008;top:73px}
+    .resume-doc{left:16%;transform:rotate(-7deg)}.role-doc{left:45%;top:88px;transform:rotate(5deg);background:#d5d9c9}
+    .match-doc b{font:8px var(--mono);color:#424e2a}.match-beam{position:absolute;top:52%;left:34%;font:7px var(--mono);letter-spacing:.1em;color:var(--orange);background:#111016;padding:7px;z-index:2}
+    .match-output{position:absolute;right:8%;bottom:37px;padding:10px 12px;background:#141517;border:1px solid #b891f477;color:#ddd6f0;font:9px/1.5 var(--mono);transform:rotate(-3deg)}
+    .match-output span{display:block;color:#b891f4;font-size:7px;margin-bottom:5px}
+    .validation-visual{background:radial-gradient(ellipse at 50% 100%,#183334,#101715 72%)}
+    .validation-stack{position:absolute;top:60px;left:13%;right:13%;display:flex;flex-direction:column;gap:10px}
+    .validation-stack div{display:flex;align-items:center;gap:15px;padding:11px 13px;border:1px solid #9bd6bd4d;background:#0c1412bd;color:#d0ded2;font:8px/1.45 var(--mono);letter-spacing:.08em}
+    .validation-stack div:nth-child(2){margin-left:8%}.validation-stack div:nth-child(3){margin-left:16%;border-color:#d6f66a8a}
+    .validation-stack b{font:11px var(--display);color:var(--lime)}.validation-stack i{margin-left:auto;color:var(--orange);font-style:normal}
+    .signal-visual{background:#15120f}
+    .signal-grid{position:absolute;inset:0;background-image:linear-gradient(#ffffff0b 1px,transparent 1px),linear-gradient(90deg,#ffffff0b 1px,transparent 1px);background-size:26px 26px;mask-image:linear-gradient(90deg,transparent,#000 25%,#000 80%,transparent)}
+    .signal-bars{position:absolute;left:13%;right:13%;top:30%;height:44%;display:flex;align-items:end;justify-content:space-between}
+    .signal-bars i{width:5px;height:var(--height,40%);background:linear-gradient(0deg,#f58b62,#d6f66a);opacity:.8;transform-origin:bottom;animation:signal 1.8s ease-in-out infinite alternate}
+    .signal-bars i:nth-child(3n){--height:80%;animation-delay:.4s}.signal-bars i:nth-child(2n){--height:58%;animation-delay:.8s}.signal-bars i:nth-child(5n){--height:95%;animation-delay:1.1s}
+    @keyframes signal{to{transform:scaleY(.55);opacity:.4}}
+    .signal-pulse{position:absolute;left:12%;right:12%;top:52%;height:1px;background:linear-gradient(90deg,transparent,var(--orange),var(--lime),transparent);filter:drop-shadow(0 0 5px var(--lime));animation:pulse 2.8s linear infinite}
+    @keyframes pulse{0%{transform:translateY(-37px);opacity:0}20%{opacity:.9}80%{opacity:.9}100%{transform:translateY(37px);opacity:0}}
+    .campus-visual{background:linear-gradient(180deg,#292b24 0,#a56241 70%,#e5a466 100%)}
+    .campus-sun{position:absolute;width:70px;height:70px;border-radius:50%;right:16%;top:55px;background:#f5cb78;box-shadow:0 0 55px #f5cb7877}
+    .campus-block{position:absolute;bottom:0;background:#1b211a;border:1px solid #f6d19755}
+    .campus-block:before{content:"";position:absolute;inset:12px;background:repeating-linear-gradient(0deg,transparent 0 15px,#f6d19788 16px 18px),repeating-linear-gradient(90deg,transparent 0 17px,#f6d19788 18px 20px)}
+    .b1{left:13%;width:22%;height:48%}.b2{left:38%;width:28%;height:68%;background:#27251d}.b3{left:69%;width:18%;height:41%}
+    .campus-path{position:absolute;left:46%;bottom:0;width:18%;height:33%;background:#c8a06d;clip-path:polygon(38% 0,62% 0,100% 100%,0 100%);opacity:.8}
+    .terminal-section{background:linear-gradient(180deg,#0d0e0c,#12140e 50%,#0d0e0c);position:relative}
+    .terminal-section:before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(transparent,var(--lime),transparent);opacity:.45}
+    .terminal-box{border-color:#6d784d;background:#090c09;box-shadow:0 22px 70px #0007}
+    .term-top{background:#151a11;color:#b9c69c}.term-body{background:radial-gradient(ellipse at 0 0,#1a241640,transparent 80%)}
+    .term-line.bot{color:#deebc6}.term-line.system{color:#a2a78f}.term-form input{font-family:var(--mono)}
+    .quick-asks button{border-radius:999px;transition:background .2s,color .2s,transform .2s}
+    .quick-asks button:hover{background:var(--lime);color:#111}
+    .progress-box{background:transparent;border:0;border-left:1px solid #ffffff25;padding:3px 0 3px 24px}
+    .progress-head{color:var(--lime);letter-spacing:.14em}
+    .platform{border-color:#ffffff22}.platform-number{font:54px/.9 var(--display);letter-spacing:-.04em;color:var(--lime)}
+    .platform-title strong{font:24px var(--display)}.difficulty span{padding:6px 8px;border:1px solid #ffffff18}
+    .difficulty span:first-child b{color:#a4df83}.difficulty span:nth-child(2) b{color:#e5bf67}.difficulty span:nth-child(3) b{color:#ed8f79}
+    .live-dot{animation:livepulse 1.8s infinite}
+    @keyframes livepulse{50%{box-shadow:0 0 0 6px #d7fb5b16,0 0 15px #d7fb5b}}
+    .story-copy h3,.section-head h2{ text-wrap:balance }
+    @media(max-width:760px){
+      h1{font-size:clamp(70px,17vw,110px)}
+      .hero{min-height:auto}
+      .orbit-scene{transform:scale(.88);margin:10px -18px 0}
+      .project-story,.project-story.reverse-story{display:flex;flex-direction:column;align-items:stretch;gap:18px;padding:34px 0}
+      .story-marker{flex:initial;display:flex;flex-direction:row;align-items:center;gap:10px}
+      .story-marker i{flex:1;height:1px;width:auto;margin:0}
+      .story-marker small{writing-mode:initial;transform:none}
+      .story-visual{flex:auto;width:100%;height:245px}
+      .story-copy{max-width:none;padding:0 2px 13px}
+      .story-copy h3{font-size:44px}
+      .terminal-grid{grid-template-columns:1fr}
+      .progress-box{border-left:0;border-top:1px solid #ffffff25;padding:18px 0 0}
+    }
+    @media(prefers-reduced-motion:reduce){
+      .signal-bars i,.signal-pulse,.live-dot{animation:none!important}
+      .ledger-visual path{stroke-dashoffset:0}
+    }
+</style>
 </head>
 <body>
 <header><nav class="nav wrap" aria-label="Main navigation"><a class="brand" href="#top"><span class="mark">MK</span><span>MUKESH KUMAR<br><small>BUILDER / ENGINEER</small></span></a><div class="links"><a href="#work">Work</a><a href="#terminal">Terminal</a><a href="#about">About</a><a href="https://github.com/mukeshsiyol" target="_blank" rel="noreferrer">GitHub ↗</a><a class="pill" href="mailto:mukeshsiyol2006@gmail.com">Let’s talk ↗</a></div></nav></header>
@@ -52,21 +153,48 @@
         <div class="quick-asks"><button type="button" data-ask="education">education</button><button type="button" data-ask="experience">experience</button><button type="button" data-ask="projects">projects</button><button type="button" data-ask="progress">coding progress</button><button type="button" data-ask="skills">skills</button></div>
       </div>
       <aside class="progress-box" aria-label="Coding platform progress"><div class="progress-head"><span>Practice dashboard</span><span class="live-dot" aria-label="Live data"></span></div>
-        <div class="platform"><div class="platform-title"><strong>LeetCode</strong><a href="https://leetcode.com/u/monu_siyol/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="lc-total">Loading…</div><div class="platform-caption" id="lc-caption">Problems solved · public profile</div><div class="difficulty" id="lc-breakdown"></div><p class="platform-note" id="lc-note">Fetching latest public totals…</p></div>
+        <div class="platform"><div class="platform-title"><strong>LeetCode</strong><a href="https://leetcode.com/u/mukeshsiyol/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="lc-total">Loading…</div><div class="platform-caption" id="lc-caption">Problems solved · public profile</div><div class="difficulty" id="lc-breakdown"></div><p class="platform-note" id="lc-note">Fetching latest public totals…</p></div>
         <div class="platform"><div class="platform-title"><strong>Codeforces</strong><a id="cf-profile-link" href="https://codeforces.com/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="cf-rating">—</div><div class="platform-caption" id="cf-caption">Rating · handle not linked yet</div><div class="difficulty" id="cf-breakdown"></div><p class="platform-note" id="cf-note">Add your Codeforces handle to show rating and solved problems.</p></div>
         <a class="mini-link" href="https://github.com/mukeshsiyol/leetcode-submissions" target="_blank" rel="noreferrer">Browse my LeetCode solutions on GitHub ↗</a>
       </aside>
     </div>
   </div></section>
   <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Python <b>✳</b></span><span>Backend systems <b>✳</b></span><span>Applied AI <b>✳</b></span><span>FastAPI <b>✳</b></span><span>Engineering Physics <b>✳</b></span><span>TypeScript <b>✳</b></span><span>Python <b>✳</b></span><span>Backend systems <b>✳</b></span><span>Applied AI <b>✳</b></span><span>FastAPI <b>✳</b></span><span>Engineering Physics <b>✳</b></span><span>TypeScript <b>✳</b></span></div></div>
-  <section id="work"><div class="wrap"><div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2>Things I’ve made.</h2></div><p>Small selection of public projects. Each card opens the code and the README explains the decisions behind it.</p></div><div class="projects">
-    <a class="card wide" href="https://github.com/mukeshsiyol/remittance-evidence-routing-assistant" target="_blank" rel="noreferrer" style="--glow:#d7fb5b"><div class="card-art"><span class="art-label">Evidence in · Human review out</span><div class="art-orbit"><i class="art-core"></i></div></div><div class="cardtop"><span>01 / APPLIED AI</span><em>DECISION SUPPORT</em></div><h3>Remittance Evidence &amp;<br>Routing Assistant</h3><p>A careful first pass over cross-border payment documents: extracts evidence, flags uncertainty, and routes cases for human review. Synthetic data; exploratory evaluation only.</p><div class="tags"><span>Python</span><span>LLM workflow</span><span>Evidence checks</span><span>Human review</span></div><span class="outlink">↗</span></a>
-    <a class="card narrow" href="https://github.com/mukeshsiyol/finance-tracker" target="_blank" rel="noreferrer" style="--glow:#ff764a;--art:#191311"><div class="card-art"><span class="art-label">A tidy view of the numbers</span><div class="chart"><svg viewBox="0 0 185 85" preserveAspectRatio="none"><path d="M0 70 C25 66 27 49 50 56 S75 28 96 40 S123 14 140 26 S163 10 185 5"/><circle cx="140" cy="26" r="3"/></svg></div></div><div class="cardtop"><span>02 / BACKEND</span><em>FINANCE API</em></div><h3>Finance Tracker API</h3><p>Personal finance backend with authentication, roles, transaction analytics, and CSV/JSON export.</p><div class="tags"><span>FastAPI</span><span>SQLAlchemy</span><span>JWT</span><span>SQLite</span></div><span class="outlink">↗</span></a>
-    <a class="card narrow" href="https://github.com/mukeshsiyol/internship-application-assistant" target="_blank" rel="noreferrer" style="--glow:#b88bff;--art:#15121c"><div class="card-art"><span class="art-label">Relevant details, thoughtfully matched</span><div class="code-window"><span></span><span></span><span></span><span></span><span></span></div></div><div class="cardtop"><span>03 / AUTOMATION</span><em>CAREER TOOL</em></div><h3>Internship Application Assistant</h3><p>Matches job descriptions to relevant resume experience and drafts tailored cover letters, with an optional LLM rewrite.</p><div class="tags"><span>Python</span><span>PDF parsing</span><span>Gemini API</span></div><span class="outlink">↗</span></a>
-    <a class="card wide" href="https://github.com/mukeshsiyol/corep-assistant" target="_blank" rel="noreferrer" style="--glow:#54c5db;--art:#101a1b"><div class="card-art"><span class="art-label">Retrieve → Validate → Explain</span><div class="route"><i>R</i><b></b><i>V</i><b></b><i>A</i></div></div><div class="cardtop"><span>04 / APPLIED AI</span><em>REGTECH CONCEPT</em></div><h3>COREP Reporting Assistant</h3><p>Internship assignment prototype exploring retrieval, structured validation, and audit trails for regulatory reporting—not a production compliance tool.</p><div class="tags"><span>Python</span><span>RAG</span><span>Validation</span><span>Auditability</span></div><span class="outlink">↗</span></a>
-    <a class="card" href="https://github.com/mukeshsiyol/Meme-Aggregator" target="_blank" rel="noreferrer" style="--glow:#ff764a;--art:#1a1412"><div class="card-art"><span class="art-label">Signals moving in real time</span><div class="bars"><i style="--h:24px"></i><i style="--h:50px"></i><i style="--h:33px"></i><i style="--h:67px"></i><i style="--h:41px"></i><i style="--h:58px"></i><i style="--h:29px"></i><i style="--h:46px"></i></div></div><div class="cardtop"><span>05 / DATA</span><em>LIVE AGGREGATION</em></div><h3>Meme Aggregator</h3><p>Combines decentralized exchange data with caching and live updates.</p><div class="tags"><span>TypeScript</span><span>Node.js</span><span>Redis</span></div><span class="outlink">↗</span></a>
-    <a class="card" href="https://github.com/mukeshsiyol/hostel-management" target="_blank" rel="noreferrer" style="--glow:#d7fb5b;--art:#151a12"><div class="card-art"><span class="art-label">Campus life, organized</span><div class="route"><i>01</i><b></b><i>02</i><b></b><i>03</i></div></div><div class="cardtop"><span>06 / WEB APP</span><em>STUDENT PROJECT</em></div><h3>Hostel Management</h3><p>A web project for student accommodation, room allocation, and hostel operations.</p><div class="tags"><span>Web development</span><span>Management</span></div><span class="outlink">↗</span></a>
-  </div></div></section>
+  <section id="work" class="work-section"><div class="wrap">
+  <div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2>Made by following<br>the question.</h2></div><p>Six projects, each starting with a real question. Open a story to see the code, decisions, and limits.</p></div>
+  <div class="project-narrative">
+    <article class="project-story feature-story">
+      <div class="story-marker"><span>01</span><i></i><small>AI / EVIDENCE</small></div>
+      <div class="story-visual evidence-visual" aria-hidden="true"><div class="visual-caption">TRACE WHAT THE MODEL SEES</div><div class="evidence-paper paper-one"><b>INVOICE</b><i></i><i></i><i></i><em>§ 03.2</em></div><div class="evidence-paper paper-two"><b>CONTRACT</b><i></i><i></i><i></i><em>CLAUSE 8</em></div><div class="trace-line"></div><div class="evidence-stamp">REVIEW<br>REQUIRED</div><div class="visual-foot">01 — SOURCES &nbsp; / &nbsp; 02 — EXTRACT &nbsp; / &nbsp; 03 — REVIEW</div></div>
+      <div class="story-copy"><p class="story-type">APPLIED AI · DECISION SUPPORT</p><h3>Remittance Evidence<br>&amp; Routing Assistant</h3><p class="story-question"><span>THE QUESTION</span>How can a reviewer see exactly which facts shaped a first-pass route?</p><p class="story-answer">A prototype that extracts document evidence, checks source freshness, and flags uncertainty for human review. Built around synthetic data; its evaluation is exploratory, not legal validation.</p><div class="story-tags"><span>Python</span><span>LLM workflow</span><span>Evidence checks</span></div><a class="story-link" href="https://github.com/mukeshsiyol/remittance-evidence-routing-assistant" target="_blank" rel="noreferrer">EXPLORE THE BUILD <b>↗</b></a></div>
+    </article>
+    <article class="project-story">
+      <div class="story-marker"><span>02</span><i></i><small>BACKEND / DATA</small></div>
+      <div class="story-visual ledger-visual" aria-hidden="true"><div class="visual-caption">A MONTH, MADE LEGIBLE</div><div class="ledger-top"><b>01 / SUMMARY</b><span>2025—08</span></div><div class="ledger-line"><span>INCOME</span><i></i><b>+ 4,820</b></div><div class="ledger-line"><span>OUTGOING</span><i></i><b>− 2,160</b></div><div class="ledger-line total"><span>NET FLOW</span><i></i><b>+ 2,660</b></div><svg viewBox="0 0 320 80" preserveAspectRatio="none"><path d="M0 66 C32 60 39 43 69 51 S108 32 132 41 S167 15 193 30 S227 39 254 17 S292 26 320 5"/></svg><div class="visual-foot">FILTER · ANALYZE · EXPORT</div></div>
+      <div class="story-copy"><p class="story-type">BACKEND ENGINEERING</p><h3>Finance Tracker API</h3><p class="story-question"><span>THE QUESTION</span>How do you make personal finance data useful and safely scoped?</p><p class="story-answer">A FastAPI service for transactions, role-based access, analytics, and CSV/JSON export, backed by SQLAlchemy and SQLite.</p><div class="story-tags"><span>FastAPI</span><span>JWT</span><span>SQLAlchemy</span></div><a class="story-link" href="https://github.com/mukeshsiyol/finance-tracker" target="_blank" rel="noreferrer">EXPLORE THE BUILD <b>↗</b></a></div>
+    </article>
+    <article class="project-story reverse-story">
+      <div class="story-marker"><span>03</span><i></i><small>TOOLS / AUTOMATION</small></div>
+      <div class="story-visual match-visual" aria-hidden="true"><div class="visual-caption">LESS GENERIC. MORE RELEVANT.</div><div class="match-doc resume-doc"><span>RESUME</span><i></i><i></i><i></i><b>Python · API design</b></div><div class="match-beam">MATCHED SIGNALS <b>→</b></div><div class="match-doc role-doc"><span>ROLE NOTES</span><i></i><b>Backend intern</b><i></i></div><div class="match-output"><span>OUTPUT</span><b>Grounded<br>application draft</b></div><div class="visual-foot">ONLY USE WHAT THE CANDIDATE CAN SUPPORT</div></div>
+      <div class="story-copy"><p class="story-type">AUTOMATION · CAREER TOOL</p><h3>Internship Application<br>Assistant</h3><p class="story-question"><span>THE QUESTION</span>Can an application be tailored without inventing experience?</p><p class="story-answer">A resume-aware Python tool that matches job descriptions to relevant experience and drafts cover letters, with a rule-based fallback when optional LLM rewriting is unavailable.</p><div class="story-tags"><span>Python</span><span>PDF parsing</span><span>Gemini API</span></div><a class="story-link" href="https://github.com/mukeshsiyol/internship-application-assistant" target="_blank" rel="noreferrer">EXPLORE THE BUILD <b>↗</b></a></div>
+    </article>
+    <article class="project-story">
+      <div class="story-marker"><span>04</span><i></i><small>AI / REGTECH CONCEPT</small></div>
+      <div class="story-visual validation-visual" aria-hidden="true"><div class="visual-caption">A REPORT SHOULD SHOW ITS WORK</div><div class="validation-stack"><div><b>01</b><span>RETRIEVE<br>REGULATORY TEXT</span><i>↘</i></div><div><b>02</b><span>STRUCTURE<br>THE RESPONSE</span><i>↘</i></div><div><b>03</b><span>VALIDATE<br>&amp; TRACE</span><i>✓</i></div></div><div class="visual-foot">HUMAN REVIEW STAYS IN THE LOOP</div></div>
+      <div class="story-copy"><p class="story-type">APPLIED AI · ASSIGNMENT PROTOTYPE</p><h3>COREP Reporting<br>Assistant</h3><p class="story-question"><span>THE QUESTION</span>How might an analyst trace an AI-assisted reporting suggestion?</p><p class="story-answer">An internship assignment prototype exploring retrieval, schema checks, and audit trails for regulatory reporting. A concept proposal, not a production compliance system.</p><div class="story-tags"><span>RAG</span><span>Python</span><span>Validation</span></div><a class="story-link" href="https://github.com/mukeshsiyol/corep-assistant" target="_blank" rel="noreferrer">EXPLORE THE BUILD <b>↗</b></a></div>
+    </article>
+    <article class="project-story reverse-story">
+      <div class="story-marker"><span>05</span><i></i><small>REAL-TIME / DATA</small></div>
+      <div class="story-visual signal-visual" aria-hidden="true"><div class="visual-caption">MANY FEEDS. ONE MOVING PICTURE.</div><div class="signal-grid"></div><div class="signal-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="signal-pulse"></div><div class="visual-foot">AGGREGATE · CACHE · STREAM</div></div>
+      <div class="story-copy"><p class="story-type">BACKEND · LIVE AGGREGATION</p><h3>Meme Aggregator</h3><p class="story-question"><span>THE QUESTION</span>How do you turn scattered market feeds into a live view?</p><p class="story-answer">A TypeScript and Node.js service that aggregates decentralized exchange data with Redis caching and Socket.IO updates.</p><div class="story-tags"><span>TypeScript</span><span>Redis</span><span>Socket.IO</span></div><a class="story-link" href="https://github.com/mukeshsiyol/Meme-Aggregator" target="_blank" rel="noreferrer">EXPLORE THE BUILD <b>↗</b></a></div>
+    </article>
+    <article class="project-story last-story">
+      <div class="story-marker"><span>06</span><i></i><small>WEB / CAMPUS</small></div>
+      <div class="story-visual campus-visual" aria-hidden="true"><div class="visual-caption">A PLACE FOR EVERY STUDENT</div><div class="campus-sun"></div><div class="campus-block b1"></div><div class="campus-block b2"></div><div class="campus-block b3"></div><div class="campus-path"></div><div class="visual-foot">ROOMS · ALLOCATIONS · OPERATIONS</div></div>
+      <div class="story-copy"><p class="story-type">WEB DEVELOPMENT · STUDENT PROJECT</p><h3>Hostel Management</h3><p class="story-question"><span>THE QUESTION</span>How can a campus team keep accommodation operations organized?</p><p class="story-answer">A web project focused on student accommodation, room allocation, and hostel operations.</p><div class="story-tags"><span>Web development</span><span>Management</span></div><a class="story-link" href="https://github.com/mukeshsiyol/hostel-management" target="_blank" rel="noreferrer">EXPLORE THE BUILD <b>↗</b></a></div>
+    </article>
+  </div>
+</div></section>
   <section id="about"><div class="wrap"><div class="section-head"><div><div class="section-kicker">02 / A little about me</div><h2>Between theory<br>and the real world.</h2></div></div><div class="about"><div class="about-copy"><p>I study <strong>Engineering Physics at IIT Delhi</strong> and build software to understand how things work—from APIs and data pipelines to AI-assisted workflows.</p><p>I’m drawn to problems where careful engineering matters: making systems understandable, checking what they produce, and being clear about where human judgment belongs.</p></div><div class="toolbox"><div class="tool"><small>Languages</small><strong>Python · C++ · TypeScript</strong></div><div class="tool"><small>Systems</small><strong>FastAPI · SQLAlchemy · Redis</strong></div><div class="tool"><small>Applied AI</small><strong>RAG · LLM workflows</strong></div><div class="tool"><small>Also exploring</small><strong>OpenCV · Web development</strong></div></div></div></div></section>
   <div class="contact wrap"><div><div class="section-kicker">03 / Say hello</div><h2>Have a good<br>problem in mind?</h2><p>I’m always up for a thoughtful conversation about software, AI, or what you’re building.</p></div><a class="btn primary" href="mailto:mukeshsiyol2006@gmail.com">Write me an email ↗</a></div>
 </main>
@@ -123,30 +251,74 @@
   }));
 
   const loadLeetCode = async () => {
-    const endpoints = [
-      "https://alfa-leetcode-api.onrender.com/monu_siyol/solved",
-      "https://leetcode-api-faisalshohag.vercel.app/monu_siyol"
-    ];
-    for (const endpoint of endpoints) {
-      try {
-        const response = await fetch(endpoint, { signal: AbortSignal.timeout(9000) });
-        if (!response.ok) continue;
-        const data = await response.json();
-        const easy = data.easySolved;
-        const medium = data.mediumSolved;
-        const hard = data.hardSolved;
-        const total = data.solvedProblem ?? data.totalSolved ?? (easy + medium + hard);
-        if (![easy, medium, hard, total].every(Number.isFinite)) continue;
-        lc.total = total; lc.easy = easy; lc.medium = medium; lc.hard = hard;
-        document.getElementById("lc-total").textContent = total.toLocaleString();
-        document.getElementById("lc-caption").textContent = "problems solved · " + (data.totalQuestions ? data.totalQuestions.toLocaleString() + " total" : "LeetCode public profile");
-        document.getElementById("lc-breakdown").innerHTML = "<span>Easy <b>" + easy + "</b></span><span>Medium <b>" + medium + "</b></span><span>Hard <b>" + hard + "</b></span>";
-        document.getElementById("lc-note").textContent = "Fetched from public profile · totals may update with a short delay.";
-        return;
-      } catch (_) {}
+    const username = "mukeshsiyol";
+    const cacheKey = "leetcode-public-stats:" + username;
+    const cacheAge = 30 * 60 * 1000;
+    const saved = (() => {
+      try { return JSON.parse(localStorage.getItem(cacheKey) || "null"); } catch (_) { return null; }
+    })();
+    const setStat = (id, text) => { document.getElementById(id).textContent = text; };
+    const renderStats = (stats, note) => {
+      lc.total = stats.total; lc.easy = stats.easy; lc.medium = stats.medium; lc.hard = stats.hard;
+      setStat("lc-total", stats.total.toLocaleString());
+      setStat("lc-caption", "problems solved" + (stats.all ? " · " + stats.all.toLocaleString() + " in catalogue" : ""));
+      document.getElementById("lc-breakdown").innerHTML =
+        "<span>Easy <b>" + stats.easy.toLocaleString() + "</b></span>" +
+        "<span>Medium <b>" + stats.medium.toLocaleString() + "</b></span>" +
+        "<span>Hard <b>" + stats.hard.toLocaleString() + "</b></span>";
+      setStat("lc-note", note);
+      if (stats.streak !== null && stats.streak !== undefined) {
+        setStat("lc-note", note + " · " + stats.streak + "-day streak");
+      }
+    };
+    if (saved?.stats && Date.now() - saved.savedAt < cacheAge) {
+      const mins = Math.max(1, Math.round((Date.now() - saved.savedAt) / 60000));
+      renderStats(saved.stats, "Refreshed " + mins + " min ago · auto-refreshes every 30 min");
+    } else if (saved?.stats) {
+      renderStats(saved.stats, "Showing last saved count while refreshing…");
     }
-    document.getElementById("lc-total").textContent = "—";
-    document.getElementById("lc-note").textContent = "Live stats are unavailable right now. The profile link above still works.";
+    try {
+      const query = `query profile($username: String!) {
+        matchedUser(username: $username) {
+          profile { ranking }
+          submitStats { acSubmissionNum { difficulty count } }
+          userCalendar { streak totalActiveDays }
+        }
+        userContestRanking(username: $username) { rating globalRanking attendedContestsCount }
+        allQuestionsCount { difficulty count }
+      }`;
+      const params = new URLSearchParams({ query, variables: JSON.stringify({ username }) });
+      const response = await fetch("https://proxy.cors.dev/https://leetcode.com/graphql?" + params.toString(), {
+        signal: AbortSignal.timeout(15000)
+      });
+      if (!response.ok) throw new Error("LeetCode profile request failed");
+      const result = await response.json();
+      const user = result.data?.matchedUser;
+      if (!user) throw new Error(result.errors?.[0]?.message || "LeetCode user not found");
+      const accepted = Object.fromEntries(user.submitStats.acSubmissionNum.map(x => [x.difficulty, x.count]));
+      const totals = Object.fromEntries((result.data.allQuestionsCount || []).map(x => [x.difficulty, x.count]));
+      const stats = {
+        easy: accepted.Easy || 0, medium: accepted.Medium || 0, hard: accepted.Hard || 0,
+        total: accepted.All || accepted.Total || ((accepted.Easy || 0) + (accepted.Medium || 0) + (accepted.Hard || 0)),
+        all: totals.All || totals.Total || null,
+        streak: user.userCalendar?.streak ?? null,
+        ranking: user.profile?.ranking ?? null,
+        contestRating: result.data.userContestRanking?.rating ?? null
+      };
+      localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats }));
+      renderStats(stats, "Live public profile · cached for 30 min");
+      if (stats.contestRating !== null) {
+        setStat("lc-note", "Live public profile · contest rating " + Math.round(stats.contestRating).toLocaleString() +
+          (stats.streak !== null ? " · " + stats.streak + "-day streak" : ""));
+      }
+    } catch (_) {
+      if (!saved?.stats) {
+        setStat("lc-total", "—");
+        setStat("lc-note", "Could not reach LeetCode stats right now. Refresh in a little while or open the profile directly.");
+      } else {
+        setStat("lc-note", "Refresh failed · showing saved public stats");
+      }
+    }
   };
 
   const loadCodeforces = async () => {
