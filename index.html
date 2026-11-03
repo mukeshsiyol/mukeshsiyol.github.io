@@ -349,7 +349,8 @@
     <h2 id="case-title-remittance">Remittance Evidence &amp; Routing Assistant</h2>
     <p class="case-summary">An exploratory assistant for organizing remittance cases, checking supporting evidence, and preparing a traceable review. The prototype uses synthetic examples; it does not make legal determinations or validate real-world payment rules.</p>
     <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Case intake</b></div><div><small>02</small><b>Evidence inventory</b></div> 
-    <div class="remit-demo" aria-labelledby="remit-demo-title">
+    <div><small>03</small><b>Source checks</b></div><div><small>04</small><b>Review packet</b></div></div>
+<div class="remit-demo" aria-labelledby="remit-demo-title">
       <div class="remit-demo-head"><div><p class="case-label">INTERACTIVE WALKTHROUGH · SYNTHETIC CASE</p><h3 id="remit-demo-title">What evidence is on file?</h3></div><span class="demo-badge">LOCAL DEMO</span></div>
       <p class="remit-demo-copy">Change a document status to see how the prototype distinguishes missing information from an unknown status.</p>
       <div class="evidence-controls">
@@ -359,7 +360,7 @@
       </div>
       <div class="evidence-result" id="evidence-demo-result" role="status" aria-live="polite"></div>
       <p class="evidence-disclaimer">Demonstration only. This inventory does not assess payment eligibility, legal requirements, or a real case.</p>
-    </div><div><small>03</small><b>Source checks</b></div><div><small>04</small><b>Review packet</b></div></div>
+    </div>
     <div class="case-detail-grid"><div><p class="case-label">ENGINEERING DECISION</p><p class="case-decision">Evidence is represented as supplied, missing, or unknown so the workflow does not silently turn absent information into a negative claim. Retrieval is limited to approved sources, and a human reviewer remains responsible for the final decision.</p><div class="case-next"><span>WHAT I’D IMPROVE NEXT</span><p>Next: evaluate against labeled cases, track source freshness, and make uncertainty checks explicit.</p></div><p class="case-label">IMPLEMENTATION NOTE</p><pre><code>def evidence_status(value: Optional[bool]) -&gt; str:
     return "supplied" if value is True else (
         "missing" if value is False else "unknown"
