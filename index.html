@@ -205,6 +205,28 @@
     }
     @media(prefers-reduced-motion:reduce){.project-story:hover .story-visual,.project-story.reverse-story:hover .story-visual{transform:none}}
 
+  
+    .chat-widget{position:fixed;z-index:30;right:clamp(16px,4vw,42px);bottom:24px;font-family:var(--sans)}
+    .chat-launcher{display:flex;align-items:center;gap:11px;padding:14px 17px;background:var(--lime);color:#12130d;border:1px solid var(--lime);box-shadow:0 12px 38px #0008;font:600 12px var(--sans);cursor:pointer;transition:transform .2s}
+    .chat-launcher:hover{transform:translateY(-3px)}.chat-launcher b{font:16px var(--mono)}
+    .chat-launcher-dot{width:7px;height:7px;border-radius:50%;background:#26320d;box-shadow:0 0 0 4px #26320d20}
+    .chat-panel{position:absolute;right:0;bottom:67px;width:min(390px,calc(100vw - 32px));padding:24px;background:#111113;border:1px solid #4b4b43;box-shadow:0 24px 80px #000b}
+    .visitor-chat-head{display:flex;justify-content:space-between;align-items:start;gap:12px}
+    .visitor-chat-head span{font:8px var(--mono);letter-spacing:.15em;color:var(--orange)}
+    .visitor-chat-head h2{font:42px/.95 var(--display);margin:10px 0 0;letter-spacing:-.04em}
+    .chat-close{width:32px;height:32px;background:transparent;color:var(--ink);border:1px solid #ffffff28;font:22px var(--sans);cursor:pointer}
+    .visitor-chat-intro{font-size:12px;color:var(--muted);line-height:1.7;margin:17px 0 21px}
+    #visitor-chat-form label{display:block;font:8px var(--mono);letter-spacing:.11em;text-transform:uppercase;color:#c1beb5;margin:0 0 14px}
+    #visitor-chat-form input,#visitor-chat-form textarea{display:block;width:100%;margin-top:7px;padding:11px 12px;background:#09090a;border:1px solid #ffffff22;border-radius:0;color:var(--ink);font:11px var(--sans);letter-spacing:0;resize:vertical}
+    #visitor-chat-form input:focus,#visitor-chat-form textarea:focus{outline:1px solid var(--lime);border-color:var(--lime)}
+    #visitor-chat-form input::placeholder,#visitor-chat-form textarea::placeholder{color:#77756f}
+    .chat-send{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:4px;padding:13px 15px;background:var(--lime);border:0;color:#11130a;font:600 11px var(--sans);cursor:pointer}
+    .chat-send:disabled{opacity:.6;cursor:wait}.chat-send b{font:14px var(--mono)}
+    .chat-status{min-height:15px;margin:11px 0 0;color:#99968d;font:9px/1.6 var(--mono)}
+    .chat-status[data-state="error"]{color:#ff9b80}.chat-status[data-state="success"]{color:var(--lime)}
+    .chat-close:focus-visible,.chat-launcher:focus-visible,.chat-send:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+    @media(max-width:480px){.chat-widget{right:12px;bottom:14px}.chat-panel{bottom:65px;padding:19px}.chat-launcher{padding:13px 14px}}
+
   </style>
 </head>
 <body>
@@ -346,6 +368,21 @@ text = text.lower()</code></pre></div>
       <aside class="case-aside"><p class="case-label">PROJECT REPOSITORY</p><p>Explore the source and project notes when you want the implementation detail.</p><a class="btn primary" href="https://github.com/mukeshsiyol/hostel-management" target="_blank" rel="noreferrer">Open repository ↗</a></aside></div>
   </div>
 </dialog>
+
+<div class="chat-widget">
+  <section class="chat-panel" id="visitor-chat" aria-labelledby="chat-title" hidden>
+    <div class="visitor-chat-head"><div><span>DIRECT LINE · FORM MESSAGE</span><h2 id="chat-title">Let’s talk.</h2></div><button type="button" class="chat-close" aria-label="Close chat">×</button></div>
+    <p class="visitor-chat-intro">Have a project, opportunity, or question? Leave a note and I’ll get back to you.</p>
+    <form id="visitor-chat-form">
+      <label>Your name<input name="name" autocomplete="name" maxlength="100" placeholder="How should I address you?" required></label>
+      <label>Your email<input name="email" type="email" autocomplete="email" maxlength="200" placeholder="you@example.com" required></label>
+      <label>Message<textarea name="message" rows="4" maxlength="4000" placeholder="What’s on your mind?" required></textarea></label>
+      <button class="chat-send" type="submit"><span>Send message</span><b>↗</b></button>
+      <p class="chat-status" id="visitor-chat-status" role="status" aria-live="polite">Your message goes directly to Mukesh’s inbox.</p>
+    </form>
+  </section>
+  <button type="button" class="chat-launcher" aria-expanded="false" aria-controls="visitor-chat"><span class="chat-launcher-dot"></span><span>Start a conversation</span><b>↗</b></button>
+</div>
 </main>
 <footer class="wrap"><span>© 2026 Mukesh Kumar · Made with curiosity.</span><div class="footlinks"><a href="mailto:mukeshsiyol2006@gmail.com">Email</a><a href="https://github.com/mukeshsiyol">GitHub</a><a href="https://linkedin.com/in/mukesh-kumar06">LinkedIn</a></div></footer>
 
@@ -578,6 +615,54 @@ text = text.lower()</code></pre></div>
       }
     }
   };
+
+
+  const chatPanel = document.getElementById("visitor-chat");
+  const chatLauncher = document.querySelector(".chat-launcher");
+  const chatForm = document.getElementById("visitor-chat-form");
+  const chatStatus = document.getElementById("visitor-chat-status");
+  const closeChat = () => { chatPanel.hidden = true; chatLauncher.setAttribute("aria-expanded", "false"); chatLauncher.focus(); };
+  chatLauncher.addEventListener("click", () => {
+    const opening = chatPanel.hidden;
+    chatPanel.hidden = !opening;
+    chatLauncher.setAttribute("aria-expanded", String(opening));
+    if (opening) chatPanel.querySelector("input").focus();
+  });
+  document.querySelector(".chat-close").addEventListener("click", closeChat);
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !chatPanel.hidden) closeChat();
+  });
+  chatForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const FORMSPREE_FORM_ID = "YOUR_FORMSPREE_FORM_ID";
+    if (FORMSPREE_FORM_ID === "YOUR_FORMSPREE_FORM_ID") {
+      chatStatus.dataset.state = "error";
+      chatStatus.textContent = "Chat is designed and ready. Add your Formspree form ID to enable delivery.";
+      return;
+    }
+    const sendButton = chatForm.querySelector(".chat-send");
+    sendButton.disabled = true;
+    sendButton.querySelector("span").textContent = "Sending…";
+    chatStatus.dataset.state = "";
+    chatStatus.textContent = "Sending your message securely…";
+    try {
+      const response = await fetch("https://formspree.io/f/" + FORMSPREE_FORM_ID, {
+        method: "POST",
+        body: new FormData(chatForm),
+        headers: { Accept: "application/json" }
+      });
+      if (!response.ok) throw new Error("Message could not be sent.");
+      chatForm.reset();
+      chatStatus.dataset.state = "success";
+      chatStatus.textContent = "Message sent. Thanks for reaching out — I’ll reply by email.";
+    } catch (_) {
+      chatStatus.dataset.state = "error";
+      chatStatus.textContent = "Could not send right now. Please try again in a moment.";
+    } finally {
+      sendButton.disabled = false;
+      sendButton.querySelector("span").textContent = "Send message";
+    }
+  });
 
   document.querySelectorAll("[data-case]").forEach((button) => {
     const dialog = document.getElementById("case-" + button.dataset.case);
