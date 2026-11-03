@@ -74,7 +74,7 @@
 
 <script>
 (() => {
-  const CODEFORCES_HANDLE = "";
+  const CODEFORCES_HANDLE = "m.s.c.";
   const log = document.getElementById("chat-log");
   const form = document.getElementById("chat-form");
   const input = document.getElementById("chat-input");
@@ -169,7 +169,7 @@
       const solved = new Set(status.result.filter(item => item.verdict === "OK").map(item => item.problem.contestId + "-" + item.problem.index));
       cf.solved = solved.size;
       document.getElementById("cf-breakdown").innerHTML = "<span>Unique problems solved <b>" + solved.size.toLocaleString() + "</b></span>";
-      document.getElementById("cf-note").textContent = "Counted distinct accepted problems from public submissions.";
+      document.getElementById("cf-note").textContent = "Counted distinct accepted problems in the latest 10,000 public submissions.";
     } catch (_) {
       document.getElementById("cf-caption").textContent = "Could not load profile stats";
       document.getElementById("cf-note").textContent = "The profile link is available; API data could not be fetched.";
