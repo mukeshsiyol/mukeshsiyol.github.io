@@ -75,7 +75,7 @@
     .evidence-stamp{position:absolute;right:14%;top:43%;border:1px solid var(--orange);padding:12px 10px;color:var(--orange);font:9px/1.5 var(--mono);letter-spacing:.1em;transform:rotate(-9deg);background:#15120fbb}
     .ledger-visual{background:linear-gradient(135deg,#171913,#171411)}
     .ledger-top{position:absolute;left:25px;right:25px;top:55px;display:flex;justify-content:space-between;border-bottom:1px solid #ffffff28;padding-bottom:10px;font:8px var(--mono);color:#aaa79c}.ledger-top b{color:var(--lime);font-weight:400}
-    .ledger-line{position:relative;z-index:1;display:flex;align-items:center;gap:9px;margin:12px 25px;font:8px var(--mono);color:#a8a59b}.ledger-line:first-of-type{margin-top:91px}.ledger-line i{height:1px;flex:1;background:#ffffff24}.ledger-line b{font-weight:400;color:#eee8d9}.ledger-line.total b{color:var(--lime)}
+    .ledger-line{position:absolute;left:0;right:0;z-index:1;display:flex;align-items:center;gap:9px;margin:0 25px;font:8px var(--mono);color:#a8a59b}.ledger-line:nth-of-type(3){top:91px}.ledger-line:nth-of-type(4){top:119px}.ledger-line:nth-of-type(5){top:147px}.ledger-line i{height:1px;flex:1;background:#ffffff24}.ledger-line b{font-weight:400;color:#eee8d9}.ledger-line.total b{color:var(--lime)}
     .ledger-visual svg{position:absolute;left:25px;right:25px;bottom:39px;width:calc(100% - 50px);height:73px;overflow:visible}.ledger-visual path{fill:none;stroke:#d6f66a;stroke-width:1.5;stroke-dasharray:420;stroke-dashoffset:420;transition:stroke-dashoffset 1s}.project-story:hover .ledger-visual path{stroke-dashoffset:0}
     .match-visual{background:linear-gradient(150deg,#1a1521,#0f1014)}
     .match-doc{position:absolute;background:#e1dccb;color:#28271f;width:135px;height:140px;padding:13px;box-shadow:0 16px 34px #0008;top:73px}
@@ -266,17 +266,19 @@
         "<span>Easy <b>" + stats.easy.toLocaleString() + "</b></span>" +
         "<span>Medium <b>" + stats.medium.toLocaleString() + "</b></span>" +
         "<span>Hard <b>" + stats.hard.toLocaleString() + "</b></span>";
-      setStat("lc-note", note);
-      if (stats.streak !== null && stats.streak !== undefined) {
-        setStat("lc-note", note + " · " + stats.streak + "-day streak");
-      }
+      setStat("lc-note", note + (stats.streak !== null && stats.streak !== undefined ? " · " + stats.streak + "-day streak" : ""));
+    };
+    const saveAndRender = (stats, note) => {
+      try { localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats })); } catch (_) {}
+      renderStats(stats, note);
     };
     if (saved?.stats && Date.now() - saved.savedAt < cacheAge) {
       const mins = Math.max(1, Math.round((Date.now() - saved.savedAt) / 60000));
-      renderStats(saved.stats, "Refreshed " + mins + " min ago · auto-refreshes every 30 min");
+      renderStats(saved.stats, "Cached " + mins + " min ago · refreshes every 30 min");
     } else if (saved?.stats) {
-      renderStats(saved.stats, "Showing last saved count while refreshing…");
+      renderStats(saved.stats, "Showing saved count while refreshing…");
     }
+
     try {
       const query = `query profile($username: String!) {
         matchedUser(username: $username) {
@@ -305,18 +307,29 @@
         ranking: user.profile?.ranking ?? null,
         contestRating: result.data.userContestRanking?.rating ?? null
       };
-      localStorage.setItem(cacheKey, JSON.stringify({ savedAt: Date.now(), stats }));
-      renderStats(stats, "Live public profile · cached for 30 min");
+      saveAndRender(stats, "Live public profile · cached for 30 min");
       if (stats.contestRating !== null) {
         setStat("lc-note", "Live public profile · contest rating " + Math.round(stats.contestRating).toLocaleString() +
-          (stats.streak !== null ? " · " + stats.streak + "-day streak" : ""));
+          (stats.streak !== null ? " · " + stats.streak + "-day streak" : "") + " · cached for 30 min");
       }
     } catch (_) {
-      if (!saved?.stats) {
-        setStat("lc-total", "—");
-        setStat("lc-note", "Could not reach LeetCode stats right now. Refresh in a little while or open the profile directly.");
-      } else {
-        setStat("lc-note", "Refresh failed · showing saved public stats");
+      try {
+        const response = await fetch("https://alfa-leetcode-api.onrender.com/" + encodeURIComponent(username) + "/solved", {
+          signal: AbortSignal.timeout(20000)
+        });
+        if (!response.ok) throw new Error("Backup stats request failed");
+        const data = await response.json();
+        const easy = Number(data.easySolved), medium = Number(data.mediumSolved), hard = Number(data.hardSolved);
+        const total = Number(data.solvedProblem ?? data.totalSolved);
+        if (![easy, medium, hard, total].every(Number.isFinite)) throw new Error("Unexpected stats response");
+        saveAndRender({ easy, medium, hard, total, all: Number(data.totalQuestions) || null, streak: null }, "Live public profile · cached for 30 min");
+      } catch (_) {
+        if (!saved?.stats) {
+          setStat("lc-total", "—");
+          setStat("lc-note", "Live stats are temporarily unavailable. The profile link above is still available.");
+        } else {
+          setStat("lc-note", "Refresh failed · showing saved public stats");
+        }
       }
     }
   };
