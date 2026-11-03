@@ -19,16 +19,45 @@
     .about{display:grid;grid-template-columns:1fr 1fr;gap:80px}.about-copy{font-size:16px;max-width:500px;color:var(--muted)}.about-copy strong{color:var(--ink);font-weight:500}.about-copy p+p{margin-top:17px}.toolbox{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tool{padding:14px;border:1px solid var(--line);background:#ffffff03}.tool small{display:block;font:9px var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:8px}.tool strong{font-size:13px;font-weight:500}
     .contact{padding:72px 0 80px;display:flex;align-items:center;justify-content:space-between;gap:26px}.contact h2{font-size:clamp(38px,6vw,66px);letter-spacing:-.075em;line-height:.98;margin:12px 0}.contact p{color:var(--muted);font-size:13px;max-width:430px}.contact .btn{white-space:nowrap}
     footer{padding:22px 0 30px;display:flex;justify-content:space-between;gap:15px;color:#77756f;font:9px var(--mono);text-transform:uppercase;letter-spacing:.06em}.footlinks{display:flex;gap:18px}.footlinks a:hover{color:var(--lime)}
+
+    .terminal-section{padding:88px 0;border-bottom:1px solid var(--line)}
+    .terminal-grid{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(270px,.7fr);gap:16px;align-items:stretch}
+    .terminal-box,.progress-box{border:1px solid #343438;background:#101012;min-width:0}
+    .term-top{height:44px;display:flex;align-items:center;justify-content:space-between;padding:0 15px;border-bottom:1px solid #ffffff12;font:10px var(--mono);color:#a6a49c}
+    .term-lights{display:flex;gap:6px}.term-lights i{width:7px;height:7px;border-radius:50%;background:#ff764a}.term-lights i:nth-child(2){background:#f0c85a}.term-lights i:nth-child(3){background:#a6d95f}
+    .term-body{padding:18px 18px 12px;height:275px;overflow:auto;font:11px/1.7 var(--mono);scrollbar-color:#4b4b4e #101012}
+    .term-line{margin:0 0 11px;white-space:pre-wrap;overflow-wrap:anywhere}.term-line.user{color:var(--lime)}.term-line.bot{color:#cfcdc5}.term-line.system{color:#888780}.term-prompt{color:var(--orange)}
+    .term-form{display:flex;gap:9px;align-items:center;border-top:1px solid #ffffff12;padding:12px 14px}.term-prompt{font:11px var(--mono);color:var(--lime)}.term-form input{min-width:0;flex:1;background:transparent;border:0;color:var(--ink);font:11px var(--mono);outline:0}.term-form input::placeholder{color:#69686a}.term-form button{background:var(--lime);border:0;color:#10110b;padding:8px 11px;font:10px var(--mono);cursor:pointer}
+    .quick-asks{display:flex;gap:7px;flex-wrap:wrap;padding:0 14px 14px}.quick-asks button{background:#ffffff07;border:1px solid #ffffff18;color:#c6c3ba;padding:6px 9px;font:9px var(--mono);cursor:pointer}.quick-asks button:hover{border-color:var(--lime);color:var(--lime)}
+    .progress-box{padding:19px}.progress-head{display:flex;justify-content:space-between;align-items:center;font:10px var(--mono);color:#aaa79f;text-transform:uppercase;letter-spacing:.08em}.live-dot{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 10px #d7fb5b}
+    .platform{padding:17px 0;border-top:1px solid #ffffff12;margin-top:15px}.platform-title{display:flex;justify-content:space-between;align-items:center}.platform-title strong{font-size:14px;font-weight:600}.platform-title a{font:9px var(--mono);color:var(--lime)}.platform-number{font-size:33px;letter-spacing:-.06em;margin:6px 0 1px}.platform-caption{font:9px var(--mono);color:#8e8b85}.difficulty{display:flex;gap:10px;margin-top:11px}.difficulty span{font:9px var(--mono);color:#bbb8b0}.difficulty b{color:#f0eee8;font-weight:400}.platform-note{color:#8e8b85;font:9px/1.6 var(--mono);margin:8px 0 0}.mini-link{display:inline-block;margin-top:5px;font:9px var(--mono);color:var(--lime)}
+    @media(max-width:760px){.terminal-grid{grid-template-columns:1fr}.term-body{height:245px}.terminal-section{padding:65px 0}}
     @media(max-width:760px){.wrap{width:calc(100% - 34px)}header{height:66px}.links{gap:17px}.links>a:not(.pill){display:none}.hero{display:block;padding:82px 0 55px;min-height:auto}.hero h1{font-size:clamp(62px,16vw,96px)}.orbit-scene{height:300px;margin-top:22px;transform:scale(.83)}.section-head{display:block}.section-head p{margin-top:15px}.projects{display:block}.card,.card.wide,.card.narrow{min-height:340px;margin-bottom:13px}.about{grid-template-columns:1fr;gap:32px}.contact{display:block}.contact .btn{margin-top:15px}.ticker-track{animation-duration:24s}section{padding:68px 0}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker-track{animation:none}.bars i{animation:none}*,*:before,*:after{transition:none!important}}
   </style>
 </head>
 <body>
-<header><nav class="nav wrap" aria-label="Main navigation"><a class="brand" href="#top"><span class="mark">MK</span><span>MUKESH KUMAR<br><small>BUILDER / ENGINEER</small></span></a><div class="links"><a href="#work">Work</a><a href="#about">About</a><a href="https://github.com/mukeshsiyol" target="_blank" rel="noreferrer">GitHub ↗</a><a class="pill" href="mailto:mukeshsiyol2006@gmail.com">Let’s talk ↗</a></div></nav></header>
+<header><nav class="nav wrap" aria-label="Main navigation"><a class="brand" href="#top"><span class="mark">MK</span><span>MUKESH KUMAR<br><small>BUILDER / ENGINEER</small></span></a><div class="links"><a href="#work">Work</a><a href="#terminal">Terminal</a><a href="#about">About</a><a href="https://github.com/mukeshsiyol" target="_blank" rel="noreferrer">GitHub ↗</a><a class="pill" href="mailto:mukeshsiyol2006@gmail.com">Let’s talk ↗</a></div></nav></header>
 <main id="top">
   <div class="hero wrap"><div class="hero-copy"><div class="availability"><i></i> Engineering Physics · IIT Delhi</div><h1>Curious<br>by nature.<br><span>Builder</span><br>by choice.</h1><p class="hero-text">Hey, I’m <b>Mukesh</b>. I turn tricky ideas into useful software—working across backend systems, applied AI, and the space between them.</p><div class="hero-actions"><a class="btn primary" href="#work">See what I’m building <span>↓</span></a><a class="btn" href="https://github.com/mukeshsiyol" target="_blank" rel="noreferrer">GitHub <span>↗</span></a></div><div class="hero-meta"><span><strong>Based at</strong> IIT Delhi</span><span><strong>Into</strong> Systems + AI</span><span><strong>Currently</strong> Building</span></div></div>
     <div class="orbit-scene" aria-label="Abstract orbital illustration"><span class="scene-index">FIG 01 — THINKING IN SYSTEMS</span><div class="orbit"></div><div class="planet"></div><span class="satellite"></span><div class="scene-note"><b>MATTER / MOTION / CODE</b><br>A little physics in everything.</div></div>
   </div>
+
+  <section id="terminal" class="terminal-section"><div class="wrap">
+    <div class="section-head"><div><div class="section-kicker">02 / Ask the terminal</div><h2>Curious about me?</h2></div><p>A small, profile-grounded chat terminal. Ask about my studies, project experience, skills, or coding practice.</p></div>
+    <div class="terminal-grid">
+      <div class="terminal-box"><div class="term-top"><span class="term-lights"><i></i><i></i><i></i></span><span>mukesh@portfolio:~</span><span>LOCAL PROFILE BOT</span></div>
+        <div class="term-body" id="chat-log" role="log" aria-live="polite" aria-relevant="additions text"><p class="term-line system">Hi, I’m Mukesh’s portfolio terminal. Ask a question or try a topic below.<br>Type <span class="term-prompt">help</span> to see what I can answer.</p></div>
+        <form class="term-form" id="chat-form"><span class="term-prompt">&gt;</span><input id="chat-input" aria-label="Ask Mukesh's portfolio terminal" autocomplete="off" placeholder="Ask about education, experience, projects…"><button type="submit">SEND ↵</button></form>
+        <div class="quick-asks"><button type="button" data-ask="education">education</button><button type="button" data-ask="experience">experience</button><button type="button" data-ask="projects">projects</button><button type="button" data-ask="progress">coding progress</button><button type="button" data-ask="skills">skills</button></div>
+      </div>
+      <aside class="progress-box" aria-label="Coding platform progress"><div class="progress-head"><span>Practice dashboard</span><span class="live-dot" aria-label="Live data"></span></div>
+        <div class="platform"><div class="platform-title"><strong>LeetCode</strong><a href="https://leetcode.com/u/monu_siyol/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="lc-total">Loading…</div><div class="platform-caption" id="lc-caption">Problems solved · public profile</div><div class="difficulty" id="lc-breakdown"></div><p class="platform-note" id="lc-note">Fetching latest public totals…</p></div>
+        <div class="platform"><div class="platform-title"><strong>Codeforces</strong><a id="cf-profile-link" href="https://codeforces.com/" target="_blank" rel="noreferrer">OPEN PROFILE ↗</a></div><div class="platform-number" id="cf-rating">—</div><div class="platform-caption" id="cf-caption">Rating · handle not linked yet</div><div class="difficulty" id="cf-breakdown"></div><p class="platform-note" id="cf-note">Add your Codeforces handle to show rating and solved problems.</p></div>
+        <a class="mini-link" href="https://github.com/mukeshsiyol/leetcode-submissions" target="_blank" rel="noreferrer">Browse my LeetCode solutions on GitHub ↗</a>
+      </aside>
+    </div>
+  </div></section>
   <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>Python <b>✳</b></span><span>Backend systems <b>✳</b></span><span>Applied AI <b>✳</b></span><span>FastAPI <b>✳</b></span><span>Engineering Physics <b>✳</b></span><span>TypeScript <b>✳</b></span><span>Python <b>✳</b></span><span>Backend systems <b>✳</b></span><span>Applied AI <b>✳</b></span><span>FastAPI <b>✳</b></span><span>Engineering Physics <b>✳</b></span><span>TypeScript <b>✳</b></span></div></div>
   <section id="work"><div class="wrap"><div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2>Things I’ve made.</h2></div><p>Small selection of public projects. Each card opens the code and the README explains the decisions behind it.</p></div><div class="projects">
     <a class="card wide" href="https://github.com/mukeshsiyol/remittance-evidence-routing-assistant" target="_blank" rel="noreferrer" style="--glow:#d7fb5b"><div class="card-art"><span class="art-label">Evidence in · Human review out</span><div class="art-orbit"><i class="art-core"></i></div></div><div class="cardtop"><span>01 / APPLIED AI</span><em>DECISION SUPPORT</em></div><h3>Remittance Evidence &amp;<br>Routing Assistant</h3><p>A careful first pass over cross-border payment documents: extracts evidence, flags uncertainty, and routes cases for human review. Synthetic data; exploratory evaluation only.</p><div class="tags"><span>Python</span><span>LLM workflow</span><span>Evidence checks</span><span>Human review</span></div><span class="outlink">↗</span></a>
@@ -42,4 +71,112 @@
   <div class="contact wrap"><div><div class="section-kicker">03 / Say hello</div><h2>Have a good<br>problem in mind?</h2><p>I’m always up for a thoughtful conversation about software, AI, or what you’re building.</p></div><a class="btn primary" href="mailto:mukeshsiyol2006@gmail.com">Write me an email ↗</a></div>
 </main>
 <footer class="wrap"><span>© 2026 Mukesh Kumar · Made with curiosity.</span><div class="footlinks"><a href="mailto:mukeshsiyol2006@gmail.com">Email</a><a href="https://github.com/mukeshsiyol">GitHub</a><a href="https://linkedin.com/in/mukesh-kumar06">LinkedIn</a></div></footer>
+
+<script>
+(() => {
+  const CODEFORCES_HANDLE = "";
+  const log = document.getElementById("chat-log");
+  const form = document.getElementById("chat-form");
+  const input = document.getElementById("chat-input");
+  const addLine = (text, kind) => {
+    const line = document.createElement("p");
+    line.className = "term-line " + kind;
+    line.textContent = text;
+    log.appendChild(line);
+    log.scrollTop = log.scrollHeight;
+  };
+  const lc = { total: null, easy: null, medium: null, hard: null };
+  const cf = { handle: CODEFORCES_HANDLE, rating: null, solved: null };
+  const answers = (question) => {
+    const q = question.toLowerCase();
+    if (/^(help|commands|\?)$/.test(q) || q.includes("what can you")) return "Try: about, education, experience, projects, skills, LeetCode, Codeforces, progress, or contact. I answer from the public portfolio and repository information.";
+    if (/education|degree|college|university|iit|study|studying|major/.test(q)) return "Mukesh studies Engineering Physics at IIT Delhi. His public profile does not list dates or additional education details.";
+    if (/experience|intern|work|employment|company|job/.test(q)) return "The public profile does not list a formal employer or completed internship. It does show project experience, including a COREP reporting assistant internship assignment prototype and several software projects.";
+    if (/leetcode|codeforces|competitive|solved|questions|problems|progress|rating/.test(q)) {
+      const lct = lc.total === null ? "LeetCode totals are currently unavailable" : "LeetCode: " + lc.total + " solved (Easy " + lc.easy + ", Medium " + lc.medium + ", Hard " + lc.hard + ")";
+      const cft = !cf.handle ? "Codeforces handle has not been provided yet" : cf.solved === null ? "Codeforces stats are loading or unavailable" : "Codeforces: " + cf.solved + " distinct accepted problems; rating " + (cf.rating ?? "unrated");
+      return lct + ". " + cft + ". Open the linked profiles to see the latest account pages.";
+    }
+    if (/project|built|build|made|portfolio/.test(q)) return "Selected projects: Remittance Evidence & Routing Assistant (synthetic-data decision-support prototype), Finance Tracker API, Internship Application Assistant, COREP Reporting Assistant (assignment prototype), Meme Aggregator, and Hostel Management. Each project card links to its public repository.";
+    if (/skill|stack|language|technology|tech/.test(q)) return "The portfolio lists Python, C++, TypeScript, FastAPI, SQLAlchemy, Redis, RAG/LLM workflows, OpenCV, and web development.";
+    if (/contact|email|reach|linkedin/.test(q)) return "Email Mukesh at mukeshsiyol2006@gmail.com or connect on LinkedIn: linkedin.com/in/mukesh-kumar06.";
+    if (/about|who|yourself|mukesh/.test(q)) return "Mukesh Kumar is an Engineering Physics student at IIT Delhi who builds software across backend systems and applied AI. Explore the project cards below for examples.";
+    return "I don’t have a verified answer for that in the public profile. Try education, experience, projects, skills, coding progress, or contact.";
+  };
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const text = input.value.trim();
+    if (!text) return;
+    addLine("> " + text, "user");
+    if (text.toLowerCase() === "clear") {
+      log.replaceChildren();
+      addLine("Terminal cleared. Ask about education, projects, experience, skills, or coding progress.", "system");
+    } else {
+      addLine(answers(text), "bot");
+    }
+    input.value = "";
+    input.focus();
+  });
+  document.querySelectorAll("[data-ask]").forEach((button) => button.addEventListener("click", () => {
+    input.value = button.dataset.ask;
+    form.requestSubmit();
+  }));
+
+  const loadLeetCode = async () => {
+    const endpoints = [
+      "https://alfa-leetcode-api.onrender.com/monu_siyol/solved",
+      "https://leetcode-api-faisalshohag.vercel.app/monu_siyol"
+    ];
+    for (const endpoint of endpoints) {
+      try {
+        const response = await fetch(endpoint, { signal: AbortSignal.timeout(9000) });
+        if (!response.ok) continue;
+        const data = await response.json();
+        const easy = data.easySolved;
+        const medium = data.mediumSolved;
+        const hard = data.hardSolved;
+        const total = data.solvedProblem ?? data.totalSolved ?? (easy + medium + hard);
+        if (![easy, medium, hard, total].every(Number.isFinite)) continue;
+        lc.total = total; lc.easy = easy; lc.medium = medium; lc.hard = hard;
+        document.getElementById("lc-total").textContent = total.toLocaleString();
+        document.getElementById("lc-caption").textContent = "problems solved · " + (data.totalQuestions ? data.totalQuestions.toLocaleString() + " total" : "LeetCode public profile");
+        document.getElementById("lc-breakdown").innerHTML = "<span>Easy <b>" + easy + "</b></span><span>Medium <b>" + medium + "</b></span><span>Hard <b>" + hard + "</b></span>";
+        document.getElementById("lc-note").textContent = "Fetched from public profile · totals may update with a short delay.";
+        return;
+      } catch (_) {}
+    }
+    document.getElementById("lc-total").textContent = "—";
+    document.getElementById("lc-note").textContent = "Live stats are unavailable right now. The profile link above still works.";
+  };
+
+  const loadCodeforces = async () => {
+    if (!CODEFORCES_HANDLE) return;
+    const handle = encodeURIComponent(CODEFORCES_HANDLE);
+    document.getElementById("cf-profile-link").href = "https://codeforces.com/profile/" + handle;
+    document.getElementById("cf-caption").textContent = "Loading profile…";
+    try {
+      const infoResponse = await fetch("https://codeforces.com/api/user.info?handles=" + handle);
+      const info = await infoResponse.json();
+      if (info.status !== "OK" || !info.result?.length) throw new Error("Profile unavailable");
+      const user = info.result[0];
+      cf.rating = user.rating ?? 0;
+      document.getElementById("cf-rating").textContent = user.rating ? user.rating.toLocaleString() : "Unrated";
+      document.getElementById("cf-caption").textContent = (user.rank ? user.rank + " · " : "") + "current rating";
+      await new Promise(resolve => setTimeout(resolve, 2200));
+      const statusResponse = await fetch("https://codeforces.com/api/user.status?handle=" + handle + "&from=1&count=10000");
+      const status = await statusResponse.json();
+      if (status.status !== "OK") throw new Error("Submissions unavailable");
+      const solved = new Set(status.result.filter(item => item.verdict === "OK").map(item => item.problem.contestId + "-" + item.problem.index));
+      cf.solved = solved.size;
+      document.getElementById("cf-breakdown").innerHTML = "<span>Unique problems solved <b>" + solved.size.toLocaleString() + "</b></span>";
+      document.getElementById("cf-note").textContent = "Counted distinct accepted problems from public submissions.";
+    } catch (_) {
+      document.getElementById("cf-caption").textContent = "Could not load profile stats";
+      document.getElementById("cf-note").textContent = "The profile link is available; API data could not be fetched.";
+    }
+  };
+  loadLeetCode();
+  loadCodeforces();
+})();
+</script>
 </body></html>
