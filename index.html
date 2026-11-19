@@ -287,6 +287,19 @@
       .reveal-ready{opacity:1;transform:none;transition:none}
     }
 
+
+    .invoice-visual{background:radial-gradient(ellipse at 48% 50%,#263a3c 0,#172326 48%,#101214 100%)}
+    .invoice-sheet{position:absolute;left:14%;top:74px;width:190px;height:185px;padding:18px;background:#e8e2d2;color:#262820;box-shadow:0 20px 45px #0009;transform:rotate(-4deg)}
+    .invoice-sheet b{font:8px var(--mono);letter-spacing:.09em}.invoice-sheet i{display:block;height:1px;background:#59594e44;margin:15px 0}.invoice-sheet span{display:block;margin-top:18px;color:#465c35;font:16px var(--mono)}
+    .invoice-flow{position:absolute;left:38%;right:8%;top:112px;display:flex;justify-content:space-around;align-items:center;gap:6px;padding:13px 10px;background:#0b1112e8;border:1px solid #ffffff2a;color:#ddd;font:7px var(--mono);letter-spacing:.06em}.invoice-flow i{color:var(--lime);font-style:normal}
+    .invoice-decision{position:absolute;right:8%;bottom:48px;padding:12px 15px;background:#101313;border:1px solid #f58b6277;transform:rotate(2deg)}.invoice-decision small,.invoice-decision span{display:block;color:#aaa99e;font:7px var(--mono);letter-spacing:.08em}.invoice-decision strong{display:block;color:var(--orange);font:24px var(--display);margin:2px 0}.invoice-decision span{color:#d5b8a8;font-size:6px}
+    .finn-visual{background:radial-gradient(ellipse at 50% 20%,#173b34 0,#14211e 48%,#101313 100%)}
+    .finn-window{position:absolute;left:10%;right:10%;top:54px;bottom:44px;border:1px solid #ffffff32;background:#101514eF;box-shadow:0 20px 50px #0009}
+    .finn-window-top{height:31px;display:flex;align-items:center;gap:5px;padding:0 10px;border-bottom:1px solid #ffffff1b}.finn-window-top i{width:5px;height:5px;border-radius:50%;background:#f58b62}.finn-window-top i:nth-child(2){background:#eccb66}.finn-window-top i:nth-child(3){background:#d6f66a}.finn-window-top span{margin-left:8px;color:#9eaaa0;font:6px var(--mono);letter-spacing:.1em}
+    .finn-question{margin:21px 17px 10px;color:#e2e5da;font:11px var(--sans)}.finn-answer{margin:0 17px;padding:12px;background:#18221e;border-left:2px solid var(--lime);color:#c8d3c8;font:9px/1.6 var(--sans)}.finn-answer sup{color:var(--lime);font:8px var(--mono)}
+    .finn-source{display:flex;align-items:center;gap:8px;margin:9px 17px;color:#a8b4a7;font:7px var(--mono)}.finn-source b{color:var(--lime)}.finn-source i{margin-left:auto;font-style:normal;color:#c4c69c;font-size:6px}.finn-status{margin:12px 17px;color:#88958d;font:6px var(--mono);letter-spacing:.07em}.finn-status span{color:var(--lime)}
+    @media(prefers-reduced-motion:reduce){.invoice-sheet,.invoice-decision{transform:none}}
+
   </style>
 </head>
 <body>
@@ -326,36 +339,43 @@
     <ul><li>Python</li><li>C++</li><li>TypeScript</li><li>Backend systems</li><li>Applied AI</li><li>FastAPI</li><li>Engineering Physics</li></ul>
   </div>
   <section id="work" class="work-section"><div class="wrap">
-  <div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2>Made by following<br>the question.</h2></div><p>Six projects, each starting with a real question. Open a story to see the code, decisions, and limits.</p></div>
-  <div class="project-narrative"><div class="project-featured" aria-label="Featured systems"><article class="project-story feature-story flagship remittance-flagship">
-      <div class="story-marker"><span>01</span><i></i><small>AI / EVIDENCE</small></div>
+  <div class="section-head"><div><div class="section-kicker">01 / Selected work</div><h2>Made by following<br>the question.</h2></div><p>Eight projects, each starting with a real question. Open a story to see the code, decisions, and limits.</p></div>
+  <div class="project-narrative"><div class="project-featured" aria-label="Featured systems"><article class="project-story feature-story flagship invoicedesk-flagship">
+      <div class="story-marker"><span>01</span><i></i><small>AI / ACCOUNTS PAYABLE</small></div>
+      <div class="story-visual invoice-visual" aria-hidden="true"><div class="visual-caption">FROM INVOICE PDF TO EXPLAINABLE DECISION</div><div class="invoice-sheet"><b>VENDOR INVOICE</b><i></i><i></i><i></i><span>₹ 84,250.00</span></div><div class="invoice-flow"><b>EXTRACT</b><i>→</i><b>VALIDATE</b><i>→</i><b>MATCH</b></div><div class="invoice-decision"><small>RULE ENGINE</small><strong>REVIEW</strong><span>LOW EXTRACTION CONFIDENCE</span></div><div class="visual-foot">PDF · DECIMAL CHECKS · PURCHASE ORDER · AUDIT</div></div>
+      <div class="story-copy"><p class="story-type">APPLIED AI · ACCOUNTS PAYABLE</p><h3>InvoiceDesk</h3><p class="story-question"><span>THE QUESTION</span>How do you automate invoice review while keeping every decision explainable?</p><p class="story-answer">A full-stack AP automation prototype that extracts invoice data, checks arithmetic with deterministic Decimal rules, matches purchase orders, and routes each case to approve, review, or reject with an audit trail.</p><div class="story-tags"><span>TypeScript</span><span>Gemini</span><span>Decimal.js</span><span>SQLite</span></div><button class="story-link" type="button" data-case="invoicedesk">OPEN CASE STUDY <b>↗</b></button></div>
+    </article>
+    <article class="project-story reverse-story flagship finn-flagship">
+      <div class="story-marker"><span>02</span><i></i><small>AI / INVESTMENT RESEARCH</small></div>
+      <div class="story-visual finn-visual" aria-hidden="true"><div class="visual-caption">RESEARCH THAT SHOWS ITS SOURCES</div><div class="finn-window"><div class="finn-window-top"><i></i><i></i><i></i><span>COMPANY RESEARCH / EVIDENCE</span></div><div class="finn-question">What changed in the latest filing?</div><div class="finn-answer">Revenue increased in the reported quarter.<sup>[S1]</sup></div><div class="finn-source"><b>[S1]</b><span>Annual report · p. 42</span><i>PAGE CHECKED</i></div><div class="finn-status">SOURCE VERIFIED <span>·</span> INTERPRETATION LABELLED</div></div><div class="visual-foot">DISCOVER · RETRIEVE · CITE · REVIEW</div></div>
+      <div class="story-copy"><p class="story-type">AI · INVESTMENT INTELLIGENCE PROTOTYPE</p><h3>FINN</h3><p class="story-question"><span>THE QUESTION</span>How can investors explore filings and market signals without losing the evidence trail?</p><p class="story-answer">A mobile-first research workspace combining company announcements, market alerts, and source-grounded PDF research. Claims stay tied to retrieved evidence, with uncertainty and prototype limits made visible.</p><div class="story-tags"><span>Python</span><span>FastAPI</span><span>React</span><span>Evidence retrieval</span></div><button class="story-link" type="button" data-case="finn">OPEN CASE STUDY <b>↗</b></button></div>
+    </article>
+    </div>
+    <div class="project-group-label"><span>03—06 / SYSTEMS &amp; APPLIED AI</span><i></i></div>
+    <div class="project-support-grid"><article class="project-story support-story">
+      <div class="story-marker"><span>03</span><i></i><small>AI / EVIDENCE</small></div>
       <div class="story-visual evidence-visual" aria-hidden="true"><div class="visual-caption">TRACE WHAT THE MODEL SEES</div><div class="evidence-paper paper-one"><b>INVOICE</b><i></i><i></i><i></i><em>§ 03.2</em></div><div class="evidence-paper paper-two"><b>CONTRACT</b><i></i><i></i><i></i><em>CLAUSE 8</em></div><div class="trace-line"></div><div class="evidence-stamp">REVIEW<br>REQUIRED</div><div class="visual-foot">01 — SOURCES &nbsp; / &nbsp; 02 — EXTRACT &nbsp; / &nbsp; 03 — REVIEW</div></div>
       <div class="story-copy"><p class="story-type">APPLIED AI · DECISION SUPPORT</p><h3>Remittance Evidence<br>&amp; Routing Assistant</h3><p class="story-question"><span>THE QUESTION</span>How can a reviewer see exactly which facts shaped a first-pass route?</p><p class="story-answer">A prototype that extracts document evidence, checks source freshness, and flags uncertainty for human review. Built around synthetic data; its evaluation is exploratory, not legal validation.</p><div class="story-tags"><span>Python</span><span>LLM workflow</span><span>Evidence checks</span></div><button class="story-link" type="button" data-case="remittance">OPEN CASE STUDY <b>↗</b></button></div>
-    </article>
-<article class="project-story reverse-story flagship finance-flagship">
-      <div class="story-marker"><span>02</span><i></i><small>BACKEND / DATA</small></div>
+    </article><article class="project-story reverse-story support-story">
+      <div class="story-marker"><span>04</span><i></i><small>BACKEND / DATA</small></div>
       <div class="story-visual ledger-visual" aria-hidden="true"><div class="visual-caption">A MONTH, MADE LEGIBLE</div><div class="ledger-top"><b>01 / SUMMARY</b><span>2025—08</span></div><div class="ledger-line"><span>INCOME</span><i></i><b>+ 4,820</b></div><div class="ledger-line"><span>OUTGOING</span><i></i><b>− 2,160</b></div><div class="ledger-line total"><span>NET FLOW</span><i></i><b>+ 2,660</b></div><svg viewBox="0 0 320 80" preserveAspectRatio="none"><path d="M0 66 C32 60 39 43 69 51 S108 32 132 41 S167 15 193 30 S227 39 254 17 S292 26 320 5"/></svg><div class="visual-foot">FILTER · ANALYZE · EXPORT</div></div>
       <div class="story-copy"><p class="story-type">BACKEND ENGINEERING</p><h3>Finance Tracker API</h3><p class="story-question"><span>THE QUESTION</span>How do you make personal finance data useful and safely scoped?</p><p class="story-answer">A FastAPI service for transactions, role-based access, analytics, and CSV/JSON export, backed by SQLAlchemy and SQLite.</p><div class="story-tags"><span>FastAPI</span><span>JWT</span><span>SQLAlchemy</span></div><button class="story-link" type="button" data-case="finance">OPEN CASE STUDY <b>↗</b></button></div>
-    </article></div>
-    <div class="project-group-label"><span>02—03 / APPLIED AI &amp; PRODUCT SYSTEMS</span><i></i></div>
-    <div class="project-support-grid"><article class="project-story support-story">
-      <div class="story-marker"><span>03</span><i></i><small>TOOLS / AUTOMATION</small></div>
+    </article><article class="project-story support-story">
+      <div class="story-marker"><span>05</span><i></i><small>TOOLS / AUTOMATION</small></div>
       <div class="story-visual match-visual" aria-hidden="true"><div class="visual-caption">LESS GENERIC. MORE RELEVANT.</div><div class="match-doc resume-doc"><span>RESUME</span><i></i><i></i><i></i><b>Python · API design</b></div><div class="match-beam">MATCHED SIGNALS <b>→</b></div><div class="match-doc role-doc"><span>ROLE NOTES</span><i></i><b>Backend intern</b><i></i></div><div class="match-output"><span>OUTPUT</span><b>Grounded<br>application draft</b></div><div class="visual-foot">ONLY USE WHAT THE CANDIDATE CAN SUPPORT</div></div>
       <div class="story-copy"><p class="story-type">AUTOMATION · CAREER TOOL</p><h3>Internship Application<br>Assistant</h3><p class="story-question"><span>THE QUESTION</span>Can an application be tailored without inventing experience?</p><p class="story-answer">A resume-aware Python tool that matches job descriptions to relevant experience and drafts cover letters, with a rule-based fallback when optional LLM rewriting is unavailable.</p><div class="story-tags"><span>Python</span><span>PDF parsing</span><span>Gemini API</span></div><button class="story-link" type="button" data-case="internship">OPEN CASE STUDY <b>↗</b></button></div>
-    </article>
-<article class="project-story reverse-story support-story">
-      <div class="story-marker"><span>04</span><i></i><small>AI / REGTECH CONCEPT</small></div>
+    </article><article class="project-story reverse-story support-story">
+      <div class="story-marker"><span>06</span><i></i><small>AI / REGTECH CONCEPT</small></div>
       <div class="story-visual validation-visual" aria-hidden="true"><div class="visual-caption">A REPORT SHOULD SHOW ITS WORK</div><div class="validation-stack"><div><b>01</b><span>RETRIEVE<br>REGULATORY TEXT</span><i>↘</i></div><div><b>02</b><span>STRUCTURE<br>THE RESPONSE</span><i>↘</i></div><div><b>03</b><span>VALIDATE<br>&amp; TRACE</span><i>✓</i></div></div><div class="visual-foot">HUMAN REVIEW STAYS IN THE LOOP</div></div>
       <div class="story-copy"><p class="story-type">APPLIED AI · ASSIGNMENT PROTOTYPE</p><h3>COREP Reporting<br>Assistant</h3><p class="story-question"><span>THE QUESTION</span>How might an analyst trace an AI-assisted reporting suggestion?</p><p class="story-answer">An internship assignment prototype exploring retrieval, schema checks, and audit trails for regulatory reporting. A concept proposal, not a production compliance system.</p><div class="story-tags"><span>RAG</span><span>Python</span><span>Validation</span></div><button class="story-link" type="button" data-case="corep">OPEN CASE STUDY <b>↗</b></button></div>
     </article></div>
-    <div class="project-group-label secondary-label"><span>SMALLER BUILDS / SELECTED WORK</span><i></i></div>
+    <div class="project-group-label secondary-label"><span>07—08 / SMALLER BUILDS · SELECTED WORK</span><i></i></div>
     <div class="project-small-grid"><article class="project-story compact-story">
-      <div class="story-marker"><span>05</span><i></i><small>REAL-TIME / DATA</small></div>
+      <div class="story-marker"><span>07</span><i></i><small>REAL-TIME / DATA</small></div>
       <div class="story-visual signal-visual" aria-hidden="true"><div class="visual-caption">MANY FEEDS. ONE MOVING PICTURE.</div><div class="signal-grid"></div><div class="signal-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="signal-pulse"></div><div class="visual-foot">AGGREGATE · CACHE · STREAM</div></div>
       <div class="story-copy"><p class="story-type">BACKEND · LIVE AGGREGATION</p><h3>Meme Aggregator</h3><p class="story-question"><span>THE QUESTION</span>How do you turn scattered market feeds into a live view?</p><p class="story-answer">A TypeScript and Node.js service that aggregates decentralized exchange data with Redis caching and Socket.IO updates.</p><div class="story-tags"><span>TypeScript</span><span>Redis</span><span>Socket.IO</span></div><button class="story-link" type="button" data-case="meme">OPEN CASE STUDY <b>↗</b></button></div>
-    </article>
-<article class="project-story reverse-story compact-story">
-      <div class="story-marker"><span>06</span><i></i><small>WEB / CAMPUS</small></div>
+    </article><article class="project-story reverse-story compact-story">
+      <div class="story-marker"><span>08</span><i></i><small>WEB / CAMPUS</small></div>
       <div class="story-visual campus-visual" aria-hidden="true"><div class="visual-caption">A PLACE FOR EVERY STUDENT</div><div class="campus-sun"></div><div class="campus-block b1"></div><div class="campus-block b2"></div><div class="campus-block b3"></div><div class="campus-path"></div><div class="visual-foot">ROOMS · ALLOCATIONS · OPERATIONS</div></div>
       <div class="story-copy"><p class="story-type">WEB DEVELOPMENT · STUDENT PROJECT</p><h3>Hostel Management</h3><p class="story-question"><span>THE QUESTION</span>How can a campus team keep accommodation operations organized?</p><p class="story-answer">A web project focused on student accommodation, room allocation, and hostel operations.</p><div class="story-tags"><span>Web development</span><span>Management</span></div><button class="story-link" type="button" data-case="hostel">OPEN CASE STUDY <b>↗</b></button></div>
     </article></div></div></div></section>
@@ -363,7 +383,7 @@
   <div class="contact wrap"><div><div class="section-kicker">03 / Say hello</div><h2>Have a good<br>problem in mind?</h2><p>I’m always up for a thoughtful conversation about software, AI, or what you’re building.</p></div><button class="btn primary" type="button" data-open-chat>Start a conversation ↗</button></div>
 <dialog class="case-dialog" id="case-remittance" aria-labelledby="case-title-remittance">
   <div class="case-shell">
-    <div class="case-top"><span>01 / FLAGSHIP · APPLIED AI</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <div class="case-top"><span>03 / FEATURED · APPLIED AI</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
     <h2 id="case-title-remittance">Remittance Evidence &amp; Routing Assistant</h2>
     <p class="case-summary">An exploratory assistant for organizing remittance cases, checking supporting evidence, and preparing a traceable review. The prototype uses synthetic examples; it does not make legal determinations or validate real-world payment rules.</p>
     <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Case intake</b></div><div><small>02</small><b>Evidence inventory</b></div> 
@@ -388,7 +408,7 @@
 </dialog>
 <dialog class="case-dialog" id="case-finance" aria-labelledby="case-title-finance">
   <div class="case-shell">
-    <div class="case-top"><span>02 / FLAGSHIP · BACKEND SYSTEMS</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <div class="case-top"><span>04 / FEATURED · BACKEND SYSTEMS</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
     <h2 id="case-title-finance">Finance Tracker API</h2>
     <p class="case-summary">A role-aware finance API for transaction management, analytics, and exports, built with FastAPI and SQLAlchemy. It separates request validation and access control from the transaction service.</p>
     <div class="case-flow" aria-label="System flow"><div><small>01</small><b>HTTP client</b></div><div><small>02</small><b>FastAPI routes</b></div><div><small>03</small><b>JWT + role checks</b></div><div><small>04</small><b>SQLAlchemy / SQLite</b></div></div>
@@ -404,7 +424,7 @@
 </dialog>
 <dialog class="case-dialog" id="case-internship" aria-labelledby="case-title-internship">
   <div class="case-shell">
-    <div class="case-top"><span>03 / FEATURED · APPLIED AI</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <div class="case-top"><span>05 / FEATURED · APPLIED AI</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
     <h2 id="case-title-internship">Internship Application Assistant</h2>
     <p class="case-summary">A terminal-based workflow that extracts resume skills and projects, compares them with a job description, and drafts from templates. Optional Gemini rewriting has a deterministic fallback; the tool is designed not to invent experience.</p>
     <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Resume PDF</b></div><div><small>02</small><b>Extract profile</b></div><div><small>03</small><b>Match job text</b></div><div><small>04</small><b>Draft + review</b></div></div>
@@ -418,7 +438,7 @@ text = text.lower()</code></pre></div>
 </dialog>
 <dialog class="case-dialog" id="case-corep" aria-labelledby="case-title-corep">
   <div class="case-shell">
-    <div class="case-top"><span>04 / FEATURED · REGTECH CONCEPT</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <div class="case-top"><span>06 / FEATURED · REGTECH CONCEPT</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
     <h2 id="case-title-corep">COREP Reporting Assistant</h2>
     <p class="case-summary">An internship assignment prototype exploring retrieval, schema validation, and audit trails for AI-assisted regulatory reporting. It is a concept proposal, not a production compliance system.</p>
     <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Retrieve context</b></div><div><small>02</small><b>Draft response</b></div><div><small>03</small><b>Validate schema</b></div><div><small>04</small><b>Human review</b></div></div>
@@ -428,7 +448,7 @@ text = text.lower()</code></pre></div>
 </dialog>
 <dialog class="case-dialog" id="case-meme" aria-labelledby="case-title-meme">
   <div class="case-shell">
-    <div class="case-top"><span>05 / SMALLER BUILD · REAL-TIME DATA</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <div class="case-top"><span>07 / SMALLER BUILD · REAL-TIME DATA</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
     <h2 id="case-title-meme">Meme Aggregator</h2>
     <p class="case-summary">A TypeScript and Node.js service that consolidates decentralized exchange token data, caches it in Redis, and streams updates with Socket.IO. The API supports volume ordering and cursor-based retrieval.</p>
     <div class="case-flow" aria-label="System flow"><div><small>01</small><b>DEX feeds</b></div><div><small>02</small><b>Normalize tokens</b></div><div><small>03</small><b>Redis cache</b></div><div><small>04</small><b>API + Socket.IO</b></div></div>
@@ -442,7 +462,7 @@ text = text.lower()</code></pre></div>
 </dialog>
 <dialog class="case-dialog" id="case-hostel" aria-labelledby="case-title-hostel">
   <div class="case-shell">
-    <div class="case-top"><span>06 / SMALLER BUILD · WEB</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <div class="case-top"><span>08 / SMALLER BUILD · WEB</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
     <h2 id="case-title-hostel">Hostel Management</h2>
     <p class="case-summary">A student project focused on accommodation, room allocation, and hostel operations. The public project notes are brief, so this case study keeps its description to the documented scope.</p>
     <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Student needs</b></div><div><small>02</small><b>Room allocation</b></div><div><small>03</small><b>Hostel operations</b></div><div><small>04</small><b>Web interface</b></div></div>
@@ -465,6 +485,38 @@ text = text.lower()</code></pre></div>
   </section>
   <button type="button" class="chat-launcher" aria-expanded="false" aria-controls="visitor-chat"><span class="chat-launcher-dot"></span><span>Start a conversation</span><b>↗</b></button>
 </div>
+<dialog class="case-dialog" id="case-invoicedesk" aria-labelledby="case-title-invoicedesk">
+  <div class="case-shell"><div class="case-top"><span>01 / FLAGSHIP · ACCOUNTS PAYABLE AI</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <h2 id="case-title-invoicedesk">InvoiceDesk</h2>
+    <p class="case-summary">An educational full-stack accounts-payable prototype that turns vendor invoice PDFs into explainable APPROVE, REVIEW, or REJECT outcomes. It combines structured Gemini extraction with deterministic validation, purchase-order checks, and a persisted audit trail.</p>
+    <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Validate PDF</b></div><div><small>02</small><b>Extract fields</b></div><div><small>03</small><b>Decimal + PO checks</b></div><div><small>04</small><b>Decision + audit</b></div></div>
+    <div class="case-detail-grid"><div><p class="case-label">ENGINEERING DECISION</p><p class="case-decision">The model extracts structured fields, while arithmetic and purchase-order rules decide whether the case can pass. Low-confidence fields and mismatches route to review; stage events preserve evidence and decision context. The prototype documents edge cases such as scanned PDFs, duplicates, and split purchase-order consumption.</p><div class="case-next"><span>WHAT I’D IMPROVE NEXT</span><p>Next: add a clearly versioned evaluation set, measure field-level extraction accuracy, and test retry/idempotency behavior under concurrent invoice runs.</p></div><p class="case-label">IMPLEMENTATION NOTE</p><pre><code>triggered.append({
+    "reason_code": "LOW_EXTRACTION_CONFIDENCE",
+    "decision": "REVIEW",
+    "severity": "MEDIUM",
+    "evidence": {
+        "low_confidence_fields": validation.lowConfidenceFields
+    }
+})</code></pre></div>
+      <aside class="case-aside"><p class="case-label">PROJECT REPOSITORY</p><p>InvoiceDesk is an assignment prototype. The README documents deployment options and sample edge cases.</p><a class="btn primary" href="https://github.com/mukeshsiyol/INVOICEDESK" target="_blank" rel="noreferrer">Open repository ↗</a><a class="case-source" href="https://github.com/mukeshsiyol/INVOICEDESK/blob/main/server/engine.ts" target="_blank" rel="noreferrer">View decision engine ↗</a><a class="case-source" href="https://github.com/mukeshsiyol/INVOICEDESK/tree/main/docs/architecture" target="_blank" rel="noreferrer">View architecture notes ↗</a></aside></div>
+  </div>
+</dialog>
+<dialog class="case-dialog" id="case-finn" aria-labelledby="case-title-finn">
+  <div class="case-shell"><div class="case-top"><span>02 / FLAGSHIP · EVIDENCE-LED RESEARCH</span><button class="case-close" type="button" aria-label="Close case study">CLOSE <b>×</b></button></div>
+    <h2 id="case-title-finn">FINN · AI Investment Intelligence</h2>
+    <p class="case-summary">A mobile-first investment research prototype for Indian listed companies. It combines filing and market-signal monitoring with research over selected primary-source PDFs. It is an engineering demonstration, not investment advice or a production portfolio service.</p>
+    <div class="case-flow" aria-label="System flow"><div><small>01</small><b>Monitor signals</b></div><div><small>02</small><b>Discover sources</b></div><div><small>03</small><b>Retrieve PDF evidence</b></div><div><small>04</small><b>Verify citations</b></div></div>
+    <div class="case-detail-grid"><div><p class="case-label">ENGINEERING DECISION</p><p class="case-decision">FINN separates deterministic facts from optional model interpretation. The research path checks that citations map to an indexed document and an in-range PDF page; if evidence is insufficient or mappings fail, the answer is flagged or withheld. The README also makes provider, market-data, and prototype limits explicit.</p><div class="case-next"><span>WHAT I’D IMPROVE NEXT</span><p>Next: deploy a stable demo, add repeatable evaluation for retrieval and citation accuracy, and show freshness and coverage for every data provider.</p></div><p class="case-label">IMPLEMENTATION NOTE</p><pre><code>cited_ids = set(re.findall(citation_pattern, answer))
+if not cited_ids:
+    failures.append({"type": "missing_source"})
+for citation_id in sorted(cited_ids - set(source_map)):
+    failures.append({
+        "type": "missing_source",
+        "citation_id": citation_id
+    })</code></pre></div>
+      <aside class="case-aside"><p class="case-label">PROJECT REPOSITORY</p><p>The application is a prototype; live deployment availability was not confirmed during this update.</p><a class="btn primary" href="https://github.com/mukeshsiyol/Finn.Ai" target="_blank" rel="noreferrer">Open repository ↗</a><a class="case-source" href="https://github.com/mukeshsiyol/Finn.Ai/blob/main/backend/app/services/research/engine.py" target="_blank" rel="noreferrer">View citation verifier ↗</a><a class="case-source" href="https://github.com/mukeshsiyol/Finn.Ai/blob/main/docs/research-architecture-assessment.md" target="_blank" rel="noreferrer">View architecture assessment ↗</a></aside></div>
+  </div>
+</dialog>
 </main>
 <footer class="wrap"><span>© 2026 Mukesh Kumar · Made with curiosity.</span><div class="footlinks"><a href="mailto:mukeshsiyol2006@gmail.com">Email</a><a href="https://github.com/mukeshsiyol">GitHub</a><a href="https://linkedin.com/in/mukesh-kumar06">LinkedIn</a></div></footer>
 
@@ -497,7 +549,7 @@ text = text.lower()</code></pre></div>
       "about.txt": "Mukesh Kumar is an Engineering Physics student at IIT Delhi who builds software across backend systems and applied AI.",
       "education.txt": "Engineering Physics, IIT Delhi. The public profile does not list study dates or additional education details.",
       "experience.txt": "The public profile does not list a formal employer or completed internship. It documents project work, including a COREP reporting assistant assignment prototype.",
-      "projects.txt": "Projects: Remittance Evidence & Routing Assistant, Finance Tracker API, Internship Application Assistant, COREP Reporting Assistant, Meme Aggregator, and Hostel Management. Open each project story for its repository.",
+      "projects.txt": "Projects: InvoiceDesk, FINN investment intelligence, Remittance Evidence & Routing Assistant, Finance Tracker API, Internship Application Assistant, COREP Reporting Assistant, Meme Aggregator, and Hostel Management. Open each case study for architecture, decisions, and source links.",
       "skills.txt": "Python, C++, TypeScript, FastAPI, SQLAlchemy, Redis, RAG/LLM workflows, OpenCV, and web development.",
       "contact.txt": "Email: mukeshsiyol2006@gmail.com · LinkedIn: linkedin.com/in/mukesh-kumar06"
     };
